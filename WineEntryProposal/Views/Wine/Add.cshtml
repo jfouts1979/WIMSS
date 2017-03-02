@@ -1,0 +1,54 @@
+﻿@model WineEntryProposal.Models.WineAddViewModel
+
+@{
+    ViewBag.Title = "Add";
+}
+
+<h2>WIMS - Libations Inventory - Nickel and Dime System - for Ardent Youth</h2>
+
+
+@using (Html.BeginForm("add2", "wine"))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Wine Inventory Management System</h4>
+
+        <div>
+                    Name:
+                    @Html.EditorFor(m => m.TheWine.Name)
+        </div>
+
+        <div>
+                    WineType:
+                    @Html.EnumDropDownListFor(x => x.TheWine.TheWineType,"Enter Wine Type",
+         new { @class = "form-control" })
+         </div>
+
+        <div>
+                    TTBClassType:
+            @Html.EnumDropDownListFor(x => x.TheWineClass, "Enter Wine Type",
+         new { @class = "form-control" })
+        </div>
+
+         <div>
+                    Varietal:
+                @Html.DropDownListFor(m => m.SelectedVarietalId,
+     Model.VarietalsToChooseFrom.Select(x => new SelectListItem() { Text = x.Name, 
+     Value = x.Id.ToString() }), "Select Varietal", new { });
+         </div>
+
+         <div>
+        <input type="submit" value="Add" />
+        </div>
+
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
