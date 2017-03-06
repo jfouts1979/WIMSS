@@ -41,7 +41,7 @@
             Varietal:
             @Html.DropDownListFor(m => m.SelectedVarietalId,
             Model.VarietalsToChooseFrom.Select(x => new SelectListItem() { Text = x.Name, 
-            Value = x.Id.ToString() }), "Select Varietal", new { });
+            Value = x.Id.ToString() }), "Select Varietal", new { @class = "form-control" });
          </div>
 
          <div>
