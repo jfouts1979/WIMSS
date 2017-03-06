@@ -1,0 +1,77 @@
+﻿@model WineEntryProposal.Models.WineAddViewModel
+
+@{
+    ViewBag.Title = "AddWine";
+}
+
+@* Acronym Added To Spell L.I.N.D.S.A.Y. *@
+
+<h2>WIMS - Libations Inventory - Nickel and Dime System - for Ardent Youth</h2>
+
+<div class="container">
+    <div class="panel panel-primary">
+        <div class="panel-heading">test panel</div>
+        <div class="panel-body">
+
+            @using (Html.BeginForm("add2", "wine"))
+            {
+            @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    <h4>Wine Inventory Management System</h4>
+
+                    <div>
+                        Name:
+                        @Html.EditorFor(m => m.TheWine.Name,
+            new { htmlAttributes = new { @class = "form-control" } })
+
+                        @*As of MVC 5.1, HTML attributes can be passed to the
+                            EditorTemplate using the above syntax*@
+                    </div>
+
+                    <div>
+                        WineType:
+                        @Html.EnumDropDownListFor(x => x.TheWine.TheWineType, "Enter Wine Type",
+            new { @class = "form-control" })
+                    </div>
+
+                    <div>
+                        TTBClassType:
+                        @Html.EnumDropDownListFor(x => x.TheWineClass, "Enter Wine Type",
+            new { @class = "form-control" })
+                    </div>
+
+                    <div>
+                        Varietal:
+                        @Html.DropDownListFor(m => m.SelectedVarietalId,
+            Model.VarietalsToChooseFrom.Select(x => new SelectListItem()
+            {
+                Text = x.Name,
+                Value = x.Id.ToString()
+            }), "Select Varietal", new { @class = "form-control" })
+                    </div>
+
+                    <br />
+
+                    <div>
+                        <input type="submit" value="AddWine" class="btn-primary" />
+                    </div>
+
+                    @* <a href="#" class="btn btn-info" role="button">Link Button</a>
+                        <button type="button" class="btn btn-info">Button</button>
+                        <input type="button" class="btn btn-info" value="Input Button">
+                        <input type="submit" class="btn btn-info" value="Submit Button"> *@
+
+                </div>
+            }
+
+            <div>
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+
+            @section Scripts {
+                @Scripts.Render("~/bundles/jqueryval")
+            }
+</div>
+</div>
+</div>
