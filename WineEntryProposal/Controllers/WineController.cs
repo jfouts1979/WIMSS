@@ -17,7 +17,7 @@ namespace WineEntryProposal.Controllers
         }
 
         [HttpGet]
-        public ActionResult Add()
+        public ActionResult AddWine()
         {
             var vm = new WineAddViewModel()
             {
@@ -26,14 +26,14 @@ namespace WineEntryProposal.Controllers
                 TheWineClass = new TTBWineClass()
             };
 
-            return View("Add", vm);
+            return View("AddWine", vm);
         }
 
         [HttpPost]
-        public ActionResult Add2(WineAddViewModel wine)
+        public ActionResult AddWine2(WineAddViewModel wine)
         {
             
-            return View("Add", wine);
+            return View("AddWine", wine);
         }
 
     }
