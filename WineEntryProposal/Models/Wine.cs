@@ -27,6 +27,14 @@ namespace WineEntryProposal.Models
         public TTBWineClass TheWineClass { get; set; }
     }
 
+    public class WineRemoveViewModel
+    {
+        public Wine TheWine { get; set; }
+        public List<GrapeVarietal> VarietalsToChooseFrom { get; set; }
+        public string SelectedVarietalId { get; set; }
+        public TTBWineClass TheWineClass { get; set; }
+    }
+
     public class Wine
     {
         public string Name { get; set; }
