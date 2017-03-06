@@ -41,11 +41,13 @@
             Varietal:
             @Html.DropDownListFor(m => m.SelectedVarietalId,
             Model.VarietalsToChooseFrom.Select(x => new SelectListItem() { Text = x.Name, 
-            Value = x.Id.ToString() }), "Select Varietal", new { @class = "form-control" });
+            Value = x.Id.ToString() }), "Select Varietal", new { @class = "form-control" })
          </div>
 
+         <br />
+         
          <div>
-            <input type="submit" value="Add" class="btn-default"/>
+            <input type="submit" value="Add" class="btn-primary"/>
         </div>
 
        @* <a href="#" class="btn btn-info" role="button">Link Button</a>
