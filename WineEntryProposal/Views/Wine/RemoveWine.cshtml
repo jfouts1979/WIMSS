@@ -1,13 +1,13 @@
-﻿@model WineEntryProposal.Models.WineAddViewModel
+﻿@model WineEntryProposal.Models.WineRemoveViewModel
 
 @* ************************************************************************** *@
 @* ************************************************************************** *@
-@* *************************  ADD   A   NEW    WINE    ********************** *@
+@* **********************  REMOVE   A   NEW    WINE    ********************** *@
 @* ************************************************************************** *@
 @* ************************************************************************** *@
 
 @{
-    ViewBag.Title = "AddWine";
+    ViewBag.Title = "RemoveWine";
 }
 
 @* Acronym Added To Spell L.I.N.D.S.A.Y. *@
@@ -15,11 +15,11 @@
 <h2>WIMS - Libations Inventory - Nickel and Dime System - for Ardent Youth</h2>
 
 <div class="container">
-    <div class="panel panel-primary">
-        <div class="panel-heading">W.I.M.S. - Add A New Wine To Inventory:</div>
+    <div class="panel panel-danger">
+        <div class="panel-heading">W.I.M.S. - Remove A Wine From Inventory:</div>
         <div class="panel-body">
 
-            @using (Html.BeginForm("AddWine2", "wine"))
+            @using (Html.BeginForm("RemoveWine2", "wine"))
             {
             @Html.AntiForgeryToken()
 
@@ -60,7 +60,7 @@
                     <br />
 
                     <div>
-                        <input type="submit" value="AddWine" class="btn-primary" />
+                        <input type="submit" value="RemoveWine" class="btn-primary" />
                     </div>
 
                     @* <a href="#" class="btn btn-info" role="button">Link Button</a>
@@ -78,6 +78,6 @@
             @section Scripts {
                 @Scripts.Render("~/bundles/jqueryval")
             }
-</div>
-</div>
+        </div>
+    </div>
 </div>
