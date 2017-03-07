@@ -15,7 +15,7 @@ namespace WineEntryProposal.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "A Solution For Ever Changing Needs In the Industries Administered By Local, State, and Federal ATC, ABC, Liquor Control Boards, and the Federal Tax and Trade Bureau (TTB). .";
 
             return View();
         }

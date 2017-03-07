@@ -100,7 +100,7 @@ namespace WineEntryProposal.Models
         public static List<GrapeVarietal> GetAllGrapeVarietals()
         {
             var VarietalRecord = new List<GrapeVarietal>();
-            var SortedVarietalList = from R in VarietalRecord orderby R.Name;
+            //var SortedVarietalList = from R in VarietalRecord orderby R.Name group by R.Name;
             return new List<GrapeVarietal>()
             {
                 new GrapeVarietal() { Id=1, Name="Vidal Blanc" },
