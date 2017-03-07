@@ -92,13 +92,15 @@ namespace WineEntryProposal.Models
         RetsinaWine                 // Wine made from resin
 
         // For purpose of project and until further investigation concludes it shall be assumed that no other classes of wines will be approved by the Tax and Trade Bureau to appear in the Code of Federal Regulations (CFR) - United States Code.
-
     }
 
     public static class Repository
-    {
+    { 
+    
         public static List<GrapeVarietal> GetAllGrapeVarietals()
         {
+            var VarietalRecord = new List<GrapeVarietal>();
+            var SortedVarietalList = from R in VarietalRecord orderby R.Name;
             return new List<GrapeVarietal>()
             {
                 new GrapeVarietal() { Id=1, Name="Vidal Blanc" },

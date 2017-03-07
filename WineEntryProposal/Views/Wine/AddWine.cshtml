@@ -29,7 +29,7 @@
                     <div>
                         Name:
                         @Html.EditorFor(m => m.TheWine.Name,
-            new { htmlAttributes = new { @class = "form-control" } })
+                        new { htmlAttributes = new { @class = "form-control" } })
 
                         @*As of MVC 5.1, HTML attributes can be passed to the
                             EditorTemplate using the above syntax*@
@@ -38,46 +38,52 @@
                     <div>
                         WineType:
                         @Html.EnumDropDownListFor(x => x.TheWine.TheWineType, "Enter Wine Type",
-            new { @class = "form-control" })
+                        new { @class = "form-control" })
                     </div>
 
                     <div>
                         TTBClassType:
                         @Html.EnumDropDownListFor(x => x.TheWineClass, "Enter Wine Type",
-            new { @class = "form-control" })
+                        new { @class = "form-control" })
                     </div>
 
                     <div>
                         Varietal:
                         @Html.DropDownListFor(m => m.SelectedVarietalId,
-            Model.VarietalsToChooseFrom.Select(x => new SelectListItem()
-            {
-                Text = x.Name,
-                Value = x.Id.ToString()
-            }), "Select Varietal", new { @class = "form-control" })
-                    </div>
+                        Model.VarietalsToChooseFrom.Select(x => new SelectListItem()
+                        {
+                           Text = x.Name,
+                           Value = x.Id.ToString()
+                           }), "Select Varietal", new { @class = "form-control" })
+                     </div>   
 
-                    <br />
+                        @*     new SelectList(Model.VehicleModels.OrderBy(x => x.Name), "Id", "Name"),
+                            "-- Select a model --" *@
+
+                        @*   @Html.DropDownListFor(m => m.SelectedVarietalId,
+                            Model.VarietalsToChooseFrom.Select(x => new SelectListItem()
+                        *@
+
+                        <br />
+
+                        <div>
+                            <input type="submit" value="AddWine" class="btn-primary" />
+                        </div>
+                        @* <a href="#" class="btn btn-info" role="button">Link Button</a>
+                            <button type="button" class="btn btn-info">Button</button>
+                            <input type="button" class="btn btn-info" value="Input Button">
+                            <input type="submit" class="btn btn-info" value="Submit Button"> *@
+
+                    </div>
+                    }
 
                     <div>
-                        <input type="submit" value="AddWine" class="btn-primary" />
+                        @Html.ActionLink("Back to List", "Index")
                     </div>
 
-                    @* <a href="#" class="btn btn-info" role="button">Link Button</a>
-                        <button type="button" class="btn btn-info">Button</button>
-                        <input type="button" class="btn btn-info" value="Input Button">
-                        <input type="submit" class="btn btn-info" value="Submit Button"> *@
-
+                    @section Scripts {
+                        @Scripts.Render("~/bundles/jqueryval")
+                    }
                 </div>
-            }
-
-            <div>
-                @Html.ActionLink("Back to List", "Index")
             </div>
-
-            @section Scripts {
-                @Scripts.Render("~/bundles/jqueryval")
-            }
-</div>
-</div>
-</div>
+        </div>

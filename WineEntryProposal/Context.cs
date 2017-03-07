@@ -7,7 +7,7 @@ using System.Data.Entity;
 
 namespace WineEntryProposal
 {
-    public class Context : DBContext
+    public class Context : DbContext
     {
     }
 }
