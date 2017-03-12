@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Data.Entity;
+using System.Data;
 
 // Some of the coding in this portion of the project refers to data from Title 27 of the Code of Federal Regulations (Alcohol, Tobacco, and Firearms), Part 4 - Labeling and Advertising of Wine - Subpart C - Standards of Identity for Wine - Section 4.21 - referring to nine distinct separate classes of wine.  These include:
 
@@ -37,9 +40,58 @@ namespace WineEntryProposal.Models
 
     public class Wine
     {
+        
+        // Brand name of the wine itself.  Robert Mondavi for instance or Kendall Jackson
+        // Beringer or Yellowtail (sp?).  Barefoot is Kmart's brand.  
+        [Required, StringLength(64)]
         public string Name { get; set; }
         public WineType TheWineType { get; set; }
+        
+        // American Viticultural Area ** Per Title 27 CFR ** Required If Varietal Name
+        // Declared On Label Of Wine.  Must Research Further To Update Comments.
+        // ***************************************************************************
+        [StringLength(256)]
+        public string AVA { get; set;  }
+
+        // Alcohol By Volume (ABV) is only required on the label in certain situations.
+        // Per Title 27 CFR e.g. wines less than 12% ABV may contain the words 'light'
+        // or 'Table' in lieu of the actual percentage of alcohol on the label.
+        
+        [Range(0.0,1.0)]
+        public double ABV {get; set; }
+        
+        // public double fluidOz { get; set; }
+        [Range(0.0,128.0)]
+        public double fluidOz { get; set;  }
+
+        // Would like to incorporate fluidOz and btlVol in the future so that
+        // uom such as 33.8 fl. oz. could be used OR 750 ml for example to denote
+        // bottle volume.  However, for the project at this time, will stick to 
+        // K.I.S.S.  
+
+        //************************************************************************
+        //*************************** Bottle Information *************************
+        //************************************************************************
+        // Bottle volume is required per TTB rules and regulations.
+        // So data annotation as noted.
+        [Required]
+        public double btlVol { get; set; }
+        [Required]
+        public string btlVolUOM { get; set; }
+        //***********************************************************************
+        
+        //***********************************************************************
+        //************** Grape Varietal Pulls List From TTB Website *************
+        //************** Of All Currently Approved Title 27 CFR     *************
+        //************** Varietals.                                 *************
+        //***********************************************************************
+
+        //YET TO BE IMPLEMENTED FULLY
+
+        [Required, StringLength(256)]
         public GrapeVarietal TheVarietal { get; set; }
+        
+        [Required, StringLength(256)]
         public TTBWineClass TheTTBWineClass { get; set; }
     }
     
