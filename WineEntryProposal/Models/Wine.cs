@@ -28,6 +28,7 @@ namespace WineEntryProposal.Models
         public List<GrapeVarietal> VarietalsToChooseFrom { get; set; }
         public string SelectedVarietalId { get; set; }
         public TTBWineClass TheWineClass { get; set; }
+        
     }
 
     public class WineRemoveViewModel
@@ -47,6 +48,8 @@ namespace WineEntryProposal.Models
         // Beringer or Yellowtail (sp?).  Barefoot is Kmart's brand.  
         [Required, StringLength(64)]
         public string Name { get; set; }
+
+        [Required]
         public WineType TheWineType { get; set; }
         
         // American Viticultural Area ** Per Title 27 CFR ** Required If Varietal Name
@@ -76,7 +79,7 @@ namespace WineEntryProposal.Models
         //************************************************************************
         // Bottle volume is required per TTB rules and regulations.
         // So data annotation as noted.
-        [Required]
+        [Required, Range(0.0, 128.0)]
         public double btlVol { get; set; }
         [Required]
         public string btlVolUOM { get; set; }
@@ -93,7 +96,7 @@ namespace WineEntryProposal.Models
         [Required, StringLength(256)]
         public GrapeVarietal TheVarietal { get; set; }
         
-        [Required, StringLength(256)]
+        [Required]
         public TTBWineClass TheTTBWineClass { get; set; }
     }
     
@@ -106,8 +109,8 @@ namespace WineEntryProposal.Models
         public string Name { get; set; }
         
         // E.G. Vitis Labrusca, Vitis Riparia, Vitis Vinifera
-        [Required, StringLength(64)]
-        public string grapeFam { get; set; }     
+         [Required, StringLength(64)]
+          public string grapeFam { get; set; }     
 
     }
 
@@ -176,7 +179,9 @@ namespace WineEntryProposal.Models
         public static List<GrapeVarietal> GetAllGrapeVarietals()
         {
             var VarietalRecord = new List<GrapeVarietal>();
-            //var SortedVarietalList = from R in VarietalRecord orderby R.Name group by R.Name;
+            //var SortedVarietalList = from R in VarietalRecord orderby R.Name group by 
+            VarietalRecord.Sort(); // I added this line but not sure if it does anything.
+                    
             return new List<GrapeVarietal>()
             {
                 new GrapeVarietal() { Id=1, Name="Vidal Blanc" },
