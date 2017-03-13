@@ -26,8 +26,9 @@ namespace WineEntryProposal.Controllers
             var vm = new WineAddViewModel()
             {
                 VarietalsToChooseFrom = Repository.GetAllGrapeVarietals(),
+               // VarietalsToChooseFrom = Repository.GetAllGrapeVarietals().ToList().OrderBy(gv => gv.Name),
                 TheWine = new Wine(),
-                TheWineClass = new TTBWineClass()
+                //TheWineClass = new TTBWineClass()
             };
 
             return View("AddWine", vm);
@@ -40,6 +41,13 @@ namespace WineEntryProposal.Controllers
         [HttpPost]
         public ActionResult AddWine2(WineAddViewModel wine)
         {
+
+            //Added this line in to fix problem with System.Core.Dll error /null
+            //Problem was that information was not bound to the form.  Shouldn't
+            //I have to do this for all of the other form controls?
+            //No -they are contained in TheWine.  So why do I need to send 
+            wine.VarietalsToChooseFrom = Repository.GetAllGrapeVarietals();
+
             return View("AddWine", wine);
         }
 
