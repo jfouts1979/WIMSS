@@ -40,7 +40,9 @@ namespace WineEntryProposal.Models
 
     public class Wine
     {
-        
+        //Government Warning That Must Appear On All Alcoholic Containers
+        public const string govtWarning = "GOVERNMENT WARNING: (1) ACCORDING TO THE SURGEON GENERAL, WOMEN SHOULD NOT DRINK ALCOHOLIC BEVERAGES DURING PREGNANCY BECAUSE OF THE RISK OF BIRTH DEFECTS. (2) CONSUMPTION OF ALCOHOLIC BEVERAGES IMPAIRS YOUR ABILITY TO DRIVE A CAR OR OPERATIE MACHINERY AND MAY CAUSE HEALTH PROBLEMS.";
+       
         // Brand name of the wine itself.  Robert Mondavi for instance or Kendall Jackson
         // Beringer or Yellowtail (sp?).  Barefoot is Kmart's brand.  
         [Required, StringLength(64)]
@@ -98,26 +100,48 @@ namespace WineEntryProposal.Models
     public class GrapeVarietal
     {
         public int Id { get; set; }
+        
+        // E.G. Chardonnay or Concord, Vidal Blanc, or Pinot Noir
+        [Required, StringLength(64)]
         public string Name { get; set; }
+        
+        // E.G. Vitis Labrusca, Vitis Riparia, Vitis Vinifera
+        [Required, StringLength(64)]
+        public string grapeFam { get; set; }     
+
     }
 
     public class NGFruitSourceType
     {
         public int Id { get; set; }
+        
+        [Required, StringLength(256)]
         public string Name { get; set; }
 
         //Brix § 151.91 Brix values of unconcentrated natural fruit juices.
         //The following values have been determined to be the average Brix values of unconcentrated natural fruit juices in the trade and commerce of the United States, for the purposes of the provisions of the Additional U.S.Notes to Chapter 20, Harmonized Tariff Schedule of the United States(HTSUS) ( 19 U.S.C. 1202), and will be used in determining the dutiable quantity of imports of concentrated fruit juices, using the procedure set forth in Additional U.S.Note 2, Chapter 20, HTSUS:
-
+        
+        [Range(0.0, 100.0)]
         public double Brix { get; set; }
     }
 
+    public enum GrapeFamType
+    {
+        //To Describe Different Families of Grapes
+        
+        VitisVinifera, //European Family of Grapes [Chardonnay, Merlot, Cab. Sav. etc...]
+        VitisRiparia,  //Rootstock common varieties
+        VitisLabrusca  //Concord, Niagara, Catawba, Notably 'foxy' flavored grapes
+    };
+
+
     public enum WineType
     {
-        Table,
-        Dessert,
-        Sparkling
+        Table,         //Wine 12% or less ABV
+        Dessert,       //Wine >12% ABV
+        //Sparkling      //Champagne Style Wine
     };
+
 
     public enum TTBWineClass
     {
