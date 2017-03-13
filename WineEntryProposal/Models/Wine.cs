@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Reflection;
 using System.Linq;
 using System.Web;
 using System.Data.Entity;
 using System.Data;
+using System.ComponentModel;
 
 // Some of the coding in this portion of the project refers to data from Title 27 of the Code of Federal Regulations (Alcohol, Tobacco, and Firearms), Part 4 - Labeling and Advertising of Wine - Subpart C - Standards of Identity for Wine - Section 4.21 - referring to nine distinct separate classes of wine.  These include:
 
@@ -99,6 +101,10 @@ namespace WineEntryProposal.Models
         [Required]
         public TTBWineClass TheTTBWineClass { get; set; }
     }
+
+    //**************************************************************
+    //************* Establish List of Grape Varietals***************
+    //**************************************************************
     
     public class GrapeVarietal
     {
@@ -114,6 +120,10 @@ namespace WineEntryProposal.Models
 
     }
 
+    //**************************************************************
+    //*********Establish List of Non-Grape Fruit Source Types*******
+    //**************************************************************
+
     public class NGFruitSourceType
     {
         public int Id { get; set; }
@@ -128,6 +138,10 @@ namespace WineEntryProposal.Models
         public double Brix { get; set; }
     }
 
+    //*********************************************************
+    //**************Set Up ENUM for Grape Family Type**********
+    //*********************************************************
+
     public enum GrapeFamType
     {
         //To Describe Different Families of Grapes
@@ -137,6 +151,9 @@ namespace WineEntryProposal.Models
         VitisLabrusca  //Concord, Niagara, Catawba, Notably 'foxy' flavored grapes
     };
 
+    //*********************************************************
+    //*************Set Up ENUM for Wine Type e.g. Table********
+    //*********************************************************
 
     public enum WineType
     {
@@ -145,6 +162,9 @@ namespace WineEntryProposal.Models
         //Sparkling      //Champagne Style Wine
     };
 
+    //**************************************************************
+    //**************** Set Up TTB Wine Classes**********************
+    //**************************************************************
 
     public enum TTBWineClass
     {
@@ -160,7 +180,16 @@ namespace WineEntryProposal.Models
         // "Imitiation and Substandard or Other Than Standard Wine",
         // "Retsina Wine" - Wine made from resin ??? Cannabis Wine? 
 
-        GrapeWine,                  // The lay person's idea of still wine - Merlot
+        //[Description(&quot;The Color of my skin & quot;)]
+        //White,
+        //[Description(&quot;Bulls like this color & quot;)]
+        //Red,
+        //[Description(&quot;The color of slime & quot;)]
+        //Green
+
+
+        //[Description(&quot; Grape Wine & quot;)]GrapeWine,                  // The lay person's idea of still wine - Merlot
+        GrapeWine,
         SparklingGrapeWine,         //  
         CarbonatedGrapeWine,
         CitrusWine,                 // Citrus fruit wine (Grapefruits, oranges, etc.)

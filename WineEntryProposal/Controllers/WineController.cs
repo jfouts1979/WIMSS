@@ -25,7 +25,9 @@ namespace WineEntryProposal.Controllers
         {
             var vm = new WineAddViewModel()
             {
-                VarietalsToChooseFrom = Repository.GetAllGrapeVarietals(),
+                VarietalsToChooseFrom = Repository.GetAllGrapeVarietals().OrderBy(gv => gv.Name).ToList(),
+
+               // VarietalsToChooseFrom = Repository.GetAllGrapeVarietals().OrderBy(gv => gv.Name).ToList()
                // VarietalsToChooseFrom = Repository.GetAllGrapeVarietals().ToList().OrderBy(gv => gv.Name),
                 TheWine = new Wine(),
                 //TheWineClass = new TTBWineClass()
@@ -46,10 +48,13 @@ namespace WineEntryProposal.Controllers
             //Problem was that information was not bound to the form.  Shouldn't
             //I have to do this for all of the other form controls?
             //No -they are contained in TheWine.  So why do I need to send 
-            wine.VarietalsToChooseFrom = Repository.GetAllGrapeVarietals();
+
+            wine.TheWine.TheVarietal = Repository.GetAllGrapeVarietals().FirstOrDefault(gv => gv.Id == int.Parse(wine.SelectedVarietalId));
 
             return View("AddWine", wine);
-        }
+
+
+        } 
 
         // ****************************************************************
         // *********      REMOVE A WINE VIEW MODEL GET ********************

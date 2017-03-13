@@ -8,19 +8,19 @@ using WineEntryProposal.Models;
 
 namespace WineEntryProposal
 {
-    public class Context : DbContext
-    {
-        public Context()
-        {
-            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<Context>());
-            
-        }
-    }
+    //public class Context : DbContext
+    //{
+    //    public Context()
+    //    {
+    //        Database.SetInitializer(new DropCreateDatabaseIfModelChanges<Context>());
+
+    //    }
+    //}
 
     public class WineContext : DbContext
     {
         public DbSet<Wine> Wines { get; set; }
-        public DbSet<GrapeVarietal> Varietals { get; set; }
+        //public DbSet<GrapeVarietal> Varietals { get; set; }
     }
 
 }
