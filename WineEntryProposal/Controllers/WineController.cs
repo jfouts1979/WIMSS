@@ -51,7 +51,25 @@ namespace WineEntryProposal.Controllers
 
             wine.TheWine.TheVarietal = Repository.GetAllGrapeVarietals().FirstOrDefault(gv => gv.Id == int.Parse(wine.SelectedVarietalId));
 
-            return View("AddWine", wine);
+            //*****************************************
+            //*** Establish Database Wines Table*******
+            //*****************************************
+
+            using (var context = new WineContext())
+            {
+                context.Wines.Add(wine.TheWine);
+                context.SaveChanges();
+
+            }
+
+            Console.WriteLine(wine.TheWine.Name);
+            Console.ReadLine();
+
+            //*****************************************
+            //*****************************************
+
+
+                return View("AddWine", wine);
 
 
         } 

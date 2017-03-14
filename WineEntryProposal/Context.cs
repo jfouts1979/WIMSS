@@ -19,8 +19,14 @@ namespace WineEntryProposal
 
     public class WineContext : DbContext
     {
+
+        public WineContext()
+        {
+            Database.SetInitializer(new DropCreateDatabaseAlways<WineContext>());
+
+        }
         public DbSet<Wine> Wines { get; set; }
-        //public DbSet<GrapeVarietal> Varietals { get; set; }
+        public DbSet<GrapeVarietal> Varietals { get; set; }
     }
 
 }

@@ -7,6 +7,7 @@ using System.Web;
 using System.Data.Entity;
 using System.Data;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations.Schema;
 
 // Some of the coding in this portion of the project refers to data from Title 27 of the Code of Federal Regulations (Alcohol, Tobacco, and Firearms), Part 4 - Labeling and Advertising of Wine - Subpart C - Standards of Identity for Wine - Section 4.21 - referring to nine distinct separate classes of wine.  These include:
 
@@ -43,6 +44,9 @@ namespace WineEntryProposal.Models
 
     public class Wine
     {
+        [Required]
+        public int Id { get; set; }
+
         //Government Warning That Must Appear On All Alcoholic Containers
         public const string govtWarning = "GOVERNMENT WARNING: (1) ACCORDING TO THE SURGEON GENERAL, WOMEN SHOULD NOT DRINK ALCOHOLIC BEVERAGES DURING PREGNANCY BECAUSE OF THE RISK OF BIRTH DEFECTS. (2) CONSUMPTION OF ALCOHOLIC BEVERAGES IMPAIRS YOUR ABILITY TO DRIVE A CAR OR OPERATIE MACHINERY AND MAY CAUSE HEALTH PROBLEMS.";
        
@@ -79,11 +83,14 @@ namespace WineEntryProposal.Models
         //************************************************************************
         //*************************** Bottle Information *************************
         //************************************************************************
+        
         // Bottle volume is required per TTB rules and regulations.
         // So data annotation as noted.
         [Required, Range(0.0, 128.0)]
         public double btlVol { get; set; }
+        
         [Required]
+        [StringLength(8)]
         public string btlVolUOM { get; set; }
         //***********************************************************************
         
@@ -95,7 +102,7 @@ namespace WineEntryProposal.Models
 
         //YET TO BE IMPLEMENTED FULLY
 
-        [Required, StringLength(256)]
+       [Required, NotMapped]
         public GrapeVarietal TheVarietal { get; set; }
         
         [Required]
