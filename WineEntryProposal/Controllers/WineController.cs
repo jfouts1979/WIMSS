@@ -49,7 +49,13 @@ namespace WineEntryProposal.Controllers
             //I have to do this for all of the other form controls?
             //No -they are contained in TheWine.  So why do I need to send 
 
+            // Provides Varietal Information in TheVarietal Variable.
+
             wine.TheWine.TheVarietal = Repository.GetAllGrapeVarietals().FirstOrDefault(gv => gv.Id == int.Parse(wine.SelectedVarietalId));
+
+            // Provides the list of VarietalsToChooseFrom to post to server.
+
+            wine.VarietalsToChooseFrom = Repository.GetAllGrapeVarietals();
 
             //*****************************************
             //*** Establish Database Wines Table*******
@@ -62,14 +68,11 @@ namespace WineEntryProposal.Controllers
 
             }
 
-            Console.WriteLine(wine.TheWine.Name);
-            Console.ReadLine();
-
             //*****************************************
             //*****************************************
 
 
-                return View("AddWine", wine);
+            return View("AddWine", wine);
 
 
         } 

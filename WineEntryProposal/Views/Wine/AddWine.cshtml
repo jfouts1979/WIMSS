@@ -66,6 +66,10 @@
                     </div>
 
                     <div>
+
+                    //maybe there is a better way to write this with a different
+                    //overload method.  Thoughts at midnight on a rainy day.
+
                         Varietal:
                         @Html.DropDownListFor(m => m.SelectedVarietalId,
                         Model.VarietalsToChooseFrom.Select(x => new SelectListItem()
