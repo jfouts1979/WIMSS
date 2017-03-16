@@ -27,20 +27,37 @@ namespace WineEntryProposal.Models
 {
     public class WineAddViewModel
     {
-        public Wine TheWine { get; set; }
+        public WineModel TheWine { get; set; }
         public List<GrapeVarietal> VarietalsToChooseFrom { get; set; }
-        public string SelectedVarietalId { get; set; }
+        public int? SelectedVarietalId { get; set; }
         public TTBWineClass TheWineClass { get; set; }
+        public bool? ShowSuccessMsg { get; set; }
         
     }
 
-    public class WineRemoveViewModel
-    {
-        public Wine TheWine { get; set; }
-        public List<GrapeVarietal> VarietalsToChooseFrom { get; set; }
-        public string SelectedVarietalId { get; set; }
-        public TTBWineClass TheWineClass { get; set; }
+    public class WineModel
+    {   
+    
+        // The annotations are rules required for the view.
+         
+        public int Id { get; set; }
+        
+        [Required]
+        public string Name { get; set; }
+        [Required]
+        public WineType WineType { get; set; }
+        
+        public string AVA { get; set; }
+        
+        public double ABV { get; set; }
+        
+        public double? fluidOz { get; set; }
+        [Required]
+        public double? btlVol { get; set; }
+        [Required]
+        public string btlVolUOM { get; set; }
     }
+
 
     public class Wine
     {
@@ -72,8 +89,8 @@ namespace WineEntryProposal.Models
         public double ABV {get; set; }
         
         // public double fluidOz { get; set; }
-        [Range(0.0,128.0)]
-        public double fluidOz { get; set;  }
+        [Range(0.0,1000.0)]
+        public double? fluidOz { get; set;  }
 
         // Would like to incorporate fluidOz and btlVol in the future so that
         // uom such as 33.8 fl. oz. could be used OR 750 ml for example to denote
@@ -86,8 +103,8 @@ namespace WineEntryProposal.Models
         
         // Bottle volume is required per TTB rules and regulations.
         // So data annotation as noted.
-        [Required, Range(0.0, 128.0)]
-        public double btlVol { get; set; }
+        [Required, Range(0.0, 1000.0)]
+        public double? btlVol { get; set; }
         
         [Required]
         [StringLength(8)]
