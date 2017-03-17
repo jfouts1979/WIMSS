@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Web;
@@ -46,6 +47,13 @@ namespace WineEntryProposal.Controllers
             return View("AddWine", vm);
         }
 
+        public class ErrorTesting : DbContext
+        { 
+        
+        }
+               
+        
+        
         // *************************************************************
         // ************      ADD A WINE VIEW MODEL POST ****************
         // *************************************************************
@@ -111,6 +119,13 @@ namespace WineEntryProposal.Controllers
                          TheWineType = wine.TheWine.WineType
 
                     };
+
+
+
+
+
+
+
                         context.Wines.Add(dbWine);
                         context.SaveChanges();
                     }
