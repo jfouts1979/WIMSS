@@ -86,6 +86,10 @@ namespace WineEntryProposal.Controllers
                     using (var context = new WineContext())
                     {
 
+                    //******************************************
+                    //*** map field names for the database *****
+                    //******************************************
+
                     var dbWine = new Wine
 
                     {
@@ -97,16 +101,17 @@ namespace WineEntryProposal.Controllers
                         Id = wine.TheWine.Id,
                         Name = wine.TheWine.Name,
                         
-                        //  These lines are not needed....?  
+                        //  These lines need to be set up as tables in the database context...  
+                        //  And then populated with information...
 
-                        //  TheTTBWineClass = wine.TheWine.TTBWineClass,
-                        //  TheVarietal = wine.TheWine.TheVarietal,
+                        // TheTTBWineClass = wine.TheWine.TTBWineClass,
+                        // TheVarietal = wine.TheWine.TheVarietal,
 
                          // Could not make WineType nullable in WineModel...
                          TheWineType = wine.TheWine.WineType
 
                     };
-                        context.Wines.Add(wine.TheWine);
+                        context.Wines.Add(dbWine);
                         context.SaveChanges();
                     }
 

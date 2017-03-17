@@ -159,6 +159,7 @@
     <Compile Include="Context.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\WineController.cs" />
+    <Compile Include="ErrorCheckingUtils.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

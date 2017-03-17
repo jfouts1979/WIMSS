@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Data.Entity;
 using WineEntryProposal.Models;
+using System.Data.Entity.Validation;
 
 namespace WineEntryProposal
 {
@@ -17,8 +18,10 @@ namespace WineEntryProposal
     //    }
     //}
 
+
     public class WineContext : DbContext
     {
+
 
         public WineContext()
         {
@@ -27,6 +30,13 @@ namespace WineEntryProposal
         }
         public DbSet<Wine> Wines { get; set; }
         public DbSet<GrapeVarietal> Varietals { get; set; }
+        //public DbSet<TTBWineClass> TTBWineClasses { get; set; }
+
+     
+       
     }
+
+   
+
 
 }
