@@ -35,6 +35,16 @@ namespace WineEntryProposal.Models
         
     }
 
+    public class WineEditViewModel
+    {
+        public WineModel TheWine { get; set; }
+        public List<GrapeVarietal> VarietalsToChooseFrom { get; set; }
+        public int? SelectedVarietalId { get; set; }
+        public TTBWineClass TheWineClass { get; set; }
+        public bool? ShowSuccessMsg { get; set; }
+
+    }
+
     public class WineModel
     {   
     

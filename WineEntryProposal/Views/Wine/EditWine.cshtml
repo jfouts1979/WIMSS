@@ -1,13 +1,13 @@
-﻿@model WineEntryProposal.Models.WineRemoveViewModel
+﻿@model WineEntryProposal.Models.WineEditViewModel
 
 @* ************************************************************************** *@
 @* ************************************************************************** *@
-@* **********************  REMOVE   A   NEW    WINE    ********************** *@
+@* ***********************  EDIT   A   NEW    WINE    ********************** *@
 @* ************************************************************************** *@
 @* ************************************************************************** *@
 
 @{
-    ViewBag.Title = "RemoveWine";
+    ViewBag.Title = "EditWine";
 }
 
 @* Acronym Added To Spell L.I.N.D.S.A.Y. *@
@@ -16,10 +16,10 @@
 
 <div class="container">
     <div class="panel panel-danger">
-        <div class="panel-heading">W.I.M.S. - Remove A Wine From Inventory:</div>
+        <div class="panel-heading">W.I.M.S. - Edit A Wine From Inventory:</div>
         <div class="panel-body">
 
-            @using (Html.BeginForm("RemoveWine2", "wine"))
+            @using (Html.BeginForm("EditWine2", "wine"))
             {
             @Html.AntiForgeryToken()
 
@@ -61,7 +61,7 @@
                     <br />
 
                     <div>
-                        <input type="submit" value="RemoveWine" class="btn-primary" />
+                        <input type="submit" value="EditWine" class="btn-primary" />
                     </div>
 
                     @* <a href="#" class="btn btn-info" role="button">Link Button</a>
