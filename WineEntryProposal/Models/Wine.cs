@@ -39,7 +39,7 @@ namespace WineEntryProposal.Models
     {
         public WineModel TheWine { get; set; }
         public List<GrapeVarietal> VarietalsToChooseFrom { get; set; }
-        public int? SelectedVarietalId { get; set; }
+        public GrapeVarietal SelectedVarietalId { get; set; }
         public TTBWineClass TheWineClass { get; set; }
         public bool? ShowSuccessMsg { get; set; }
 
@@ -129,11 +129,16 @@ namespace WineEntryProposal.Models
 
         //YET TO BE IMPLEMENTED FULLY
 
-       [Required, NotMapped]
+       [Required]
         public GrapeVarietal TheVarietal { get; set; }
         
         [Required]
         public TTBWineClass TheTTBWineClass { get; set; }
+
+        public static implicit operator Wine(Wine v)
+        {
+            throw new NotImplementedException();
+        }
     }
 
     //**************************************************************

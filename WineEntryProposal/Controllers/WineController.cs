@@ -47,12 +47,6 @@ namespace WineEntryProposal.Controllers
             return View("AddWine", vm);
         }
 
-        public class ErrorTesting : DbContext
-        { 
-        
-        }
-               
-        
         
         // *************************************************************
         // ************      ADD A WINE VIEW MODEL POST ****************
@@ -61,8 +55,6 @@ namespace WineEntryProposal.Controllers
         [HttpPost]
         public ActionResult AddWine2(WineAddViewModel wine)
         {
-
-
 
                 if (ModelState.IsValid)
 
@@ -113,9 +105,19 @@ namespace WineEntryProposal.Controllers
                         //  And then populated with information...
 
                         // TheTTBWineClass = wine.TheWine.TTBWineClass,
-                        // TheVarietal = wine.TheWine.TheVarietal,
+                        //*********************************************
+                        //*********E*R*R*O*R***************************
+                        //*********************************************
+                        // This is where Varietal Is Not Getting Populated
+                        //*********************************************
+
+                          TheVarietal = wine.SelectedVarietalId,
+
+                          
 
                          // Could not make WineType nullable in WineModel...
+                         // Like Table or Dessert...
+
                          TheWineType = wine.TheWine.WineType
 
                     };
