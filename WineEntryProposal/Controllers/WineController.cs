@@ -65,15 +65,6 @@ namespace WineEntryProposal.Controllers
                 // This might be something to cache for some time in the future to make sure that user does not try to send a varietal that is not
                 // in the database to the app.
                 
-                var varietal = Repository.GetAllGrapeVarietals().FirstOrDefault(gv => gv.Id == wine.SelectedVarietalId);
-
-                if (varietal == null) 
-                
-                {
-
-                    throw new Exception("Received an invalid varietal name.");
-
-                }
 
                     // Provides the list of VarietalsToChooseFrom to post to server.
 
@@ -85,6 +76,17 @@ namespace WineEntryProposal.Controllers
 
                     using (var context = new WineContext())
                     {
+
+                    var varietalFromDb = context.Varietals.FirstOrDefault(v => v.Id == wine.SelectedVarietalId)
+                    ;
+                    if (varietalFromDb == null)
+
+                    {
+
+                        throw new Exception("Received an invalid varietal name.");
+
+                    }
+
 
                     //******************************************
                     //*** map field names for the database *****
@@ -102,7 +104,7 @@ namespace WineEntryProposal.Controllers
                         Id = wine.TheWine.Id,
                         Name = wine.TheWine.Name,
 
-                        TheVarietal = wine.GrapeVarietal,
+                        TheVarietal = varietalFromDb,
 
                          // Could not make WineType nullable in WineModel...
                          // TheWineType means like Table or Dessert...
@@ -111,14 +113,8 @@ namespace WineEntryProposal.Controllers
 
                     };
 
-
-
-
-
-
-
-                        context.Wines.Add(dbWine);
-                        context.SaveChanges();
+                    context.Wines.Add(dbWine);
+                    context.SaveChanges();
                     }
 
                 //*****************************************
@@ -141,6 +137,8 @@ namespace WineEntryProposal.Controllers
                     //< p > @ViewBag.result < p />
                 }
             wine.VarietalsToChooseFrom = Repository.GetAllGrapeVarietals();
+
+            
             return View("AddWine", wine);
                 
             }
