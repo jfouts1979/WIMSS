@@ -92,6 +92,7 @@ namespace WineEntryProposal.Controllers
 
                     var dbWine = new Wine
 
+
                     {
                         ABV = wine.TheWine.ABV,
                         AVA = wine.TheWine.AVA,
@@ -100,23 +101,11 @@ namespace WineEntryProposal.Controllers
                         fluidOz = wine.TheWine.fluidOz,
                         Id = wine.TheWine.Id,
                         Name = wine.TheWine.Name,
-                        
-                        //  These lines need to be set up as tables in the database context...  
-                        //  And then populated with information...
 
-                        // TheTTBWineClass = wine.TheWine.TTBWineClass,
-                        //*********************************************
-                        //*********E*R*R*O*R***************************
-                        //*********************************************
-                        // This is where Varietal Is Not Getting Populated
-                        //*********************************************
-
-                          TheVarietal = wine.SelectedVarietalId,
-
-                          
+                        TheVarietal = wine.GrapeVarietal,
 
                          // Could not make WineType nullable in WineModel...
-                         // Like Table or Dessert...
+                         // TheWineType means like Table or Dessert...
 
                          TheWineType = wine.TheWine.WineType
 

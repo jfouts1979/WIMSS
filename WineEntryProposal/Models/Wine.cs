@@ -27,22 +27,28 @@ namespace WineEntryProposal.Models
 {
     public class WineAddViewModel
     {
+
+        // should I put these other things like SelectedVarietalId in 
+        // the WineModel class?
+
+        // Same thing with the boolean ShowSuccessMessage for post
+        // And TTBWineClass
+
         public WineModel TheWine { get; set; }
         public List<GrapeVarietal> VarietalsToChooseFrom { get; set; }
+        public GrapeVarietal GrapeVarietal { get; set;  }
         public int? SelectedVarietalId { get; set; }
-        public TTBWineClass TheWineClass { get; set; }
         public bool? ShowSuccessMsg { get; set; }
-        
+        public TTBWineClass TheWineClass { get; set; }
+
     }
 
     public class WineEditViewModel
     {
         public WineModel TheWine { get; set; }
         public List<GrapeVarietal> VarietalsToChooseFrom { get; set; }
-        public GrapeVarietal SelectedVarietalId { get; set; }
-        public TTBWineClass TheWineClass { get; set; }
+        public GrapeVarietal GrapeVarietal { get; set; }
         public bool? ShowSuccessMsg { get; set; }
-
     }
 
     public class WineModel
@@ -66,6 +72,8 @@ namespace WineEntryProposal.Models
         public double? btlVol { get; set; }
         [Required]
         public string btlVolUOM { get; set; }
+
+
     }
 
 
@@ -87,18 +95,19 @@ namespace WineEntryProposal.Models
         
         // American Viticultural Area ** Per Title 27 CFR ** Required If Varietal Name
         // Declared On Label Of Wine.  Must Research Further To Update Comments.
-        // ***************************************************************************
+        // **************************************************************
+
         [StringLength(256)]
         public string AVA { get; set;  }
 
-        // Alcohol By Volume (ABV) is only required on the label in certain situations.
-        // Per Title 27 CFR e.g. wines less than 12% ABV may contain the words 'light'
-        // or 'Table' in lieu of the actual percentage of alcohol on the label.
+        // Alc By Vol (ABV) is only req. on the label in certain situations.
+        // Per Title 27 CFR eg wines < than 12% ABV may contain the words 'light' or 'Table' in lieu of the actual % ABV on label.
         
         [Range(0.0,1.0)]
         public double ABV {get; set; }
         
         // public double fluidOz { get; set; }
+        
         [Range(0.0,1000.0)]
         public double? fluidOz { get; set;  }
 
@@ -107,26 +116,25 @@ namespace WineEntryProposal.Models
         // bottle volume.  However, for the project at this time, will stick to 
         // K.I.S.S.  
 
-        //************************************************************************
-        //*************************** Bottle Information *************************
-        //************************************************************************
+        //*******************************************************************
+        //********************** Bottle Information *************************
+        //*******************************************************************
         
         // Bottle volume is required per TTB rules and regulations.
         // So data annotation as noted.
+        
         [Required, Range(0.0, 1000.0)]
         public double? btlVol { get; set; }
         
         [Required]
         [StringLength(8)]
         public string btlVolUOM { get; set; }
-        //***********************************************************************
-        
-        //***********************************************************************
-        //************** Grape Varietal Pulls List From TTB Website *************
-        //************** Of All Currently Approved Title 27 CFR     *************
-        //************** Varietals.                                 *************
-        //***********************************************************************
-
+        //*******************************************************************
+        //*******************************************************************
+        //********** Grape Varietal Pulls List From TTB Website *************
+        //********** Of All Currently Approved Title 27 CFR     *************
+        //********** Varietals.                                 *************
+        //*******************************************************************
         //YET TO BE IMPLEMENTED FULLY
 
        [Required]
@@ -135,10 +143,7 @@ namespace WineEntryProposal.Models
         [Required]
         public TTBWineClass TheTTBWineClass { get; set; }
 
-        public static implicit operator Wine(Wine v)
-        {
-            throw new NotImplementedException();
-        }
+
     }
 
     //**************************************************************
@@ -284,56 +289,56 @@ namespace WineEntryProposal.Models
 
         public static List<NGFruitSourceType> GetAllNGFruitSource()
         {
-            return new List<NGFruitSourceType>()
-            {
-                new NGFruitSourceType() { Id=20, Name="Apple", Brix=13.3 },
-                new NGFruitSourceType() { Id=21, Name="Apricot", Brix = 14.3 },
-                new NGFruitSourceType() { Id=22, Name="Bilberry", Brix = 13.4 },
-                new NGFruitSourceType() { Id=23, Name="Whortleberry", Brix = 13.4 },
-                new NGFruitSourceType() { Id=24, Name="Vaccinium", Brix = 13.4 },
-                new NGFruitSourceType() { Id=25, Name="Myrtillium", Brix = 13.4 },
-                new NGFruitSourceType() { Id=26, Name="Black Currant", Brix = 15.0 },
-                new NGFruitSourceType() { Id=27, Name="Blackberry", Brix = 10.0 },
-                new NGFruitSourceType() { Id=28, Name="Black Raspberry", Brix = 11.1 },
-                new NGFruitSourceType() { Id=29, Name="Blueberry", Brix = 14.1 },
-                new NGFruitSourceType() { Id=30, Name="Boysenberry", Brix = 10.0 },
-                new NGFruitSourceType() { Id=31, Name="Carob", Brix = 40.0 },
-                new NGFruitSourceType() { Id=32, Name="Cherry", Brix = 14.3 },
-                new NGFruitSourceType() { Id=33, Name="Crabapple", Brix = 15.4 },
-                new NGFruitSourceType() { Id=34, Name="Cranberry", Brix = 10.5 },
-                new NGFruitSourceType() { Id=35, Name="Date", Brix = 18.5 },
-                new NGFruitSourceType() { Id=36, Name="Dewberry", Brix = 10.0 },
-                new NGFruitSourceType() { Id=37, Name="Elderberry", Brix = 11.0 },
-                new NGFruitSourceType() { Id=38, Name="Fig", Brix = 18.2 },
-                new NGFruitSourceType() { Id=39, Name="Grape (Vitis Vinifera)", Brix = 21.5 },
-                new NGFruitSourceType() { Id=40, Name="Grape (Slipskin Varieties)", Brix = 16.0 },
-                new NGFruitSourceType() { Id=41, Name="Grapefruit", Brix = 10.2 },
-                new NGFruitSourceType() { Id=42, Name="Guava", Brix = 7.7 },
-                new NGFruitSourceType() { Id=43, Name="Lemon", Brix = 8.9 },
-                new NGFruitSourceType() { Id=44, Name="Lime", Brix = 10.0 },
-                new NGFruitSourceType() { Id=45, Name="Loganberry", Brix = 10.5 },
-                new NGFruitSourceType() { Id=46, Name="Mango", Brix = 17.0 },
-                new NGFruitSourceType() { Id=47, Name="Naranjilla", Brix = 10.5 },
-                new NGFruitSourceType() { Id=48, Name="Orange", Brix = 11.8 },
-                new NGFruitSourceType() { Id=49, Name="Papaya", Brix = 10.2 },
-                new NGFruitSourceType() { Id=50, Name="Passion Fruit", Brix = 15.3 },
-                new NGFruitSourceType() { Id=51, Name="Peach", Brix = 11.8 },
-                new NGFruitSourceType() { Id=52, Name="Pear", Brix = 15.4 },
-                new NGFruitSourceType() { Id=53, Name="Pineapple", Brix = 14.3 },
-                new NGFruitSourceType() { Id=54, Name="Plum", Brix = 14.3 },
-                new NGFruitSourceType() { Id=55, Name="Pomegranate", Brix = 18.2 },
-                new NGFruitSourceType() { Id=56, Name="Prune", Brix = 18.5 },
-                new NGFruitSourceType() { Id=57, Name="Quince", Brix = 13.3 },
-                new NGFruitSourceType() { Id=58, Name="Raisin", Brix = 18.5 },
-                new NGFruitSourceType() { Id=59, Name="Red Raspberry", Brix = 10.5 },
-                new NGFruitSourceType() { Id=60, Name="Red Currant", Brix = 10.5 },
-                new NGFruitSourceType() { Id=61, Name="Soursop", Brix = 16.0 },
-                new NGFruitSourceType() { Id=62, Name="Guanabana", Brix = 16.0 },
-                new NGFruitSourceType() { Id=63, Name="Annono Muricata", Brix = 16.0 },
-                new NGFruitSourceType() { Id=64, Name="Strawberry", Brix = 8.0 },
-                new NGFruitSourceType() { Id=65, Name="Tamarind", Brix = 55.0 },
-                new NGFruitSourceType() { Id=66, Name="Tangerine", Brix = 11.5 },
-                new NGFruitSourceType() { Id=67, Name="Youngberry", Brix = 10.0 }
+           return new List<NGFruitSourceType>()
+        {
+           new NGFruitSourceType() { Id=20, Name="Apple", Brix=13.3 },
+           new NGFruitSourceType() { Id=21, Name="Apricot", Brix = 14.3 },
+           new NGFruitSourceType() { Id=22, Name="Bilberry", Brix = 13.4 },
+           new NGFruitSourceType() { Id=23, Name="Whortleberry", Brix = 13.4 },
+           new NGFruitSourceType() { Id=24, Name="Vaccinium", Brix = 13.4 },
+           new NGFruitSourceType() { Id=25, Name="Myrtillium", Brix = 13.4 },
+           new NGFruitSourceType() { Id=26, Name="Black Currant", Brix = 15.0 },
+           new NGFruitSourceType() { Id=27, Name="Blackberry", Brix = 10.0 },
+           new NGFruitSourceType() { Id=28, Name="Black Raspberry", Brix = 11.1 },
+           new NGFruitSourceType() { Id=29, Name="Blueberry", Brix = 14.1 },
+           new NGFruitSourceType() { Id=30, Name="Boysenberry", Brix = 10.0 },
+           new NGFruitSourceType() { Id=31, Name="Carob", Brix = 40.0 },
+           new NGFruitSourceType() { Id=32, Name="Cherry", Brix = 14.3 },
+           new NGFruitSourceType() { Id=33, Name="Crabapple", Brix = 15.4 },
+           new NGFruitSourceType() { Id=34, Name="Cranberry", Brix = 10.5 },
+           new NGFruitSourceType() { Id=35, Name="Date", Brix = 18.5 },
+           new NGFruitSourceType() { Id=36, Name="Dewberry", Brix = 10.0 },
+           new NGFruitSourceType() { Id=37, Name="Elderberry", Brix = 11.0 },
+           new NGFruitSourceType() { Id=38, Name="Fig", Brix = 18.2 },
+           new NGFruitSourceType() { Id=39, Name="Grape (Vitis Vinifera)", Brix = 21.5 },
+           new NGFruitSourceType() { Id=40, Name="Grape (Slipskin Varieties)", Brix = 16.0 },
+           new NGFruitSourceType() { Id=41, Name="Grapefruit", Brix = 10.2 },
+           new NGFruitSourceType() { Id=42, Name="Guava", Brix = 7.7 },
+           new NGFruitSourceType() { Id=43, Name="Lemon", Brix = 8.9 },
+           new NGFruitSourceType() { Id=44, Name="Lime", Brix = 10.0 },
+           new NGFruitSourceType() { Id=45, Name="Loganberry", Brix = 10.5 },
+           new NGFruitSourceType() { Id=46, Name="Mango", Brix = 17.0 },
+           new NGFruitSourceType() { Id=47, Name="Naranjilla", Brix = 10.5 },
+           new NGFruitSourceType() { Id=48, Name="Orange", Brix = 11.8 },
+           new NGFruitSourceType() { Id=49, Name="Papaya", Brix = 10.2 },
+           new NGFruitSourceType() { Id=50, Name="Passion Fruit", Brix = 15.3 },
+           new NGFruitSourceType() { Id=51, Name="Peach", Brix = 11.8 },
+           new NGFruitSourceType() { Id=52, Name="Pear", Brix = 15.4 },
+           new NGFruitSourceType() { Id=53, Name="Pineapple", Brix = 14.3 },
+           new NGFruitSourceType() { Id=54, Name="Plum", Brix = 14.3 },
+           new NGFruitSourceType() { Id=55, Name="Pomegranate", Brix = 18.2 },
+           new NGFruitSourceType() { Id=56, Name="Prune", Brix = 18.5 },
+           new NGFruitSourceType() { Id=57, Name="Quince", Brix = 13.3 },
+           new NGFruitSourceType() { Id=58, Name="Raisin", Brix = 18.5 },
+           new NGFruitSourceType() { Id=59, Name="Red Raspberry", Brix = 10.5 },
+           new NGFruitSourceType() { Id=60, Name="Red Currant", Brix = 10.5 },
+           new NGFruitSourceType() { Id=61, Name="Soursop", Brix = 16.0 },
+           new NGFruitSourceType() { Id=62, Name="Guanabana", Brix = 16.0 },
+           new NGFruitSourceType() { Id=63, Name="Annono Muricata", Brix = 16.0 },
+           new NGFruitSourceType() { Id=64, Name="Strawberry", Brix = 8.0 },
+           new NGFruitSourceType() { Id=65, Name="Tamarind", Brix = 55.0 },
+           new NGFruitSourceType() { Id=66, Name="Tangerine", Brix = 11.5 },
+           new NGFruitSourceType() { Id=67, Name="Youngberry", Brix = 10.0 }
             };
         }
     }
