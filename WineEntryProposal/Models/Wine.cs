@@ -162,6 +162,7 @@ namespace WineEntryProposal.Models
          [/*Required, */StringLength(64)]
           public string grapeFam { get; set; }     
 
+          public string pictureUrl { get; set; }
     }
 
     //**************************************************************

@@ -24,7 +24,7 @@ namespace WineEntryProposal
         {
             var list = new List<GrapeVarietal>() {
             new GrapeVarietal() { Id = 1, Name = "Vidal Blanc" },
-                new GrapeVarietal() { Id = 2, Name = "Concord" },
+                new GrapeVarietal() { Id = 2, Name = "Concord", pictureUrl= "http://res.cloudinary.com/dqhopogso/image/upload/v1489462544/ConcordGrapes2.png" },
                 new GrapeVarietal() { Id = 3, Name = "Pinot Noir" },
                 new GrapeVarietal() { Id = 4, Name = "Pinot Grigio" },
                 new GrapeVarietal() { Id = 5, Name = "Niagara" },
@@ -43,7 +43,7 @@ namespace WineEntryProposal
                 new GrapeVarietal() { Id = 18, Name = "Chambourcin" },
                 new GrapeVarietal() { Id = 19, Name = "Chardonel" },
                 new GrapeVarietal() { Id = 20, Name = "Chardonnay" },
-                new GrapeVarietal() { Id = 21, Name = "Traminette" },
+                new GrapeVarietal() { Id = 21, Name = "Traminette", pictureUrl="http://res.cloudinary.com/dqhopogso/image/upload/v1489462782/Traminette.jpg" },
                 new GrapeVarietal() { Id = 22, Name = "Seyval Blanc" },
                 new GrapeVarietal() { Id = 23, Name = "Gewürztraminer" },
                 new GrapeVarietal() { Id = 24, Name = "Marechal Foch" }

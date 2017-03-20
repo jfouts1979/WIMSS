@@ -1,0 +1,83 @@
+﻿@model IEnumerable<WineEntryProposal.Models.Wine>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ListWine</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TheWineType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AVA)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ABV)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fluidOz)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.btlVol)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.btlVolUOM)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TheTTBWineClass)
+            </th>
+            <th><br /></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TheWineType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AVA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ABV)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fluidOz)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.btlVol)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.btlVolUOM)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TheTTBWineClass)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

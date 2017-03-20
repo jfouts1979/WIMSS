@@ -12,13 +12,18 @@ namespace WineEntryProposal.Controllers
     public class WineController : Controller
     {
         // GET: Wine
-        
+
         public ActionResult Index()
         {
-        
-        // Return the list of wine
 
-            return View();
+            // Return the list of wine
+
+            using (var context = new WineContext())
+            {
+                var x = context.Wines.Include(w=>w.TheVarietal).ToList();
+                return View("ListWine", x);
+            }
+
         }
 
         // *************************************************************
@@ -38,8 +43,8 @@ namespace WineEntryProposal.Controllers
 
                 VarietalsToChooseFrom = Repository.GetAllGrapeVarietals().OrderBy(gv => gv.Name).ToList(),
 
-               // VarietalsToChooseFrom = Repository.GetAllGrapeVarietals().OrderBy(gv => gv.Name).ToList()
-               // VarietalsToChooseFrom = Repository.GetAllGrapeVarietals().ToList().OrderBy(gv => gv.Name),
+                // VarietalsToChooseFrom = Repository.GetAllGrapeVarietals().OrderBy(gv => gv.Name).ToList()
+                // VarietalsToChooseFrom = Repository.GetAllGrapeVarietals().ToList().OrderBy(gv => gv.Name),
                 TheWine = new WineModel(),
                 //TheWineClass = new TTBWineClass()
             };
@@ -47,7 +52,7 @@ namespace WineEntryProposal.Controllers
             return View("AddWine", vm);
         }
 
-        
+
         // *************************************************************
         // ************      ADD A WINE VIEW MODEL POST ****************
         // *************************************************************
@@ -56,26 +61,26 @@ namespace WineEntryProposal.Controllers
         public ActionResult AddWine2(WineAddViewModel wine)
         {
 
-                if (ModelState.IsValid)
+            if (ModelState.IsValid)
 
-                {
+            {
 
                 // Provides Varietal Information in TheVarietal Variable.
 
                 // This might be something to cache for some time in the future to make sure that user does not try to send a varietal that is not
                 // in the database to the app.
-                
 
-                    // Provides the list of VarietalsToChooseFrom to post to server.
 
-                    wine.VarietalsToChooseFrom = Repository.GetAllGrapeVarietals();
+                // Provides the list of VarietalsToChooseFrom to post to server.
 
-                    //*****************************************
-                    //*** Establish Database Wines Table*******
-                    //*****************************************
+                wine.VarietalsToChooseFrom = Repository.GetAllGrapeVarietals();
 
-                    using (var context = new WineContext())
-                    {
+                //*****************************************
+                //*** Establish Database Wines Table*******
+                //*****************************************
+
+                using (var context = new WineContext())
+                {
 
                     var varietalFromDb = context.Varietals.FirstOrDefault(v => v.Id == wine.SelectedVarietalId)
                     ;
@@ -106,16 +111,16 @@ namespace WineEntryProposal.Controllers
 
                         TheVarietal = varietalFromDb,
 
-                         // Could not make WineType nullable in WineModel...
-                         // TheWineType means like Table or Dessert...
+                        // Could not make WineType nullable in WineModel...
+                        // TheWineType means like Table or Dessert...
 
-                         TheWineType = wine.TheWine.WineType
+                        TheWineType = wine.TheWine.WineType
 
                     };
 
                     context.Wines.Add(dbWine);
                     context.SaveChanges();
-                    }
+                }
 
                 //*****************************************
                 //*****************************************
@@ -126,51 +131,52 @@ namespace WineEntryProposal.Controllers
                     SelectedVarietalId = null,
                     TheWine = new WineModel(),
                     VarietalsToChooseFrom = Repository.GetAllGrapeVarietals(),
-                    
+
                 };
 
-                           
 
-                return View("AddWine", blankWine);
 
-                    //put this in the view somewhere but where?
-                    //< p > @ViewBag.result < p />
-                }
+                return RedirectToAction("Index", "Wine", wine);
+
+                //put this in the view somewhere but where?
+                //< p > @ViewBag.result < p />
+            }
             wine.VarietalsToChooseFrom = Repository.GetAllGrapeVarietals();
 
-            
-            return View("AddWine", wine);
-                
-            }
-             
-                       
-         }
+            //Return Some Error View - to be added...
 
-              // ******************************************
-              // ***** REMOVE A WINE VIEW MODEL GET *******
-              // ******************************************
+            throw new NotImplementedException("Dealing With Errors");
 
-        //[HttpGet]
-        //public ActionResult RemoveWine()
-        //{
-        //    var vm = new WineRemoveViewModel()
-        //    {
-        //        VarietalsToChooseFrom = Repository.GetAllGrapeVarietals(),
-        //        TheWine = new Wine(),
-        //        TheWineClass = new TTBWineClass()
-        //    };
+        }
 
-        //    return View("RemoveWine", vm);
-        //}
 
-        // *************************************************************
-        // ******      REMOVE A WINE VIEW MODEL POST *******************
-        // *************************************************************
- 
-        //[HttpPost]
-        //public ActionResult RemoveWine2(WineRemoveViewModel wine)
-        //{
-        //    return View("RemoveWine", wine);
-        //}
-        
     }
+
+    // ******************************************
+    // ***** REMOVE A WINE VIEW MODEL GET *******
+    // ******************************************
+
+    //[HttpGet]
+    //public ActionResult RemoveWine()
+    //{
+    //    var vm = new WineRemoveViewModel()
+    //    {
+    //        VarietalsToChooseFrom = Repository.GetAllGrapeVarietals(),
+    //        TheWine = new Wine(),
+    //        TheWineClass = new TTBWineClass()
+    //    };
+
+    //    return View("RemoveWine", vm);
+    //}
+
+    // *************************************************************
+    // ******      REMOVE A WINE VIEW MODEL POST *******************
+    // *************************************************************
+
+    //[HttpPost]
+    //public ActionResult RemoveWine2(WineRemoveViewModel wine)
+    //{
+    //    return View("RemoveWine", wine);
+    //}
+
+}
