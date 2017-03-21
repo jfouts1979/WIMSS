@@ -156,6 +156,10 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Models\View Models\VarietalModel.cs" />
+    <Compile Include="Models\View Models\WineAddModel.cs" />
+    <Compile Include="Models\View Models\WineEditModel.cs" />
+    <Compile Include="Models\View Models\WineModel.cs" />
     <Compile Include="Context.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\WineController.cs" />
@@ -217,6 +221,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\Data Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
