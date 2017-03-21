@@ -56,7 +56,7 @@ namespace WineEntryProposal.Models
         [/*Required, */StringLength(64)]
         public string grapeFam { get; set; }
 
-        [Required, Range(1, 12)]
+        //[Range(1, 12)]
         public int? coldHardyZone { get; set; }
 
         public string pictureUrl { get; set; }
