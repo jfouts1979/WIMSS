@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using WineEntryProposal.Models;
+using WineEntryProposal.Models.ViewModels;
 
 namespace WineEntryProposal.Controllers
 {
@@ -58,7 +56,7 @@ namespace WineEntryProposal.Controllers
         // *************************************************************
 
         [HttpPost]
-        public ActionResult AddWine2(WineAddViewModel wine)
+        public ActionResult AddWine2(Models.ViewModels.WineAddViewModel wine)
         {
 
             if (ModelState.IsValid)

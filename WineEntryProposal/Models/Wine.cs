@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Reflection;
 using System.Linq;
-using System.Web;
-using System.Data.Entity;
-using System.Data;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations.Schema;
 
 // Some of the coding in this portion of the project refers to data from Title 27 of the Code of Federal Regulations (Alcohol, Tobacco, and Firearms), Part 4 - Labeling and Advertising of Wine - Subpart C - Standards of Identity for Wine - Section 4.21 - referring to nine distinct separate classes of wine.  These include:
 
@@ -25,86 +18,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WineEntryProposal.Models
 {
-    public class WineAddViewModel
-    {
-
-        // should I put these other things like SelectedVarietalId in 
-        // the WineModel class?
-
-        // Same thing with the boolean ShowSuccessMessage for post
-        // And TTBWineClass
-
-        public WineModel TheWine { get; set; }
-        public List<GrapeVarietal> VarietalsToChooseFrom { get; set; }
-        public GrapeVarietal GrapeVarietal { get; set;  }
-       // public int? SelectedVarietalId { get; set; }
-        public bool? ShowSuccessMsg { get; set; }
-        public TTBWineClass TheWineClass { get; set; }
-
-    }
-
-    public class VarietalModel
-    {   
-        [Required]
-        public int VarietalId { get; set; }
-
-        // E.G. Chardonnay or Concord, Vidal Blanc, or Pinot Noir
-        [Required, StringLength(64)]
-        public string Name { get; set; }
-
-        // E.G. Vitis Labrusca, Vitis Riparia, Vitis Vinifera
-        [/*Required, */StringLength(64)]
-        public string grapeFam { get; set; }
-
-        //[Range(1, 12)]
-        public int? coldHardyZone { get; set; }
-
-        public string pictureUrl { get; set; }
-    }
 
 
-    //   Then you should do the following...
-    //1) Remove SelectedVarietalId from the WineAddViewModel class.
-    //2) Remove VarietalId from the WineModel class.
-    //3) Create a VarietalModel class to act as the view model for Varietal.Give it a VarietalId and a Name(you could add grapeFam and PictureUrl if you need them later).
-    //4) Create a property named Varietal in the WineModel that looks like this `public VarietalModel Varietal { get; set; }`
-    //5) Change your html helper to `@Html.DropDownListFor(m => m.TheWine.Varietal.VarietalId, ...`
-
-    public class WineEditViewModel
-    {
-        public WineModel TheWine { get; set; }
-        public GrapeVarietal GrapeVarietal { get; set; }
-        public bool? ShowSuccessMsg { get; set; }
-    }
-
-    public class WineModel
-    {   
-    
-        // The annotations are rules required for the view.
-         
-        public int Id { get; set; }
-        
-        [Required]
-        public string Name { get; set; }
-        [Required]
-        public WineType WineType { get; set; }
-        
-        public string AVA { get; set; }
-        
-        public double ABV { get; set; }
-        
-        public double? fluidOz { get; set; }
-        [Required]
-        public double? btlVol { get; set; }
-        [Required]
-        public string btlVolUOM { get; set; }
-
-        [Required]
-        //  public int? VarietalId { get; set; }
-        public VarietalModel Varietal { get; set; }
-
-    }
-
+    //**********************************
+    //**** Wine Model ******************
+    //**********************************
 
     public class Wine
     {
@@ -145,9 +63,9 @@ namespace WineEntryProposal.Models
         // bottle volume.  However, for the project at this time, will stick to 
         // K.I.S.S.  
 
-        //*******************************************************************
-        //********************** Bottle Information *************************
-        //*******************************************************************
+        //*******************************************************
+        //********** Bottle Information *************************
+        //*******************************************************
         
         // Bottle volume is required per TTB rules and regulations.
         // So data annotation as noted.
@@ -158,12 +76,12 @@ namespace WineEntryProposal.Models
         [Required]
         [StringLength(8)]
         public string btlVolUOM { get; set; }
-        //*******************************************************************
-        //*******************************************************************
-        //********** Grape Varietal Pulls List From TTB Website *************
-        //********** Of All Currently Approved Title 27 CFR     *************
-        //********** Varietals.                                 *************
-        //*******************************************************************
+        //******************************************************
+        //******************************************************
+        //** Grape Varietal Pulls List From TTB Website ********
+        //** Of All Currently Approved Title 27 CFR ************
+        //********** Varietals.                    *************
+        //******************************************************
         //YET TO BE IMPLEMENTED FULLY
 
        [Required]
@@ -175,6 +93,10 @@ namespace WineEntryProposal.Models
 
     }
 
+    //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+    //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+    
     //**************************************************************
     //************* Establish List of Grape Varietals***************
     //**************************************************************
@@ -281,99 +203,13 @@ namespace WineEntryProposal.Models
     
         public static List<GrapeVarietal> GetAllGrapeVarietals()
         {
-            //var VarietalRecord = new List<GrapeVarietal>();
-            ////var SortedVarietalList = from R in VarietalRecord orderby R.Name group by 
-            //VarietalRecord.Sort(); // I added this line but not sure if it does anything.
-                    
-            //return new List<GrapeVarietal>()
-            //{
-            //    new GrapeVarietal() { Id=1, Name="Vidal Blanc" },
-            //    new GrapeVarietal() { Id=2, Name="Concord" },
-            //    new GrapeVarietal() { Id=3, Name="Pinot Noir" },
-            //    new GrapeVarietal() { Id=4, Name="Pinot Grigio" },
-            //    new GrapeVarietal() { Id=5, Name="Niagara" },
-            //    new GrapeVarietal() { Id=6, Name="Catawba" },
-            //    new GrapeVarietal() { Id=7, Name="Steuben" },
-            //    new GrapeVarietal() { Id=8, Name="Chambourcin" },
-            //    new GrapeVarietal() { Id=9, Name="Vignoles" },
-            //    new GrapeVarietal() { Id=10, Name="Merlot" },
-            //    new GrapeVarietal() { Id=11, Name="Cabernet Sauvignon" },
-            //    new GrapeVarietal() { Id=12, Name="Sauvignon Blanc" },
-            //    new GrapeVarietal() { Id=13, Name="Jupiter" },
-            //    new GrapeVarietal() { Id=14, Name="Vanessa" },
-            //    new GrapeVarietal() { Id=15, Name="Canidice" },
-            //    new GrapeVarietal() { Id=16, Name="Norton" },
-            //    new GrapeVarietal() { Id=17, Name="Malbec" },
-            //    new GrapeVarietal() { Id=18, Name="Chambourcin" },
-            //    new GrapeVarietal() { Id=19, Name="Chardonel" },
-            //    new GrapeVarietal() { Id=20, Name="Chardonnay" },
-            //    new GrapeVarietal() { Id=21, Name="Traminette" },
-            //    new GrapeVarietal() { Id=22, Name="Seyval Blanc" },
-            //    new GrapeVarietal() { Id=23, Name="Gewürztraminer" },
-            //    new GrapeVarietal() { Id=24, Name="Marechal Foch" }
-            //};
-
+         
             using (var context = new WineContext()) {
                 return context.Varietals.ToList();
             }
         }
+         
 
-
-        //******************************************************************
-
-        public static List<NGFruitSourceType> GetAllNGFruitSource()
-        {
-           return new List<NGFruitSourceType>()
-        {
-           new NGFruitSourceType() { Id=20, Name="Apple", Brix=13.3 },
-           new NGFruitSourceType() { Id=21, Name="Apricot", Brix = 14.3 },
-           new NGFruitSourceType() { Id=22, Name="Bilberry", Brix = 13.4 },
-           new NGFruitSourceType() { Id=23, Name="Whortleberry", Brix = 13.4 },
-           new NGFruitSourceType() { Id=24, Name="Vaccinium", Brix = 13.4 },
-           new NGFruitSourceType() { Id=25, Name="Myrtillium", Brix = 13.4 },
-           new NGFruitSourceType() { Id=26, Name="Black Currant", Brix = 15.0 },
-           new NGFruitSourceType() { Id=27, Name="Blackberry", Brix = 10.0 },
-           new NGFruitSourceType() { Id=28, Name="Black Raspberry", Brix = 11.1 },
-           new NGFruitSourceType() { Id=29, Name="Blueberry", Brix = 14.1 },
-           new NGFruitSourceType() { Id=30, Name="Boysenberry", Brix = 10.0 },
-           new NGFruitSourceType() { Id=31, Name="Carob", Brix = 40.0 },
-           new NGFruitSourceType() { Id=32, Name="Cherry", Brix = 14.3 },
-           new NGFruitSourceType() { Id=33, Name="Crabapple", Brix = 15.4 },
-           new NGFruitSourceType() { Id=34, Name="Cranberry", Brix = 10.5 },
-           new NGFruitSourceType() { Id=35, Name="Date", Brix = 18.5 },
-           new NGFruitSourceType() { Id=36, Name="Dewberry", Brix = 10.0 },
-           new NGFruitSourceType() { Id=37, Name="Elderberry", Brix = 11.0 },
-           new NGFruitSourceType() { Id=38, Name="Fig", Brix = 18.2 },
-           new NGFruitSourceType() { Id=39, Name="Grape (Vitis Vinifera)", Brix = 21.5 },
-           new NGFruitSourceType() { Id=40, Name="Grape (Slipskin Varieties)", Brix = 16.0 },
-           new NGFruitSourceType() { Id=41, Name="Grapefruit", Brix = 10.2 },
-           new NGFruitSourceType() { Id=42, Name="Guava", Brix = 7.7 },
-           new NGFruitSourceType() { Id=43, Name="Lemon", Brix = 8.9 },
-           new NGFruitSourceType() { Id=44, Name="Lime", Brix = 10.0 },
-           new NGFruitSourceType() { Id=45, Name="Loganberry", Brix = 10.5 },
-           new NGFruitSourceType() { Id=46, Name="Mango", Brix = 17.0 },
-           new NGFruitSourceType() { Id=47, Name="Naranjilla", Brix = 10.5 },
-           new NGFruitSourceType() { Id=48, Name="Orange", Brix = 11.8 },
-           new NGFruitSourceType() { Id=49, Name="Papaya", Brix = 10.2 },
-           new NGFruitSourceType() { Id=50, Name="Passion Fruit", Brix = 15.3 },
-           new NGFruitSourceType() { Id=51, Name="Peach", Brix = 11.8 },
-           new NGFruitSourceType() { Id=52, Name="Pear", Brix = 15.4 },
-           new NGFruitSourceType() { Id=53, Name="Pineapple", Brix = 14.3 },
-           new NGFruitSourceType() { Id=54, Name="Plum", Brix = 14.3 },
-           new NGFruitSourceType() { Id=55, Name="Pomegranate", Brix = 18.2 },
-           new NGFruitSourceType() { Id=56, Name="Prune", Brix = 18.5 },
-           new NGFruitSourceType() { Id=57, Name="Quince", Brix = 13.3 },
-           new NGFruitSourceType() { Id=58, Name="Raisin", Brix = 18.5 },
-           new NGFruitSourceType() { Id=59, Name="Red Raspberry", Brix = 10.5 },
-           new NGFruitSourceType() { Id=60, Name="Red Currant", Brix = 10.5 },
-           new NGFruitSourceType() { Id=61, Name="Soursop", Brix = 16.0 },
-           new NGFruitSourceType() { Id=62, Name="Guanabana", Brix = 16.0 },
-           new NGFruitSourceType() { Id=63, Name="Annono Muricata", Brix = 16.0 },
-           new NGFruitSourceType() { Id=64, Name="Strawberry", Brix = 8.0 },
-           new NGFruitSourceType() { Id=65, Name="Tamarind", Brix = 55.0 },
-           new NGFruitSourceType() { Id=66, Name="Tangerine", Brix = 11.5 },
-           new NGFruitSourceType() { Id=67, Name="Youngberry", Brix = 10.0 }
-            };
         }
     }
-}
+
