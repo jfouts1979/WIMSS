@@ -82,7 +82,7 @@ namespace WineEntryProposal.Controllers
                 using (var context = new WineContext())
                 {
 
-                    var varietalFromDb = context.Varietals.FirstOrDefault(v => v.Id == wine.SelectedVarietalId)
+                    var varietalFromDb = context.Varietals.FirstOrDefault(v => v.Id == wine.TheWine.Varietal.VarietalId)
                     ;
                     if (varietalFromDb == null)
 
@@ -128,7 +128,7 @@ namespace WineEntryProposal.Controllers
                 var blankWine = new WineAddViewModel
                 {
                     ShowSuccessMsg = true,
-                    SelectedVarietalId = null,
+                    ///SelectedVarietalId = null,
                     TheWine = new WineModel(),
                     VarietalsToChooseFrom = Repository.GetAllGrapeVarietals(),
 

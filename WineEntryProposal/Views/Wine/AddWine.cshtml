@@ -8,6 +8,7 @@
 
 @{
     ViewBag.Title = "AddWine";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 @* Acronym Added To Spell L.I.N.D.S.A.Y. *@
@@ -67,11 +68,10 @@
 
                     <div>
 
-                    //maybe there is a better way to write this with a different
-                    //overload method.  Thoughts at midnight on a rainy day.
+            
 
                         Varietal:
-                        @Html.DropDownListFor(m => m.SelectedVarietalId,
+                        @Html.DropDownListFor(m => m.TheWine.Varietal.VarietalId,
                         Model.VarietalsToChooseFrom.Select(x => new SelectListItem()
                         {
                            Text = x.Name,

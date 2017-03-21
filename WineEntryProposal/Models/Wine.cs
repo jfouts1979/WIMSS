@@ -37,16 +37,42 @@ namespace WineEntryProposal.Models
         public WineModel TheWine { get; set; }
         public List<GrapeVarietal> VarietalsToChooseFrom { get; set; }
         public GrapeVarietal GrapeVarietal { get; set;  }
-        public int? SelectedVarietalId { get; set; }
+       // public int? SelectedVarietalId { get; set; }
         public bool? ShowSuccessMsg { get; set; }
         public TTBWineClass TheWineClass { get; set; }
 
     }
 
+    public class VarietalModel
+    {   
+        [Required]
+        public int VarietalId { get; set; }
+
+        // E.G. Chardonnay or Concord, Vidal Blanc, or Pinot Noir
+        [Required, StringLength(64)]
+        public string Name { get; set; }
+
+        // E.G. Vitis Labrusca, Vitis Riparia, Vitis Vinifera
+        [/*Required, */StringLength(64)]
+        public string grapeFam { get; set; }
+
+        [Required, Range(1, 12)]
+        public int? coldHardyZone { get; set; }
+
+        public string pictureUrl { get; set; }
+    }
+
+
+    //   Then you should do the following...
+    //1) Remove SelectedVarietalId from the WineAddViewModel class.
+    //2) Remove VarietalId from the WineModel class.
+    //3) Create a VarietalModel class to act as the view model for Varietal.Give it a VarietalId and a Name(you could add grapeFam and PictureUrl if you need them later).
+    //4) Create a property named Varietal in the WineModel that looks like this `public VarietalModel Varietal { get; set; }`
+    //5) Change your html helper to `@Html.DropDownListFor(m => m.TheWine.Varietal.VarietalId, ...`
+
     public class WineEditViewModel
     {
         public WineModel TheWine { get; set; }
-        public List<GrapeVarietal> VarietalsToChooseFrom { get; set; }
         public GrapeVarietal GrapeVarietal { get; set; }
         public bool? ShowSuccessMsg { get; set; }
     }
@@ -73,9 +99,9 @@ namespace WineEntryProposal.Models
         [Required]
         public string btlVolUOM { get; set; }
 
-        //[Required]
-        //public int? VarietalId { get; set; }
-
+        [Required]
+        //  public int? VarietalId { get; set; }
+        public VarietalModel Varietal { get; set; }
 
     }
 
