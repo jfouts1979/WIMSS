@@ -1,8 +1,12 @@
 ﻿@model IEnumerable<WineEntryProposal.Models.Wine>
 
+
+
 @{
-    Layout = null;
+    ViewBag.Title = "ListWine";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+ 
 
 <!DOCTYPE html>
 
@@ -15,7 +19,7 @@
     <p>
         @Html.ActionLink("Add A New Wine", "AddWine")
     </p>
-    <table class="table">
+    <table class="table table-bordered table-condensed table-hover table-striped" align="center">
         
     @* This did not pick up TheVarietal....Need to Fix*@
         
@@ -82,9 +86,9 @@
             </td>
         </tr>
         <tr>
-            <td>
+            @*<td>
                 <br />
-            </td>
+            </td>*@
 
         </tr>
 
