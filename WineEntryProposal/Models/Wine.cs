@@ -73,6 +73,9 @@ namespace WineEntryProposal.Models
         [Required]
         public string btlVolUOM { get; set; }
 
+        //[Required]
+        //public int? VarietalId { get; set; }
+
 
     }
 
