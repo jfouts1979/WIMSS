@@ -25,33 +25,54 @@
         
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                @*@Html.DisplayNameFor(model => model.Name)*@
+                Brand Name
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TheWineType)
+                @*@Html.DisplayNameFor(model => model.TheWineType)*@
+                Wine Type
             </th>
             <th >
-                @Html.DisplayNameFor(model => model.AVA)
+                @*@Html.DisplayNameFor(model => model.AVA)*@
+                Viticultural Area
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ABV)
+                @*@Html.DisplayNameFor(model => model.ABV)*@
+                ABV
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.fluidOz)
+                @*@Html.DisplayNameFor(model => model.fluidOz)*@
+                Fluid Oz.
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.btlVol)
+                @*@Html.DisplayNameFor(model => model.btlVol)*@
+                Bottle Volume
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.btlVolUOM)
+                @*@Html.DisplayNameFor(model => model.btlVolUOM)*@
+                Bottle UOM
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TheTTBWineClass)
+                @*@Html.DisplayNameFor(model => model.TheTTBWineClass)*@
+                TTB Class
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TheVarietal)
+                @*@Html.DisplayNameFor(model => model.TheVarietal)*@
+                Varietal Name
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.TheVarietal)*@
+                Varietal Name
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.TheVarietal)*@
+                Varietal Img
             </th>
         </tr>
+        <th>
+            @*@Html.DisplayNameFor(model => model.TheVarietal)*@
+            Make A Selection
+        </th>
 
         @foreach (var item in Model)
         {
@@ -81,7 +102,10 @@
                 @Html.DisplayFor(modelItem => item.TheTTBWineClass)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.TheVarietal)
+                @Html.DisplayFor(modelItem => item.TheVarietal.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TheVarietal.pictureUrl
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
@@ -91,10 +115,7 @@
             </td>
         </tr>
         <tr>
-            @*<td>
-                <br />
-            </td>*@
-
+            
         </tr>
 
         }
