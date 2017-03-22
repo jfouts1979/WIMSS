@@ -48,7 +48,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.TheTTBWineClass)
             </th>
-            <th></th>
+            <th>
+                @Html.DisplayNameFor(model => model.TheVarietal)
+            </th>
         </tr>
 
         @foreach (var item in Model)
@@ -77,6 +79,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.TheTTBWineClass)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TheVarietal)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |

@@ -107,6 +107,7 @@ namespace WineEntryProposal.Controllers
                         Id = wine.TheWine.Id,
                         Name = wine.TheWine.Name,
 
+                        
                         TheVarietal = varietalFromDb,
 
                         // Could not make WineType nullable in WineModel...
