@@ -185,13 +185,13 @@ namespace WineEntryProposal.Controllers
         //    return View("DeleteWine", wrvm);
 
         //}
-        
+
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
 
         public ActionResult DeleteConfirmed(int id)
 
-        
+
         {
 
             using (var WinedB = new WineContext())
@@ -201,22 +201,22 @@ namespace WineEntryProposal.Controllers
               .Where(i => i.Id == id)
               .Single();
 
-            WinedB.Wines.Remove(wine);
+                WinedB.Wines.Remove(wine);
 
-            // Not sure what this bit of code was about in the 
-            // Contoso books example online.
+                // Not sure what this bit of code was about in the 
+                // Contoso books example online.
 
-            //var varietal = WinedB.Varietals
-            //    .Where(v => v.Id == id)
-            //    .SingleOrDefault();
-            //if (varietal != null)
-            //{
-            //    varietal.Id = null;
-            //}
+                //var varietal = WinedB.Varietals
+                //    .Where(v => v.Id == id)
+                //    .SingleOrDefault();
+                //if (varietal != null)
+                //{
+                //    varietal.Id = null;
+                //}
 
-            WinedB.SaveChanges();
-            return RedirectToAction("Index");
-        }
+                WinedB.SaveChanges();
+                return RedirectToAction("Index");
+            }
         }
 
 
@@ -235,36 +235,37 @@ namespace WineEntryProposal.Controllers
         // ******      REMOVE A WINE VIEW MODEL POST *******************
         // *************************************************************
 
-    //    [HttpPost, ActionName("Delete")]
-    //    [ValidateAntiForgeryToken]
+        //    [HttpPost, ActionName("Delete")]
+        //    [ValidateAntiForgeryToken]
 
-    //    public async Task<IActionResult> DeleteConfirmed(int id)
-    //    {
-    //        var student = await _context.Wines
-    //            .AsNoTracking()
-    //            .SingleOrDefaultAsync(m => m.ID == id);
-    //        if (student == null)
-    //        {
-    //            return RedirectToAction("Index");
-    //        }
+        //    public async Task<IActionResult> DeleteConfirmed(int id)
+        //    {
+        //        var student = await _context.Wines
+        //            .AsNoTracking()
+        //            .SingleOrDefaultAsync(m => m.ID == id);
+        //        if (student == null)
+        //        {
+        //            return RedirectToAction("Index");
+        //        }
 
-    //        try
-    //        {
-    //            context.Wines.Remove(Wine);
-    //            await context.SaveChangesAsync();
-    //            return RedirectToAction("Index");
-    //        }
-    //        catch (DbUpdateException /* ex */)
-    //        {
-    //            //Log the error (uncomment ex variable name and write a log.)
-    //            return RedirectToAction("Delete", new { id = id, saveChangesError = true });
-    //        }
-    //    }
+        //        try
+        //        {
+        //            context.Wines.Remove(Wine);
+        //            await context.SaveChangesAsync();
+        //            return RedirectToAction("Index");
+        //        }
+        //        catch (DbUpdateException /* ex */)
+        //        {
+        //            //Log the error (uncomment ex variable name and write a log.)
+        //            return RedirectToAction("Delete", new { id = id, saveChangesError = true });
+        //        }
+        //    }
 
-    //    public interface IActionResult
-    //    {
-    //    }
-    //}
+        //    public interface IActionResult
+        //    {
+        //    }
+        //}
 
 
+    }
 }
