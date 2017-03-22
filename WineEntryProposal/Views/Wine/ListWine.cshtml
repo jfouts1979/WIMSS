@@ -62,17 +62,14 @@
             </th>
             <th>
                 @*@Html.DisplayNameFor(model => model.TheVarietal)*@
-                Varietal Name
+                Varietal Img
             </th>
             <th>
                 @*@Html.DisplayNameFor(model => model.TheVarietal)*@
-                Varietal Img
+                Make A Selection
             </th>
         </tr>
-        <th>
-            @*@Html.DisplayNameFor(model => model.TheVarietal)*@
-            Make A Selection
-        </th>
+
 
         @foreach (var item in Model)
         {
@@ -105,7 +102,7 @@
                 @Html.DisplayFor(modelItem => item.TheVarietal.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.TheVarietal.pictureUrl
+                @Html.DisplayFor(modelItem => item.TheVarietal.pictureUrl)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
