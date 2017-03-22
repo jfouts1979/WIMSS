@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 using WineEntryProposal.Models;
 using WineEntryProposal.Models.ViewModels;
@@ -18,7 +20,7 @@ namespace WineEntryProposal.Controllers
 
             using (var context = new WineContext())
             {
-                var x = context.Wines.Include(w=>w.TheVarietal).ToList();
+                var x = context.Wines.Include(w => w.TheVarietal).ToList();
                 return View("ListWine", x);
             }
 
@@ -46,6 +48,10 @@ namespace WineEntryProposal.Controllers
                 TheWine = new WineModel(),
                 //TheWineClass = new TTBWineClass()
             };
+
+            //******************************************
+            //*** Returns the form for adding a wine ***
+            //******************************************
 
             return View("AddWine", vm);
         }
@@ -107,7 +113,7 @@ namespace WineEntryProposal.Controllers
                         Id = wine.TheWine.Id,
                         Name = wine.TheWine.Name,
 
-                        
+
                         TheVarietal = varietalFromDb,
 
                         // Could not make WineType nullable in WineModel...
@@ -149,33 +155,116 @@ namespace WineEntryProposal.Controllers
         }
 
 
-    }
+        // My first attempt....
 
-    // ******************************************
-    // ***** REMOVE A WINE VIEW MODEL GET *******
-    // ******************************************
+        // ******************************************
+        // ***** REMOVE A WINE VIEW MODEL POST *******
+        // ******************************************
 
-    //[HttpGet]
-    //public ActionResult RemoveWine()
-    //{
-    //    var vm = new WineRemoveViewModel()
+
+        //[HttpPost]
+
+        //public ActionResult RemoveWine()
+        //{
+        //    using (var context = new WineContext())
+        //    { 
+        //        var wrvm = new WineRemoveViewModel()
+
+        //        {
+
+        //            VarietalsToChooseFrom = Repository.GetAllGrapeVarietals(),
+        //            TheWine = new Wine(),
+        //            TheWineClass = new TTBWineClass()
+
+        //        };
+
+        //    context.Wines.Remove(dbWine);
+        //    context.SaveChanges();
+        //}
+
+        //    return View("DeleteWine", wrvm);
+
+        //}
+        
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+
+        public ActionResult DeleteConfirmed(int id)
+
+        
+        {
+
+            using (var WinedB = new WineContext())
+            {
+                Wine wine = WinedB.Wines
+              .Include(wn => wn.Name)
+              .Where(i => i.Id == id)
+              .Single();
+
+            WinedB.Wines.Remove(wine);
+
+            // Not sure what this bit of code was about in the 
+            // Contoso books example online.
+
+            //var varietal = WinedB.Varietals
+            //    .Where(v => v.Id == id)
+            //    .SingleOrDefault();
+            //if (varietal != null)
+            //{
+            //    varietal.Id = null;
+            //}
+
+            WinedB.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        }
+
+
+
+
+
+
+
+
+
+
+        // Possibly going to try to use some of this code....
+
+
+        // *************************************************************
+        // ******      REMOVE A WINE VIEW MODEL POST *******************
+        // *************************************************************
+
+    //    [HttpPost, ActionName("Delete")]
+    //    [ValidateAntiForgeryToken]
+
+    //    public async Task<IActionResult> DeleteConfirmed(int id)
     //    {
-    //        VarietalsToChooseFrom = Repository.GetAllGrapeVarietals(),
-    //        TheWine = new Wine(),
-    //        TheWineClass = new TTBWineClass()
-    //    };
+    //        var student = await _context.Wines
+    //            .AsNoTracking()
+    //            .SingleOrDefaultAsync(m => m.ID == id);
+    //        if (student == null)
+    //        {
+    //            return RedirectToAction("Index");
+    //        }
 
-    //    return View("RemoveWine", vm);
+    //        try
+    //        {
+    //            context.Wines.Remove(Wine);
+    //            await context.SaveChangesAsync();
+    //            return RedirectToAction("Index");
+    //        }
+    //        catch (DbUpdateException /* ex */)
+    //        {
+    //            //Log the error (uncomment ex variable name and write a log.)
+    //            return RedirectToAction("Delete", new { id = id, saveChangesError = true });
+    //        }
+    //    }
+
+    //    public interface IActionResult
+    //    {
+    //    }
     //}
 
-    // *************************************************************
-    // ******      REMOVE A WINE VIEW MODEL POST *******************
-    // *************************************************************
-
-    //[HttpPost]
-    //public ActionResult RemoveWine2(WineRemoveViewModel wine)
-    //{
-    //    return View("RemoveWine", wine);
-    //}
 
 }
