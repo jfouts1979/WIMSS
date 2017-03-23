@@ -24,7 +24,7 @@ namespace WineEntryProposal.Models
     //**** Wine Model ******************
     //**********************************
 
-    public class Wine
+    public class Wine  // Data Model
     {
         [Required]
         public int Id { get; set; }
@@ -101,7 +101,7 @@ namespace WineEntryProposal.Models
     //************* Establish List of Grape Varietals***************
     //**************************************************************
     
-    public class GrapeVarietal
+    public class GrapeVarietal  // Data Model
     {
         public int Id { get; set; }
         
@@ -120,7 +120,7 @@ namespace WineEntryProposal.Models
     //*********Establish List of Non-Grape Fruit Source Types*******
     //**************************************************************
 
-    public class NGFruitSourceType
+    public class NGFruitSourceType  // Data Model
     {
         public int Id { get; set; }
         
@@ -138,7 +138,7 @@ namespace WineEntryProposal.Models
     //**************Set Up ENUM for Grape Family Type**********
     //*********************************************************
 
-    public enum GrapeFamType
+    public enum GrapeFamType  // Data Model
     {
         //To Describe Different Families of Grapes
         
@@ -151,11 +151,11 @@ namespace WineEntryProposal.Models
     //*************Set Up ENUM for Wine Type e.g. Table********
     //*********************************************************
 
-    public enum WineType
+    public enum WineType  // Data Model
     {
         Table,         //Wine 12% or less ABV
         Dessert,       //Wine >12% ABV
-        //Sparkling      //Champagne Style Wine
+        Sparkling      //Champagne Style Wine
     };
 
     //**************************************************************

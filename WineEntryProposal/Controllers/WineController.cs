@@ -42,8 +42,7 @@ namespace WineEntryProposal.Controllers
 
                 VarietalsToChooseFrom = Repository.GetAllGrapeVarietals().OrderBy(gv => gv.Name).ToList(),
 
-                // VarietalsToChooseFrom = Repository.GetAllGrapeVarietals().OrderBy(gv => gv.Name).ToList()
-                // VarietalsToChooseFrom = Repository.GetAllGrapeVarietals().ToList().OrderBy(gv => gv.Name),
+
                 TheWine = new WineModel(),
                 //TheWineClass = new TTBWineClass()
             };
