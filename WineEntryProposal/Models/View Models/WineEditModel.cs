@@ -15,9 +15,14 @@ namespace WineEntryProposal.Models.ViewModels
 {
     public class WineEditViewModel
     {
+
         public WineModel TheWine { get; set; }
+        public List<GrapeVarietal> VarietalsToChooseFrom { get; set; }
         public GrapeVarietal GrapeVarietal { get; set; }
         public bool? ShowSuccessMsg { get; set; }
+        public TTBWineClass TheWineClass { get; set; }
+        public int SelectedVarietalId { get; set; }
+
     }
 
 }
