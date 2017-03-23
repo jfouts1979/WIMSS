@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web.Mvc;
 using WineEntryProposal.Models;
 using WineEntryProposal.Models.ViewModels;
@@ -160,41 +161,46 @@ namespace WineEntryProposal.Controllers
         // ******************************************
 
 
-        [HttpPost]
+        [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-
-        public ActionResult DeleteWine(Models.ViewModels.WineDeleteViewModel wine) // I am passing
-        {                                              // a whole wine
-            //  var wrvm = new WineDeleteViewModel()
-            
+        public ActionResult DeleteConfirmed (int id) 
+        {                                              
             using (var WinedB = new WineContext())
             
             {
                 wine.VarietalsToChooseFrom = Repository.GetAllGrapeVarietals();
+                
+                Wine wineToDelete = WinedB.Wines.Find(id);
 
+                if (wine == null)
                 {
-                  Wine wineToDelete = WinedB.Wines
-                  .Include(wn => wn.Name)
-                  .Where(i => i.Id == id) // how do I get the parameter
-                  .Single();              // here from the list view
-
-                    WinedB.Wines.Remove(wineToDelete);
-                }
-
-                    //TheWine = Wine(),
-                    //TheWineClass = new TTBWineClass()
-
-                context.Wines.Remove();
-                context.SaveChanges();
+                    return HttpNotFound();
+                }                
+                
+                WinedB.Wines.Remove(wineToDelete);
+                WinedB.SaveChanges();
+                return RedirectToAction("Index");               
 
             };
-            
-            return View("Index", wine);
+        }
 
+        // GET: /Wine/Delete/
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Wine wine = db.Movies.Find(id);
+            if (wine == null)
+            {
+                return HttpNotFound();
+            }
+            return View("DeleteWine");
         }
 
 
-        }
+    }
 
         //[HttpPost, ActionName("Delete")]
         //[ValidateAntiForgeryToken]
