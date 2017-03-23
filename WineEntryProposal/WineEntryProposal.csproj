@@ -215,9 +215,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Wine\AddWine.cshtml" />
     <Content Include="Views\LogIn.cshtml" />
-    <Content Include="Views\Wine\EditWine.cshtml" />
     <Content Include="Views\Wine\ListWine.cshtml" />
-    <Content Include="Views\Wine\Delete.cshtml" />
+    <Content Include="Views\Wine\DeleteWine.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
