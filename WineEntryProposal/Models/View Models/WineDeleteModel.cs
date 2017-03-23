@@ -8,6 +8,7 @@ namespace WineEntryProposal.Models.ViewModels
     public class WineDeleteViewModel
     {
         public int id { get;  set;}
+        public double ABV { get; set; }
         public string Name { get; set; }
         public GrapeVarietal GrapeVarietal { get; set; }
         public string AVA { get; set; }

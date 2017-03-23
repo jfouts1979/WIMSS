@@ -196,6 +196,7 @@ namespace WineEntryProposal.Controllers
                     Name = wine.Name,
                     GrapeVarietal = wine.TheVarietal,
                     AVA = wine.AVA,
+                    ABV = wine.ABV,
                     btlVol = wine.btlVol,
                     btlVolUOM = wine.btlVolUOM,
                     fluidOz = wine.fluidOz,
@@ -204,7 +205,7 @@ namespace WineEntryProposal.Controllers
 
                  };
 
-                return View("DeleteWine", wineDeleteVM);
+                return View("DeleteWine", wineDeleteVm);
             }
         }
 
