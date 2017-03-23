@@ -219,148 +219,127 @@ namespace WineEntryProposal.Controllers
 
 
 
-        [HttpPost]
-        public ActionResult DeleteWine(Models.ViewModels.WineDeleteViewModel wine)
-        {
-
-            if (ModelState.IsValid)
-
-            {
-
-
-                wine.VarietalsToChooseFrom = Repository.GetAllGrapeVarietals();
-
-                //*****************************************
-                //*** Establish Database Wines Table*******
-                //*****************************************
-
-                using (var context = new WineContext())
-                {
-
-                    var varietalFromDb = context.Varietals.FirstOrDefault(v => v.Id == wine.TheWine.Varietal.VarietalId)
-                    ;
-                    if (varietalFromDb == null)
-
-                    {
-
-                        throw new Exception("Received an invalid varietal name.");
-
-    }
-
-
-    //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-    //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-
-    // this needs to not be a new wine but a wine selected from the user
-    // passed in from the DeleteWine view.
-
-
-    //        Wine wine = WinedB.Wines
-    //      .Include(wn => wn.Name)
-    //      .Where(i => i.Id == id)
-    //      .Single();
-
-    //        WinedB.Wines.Remove(wine);
 
 
 
+ //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+ 
+    //    [HttpPost]
+    //    public ActionResult DeleteWine(Models.ViewModels.WineDeleteViewModel wine)
+    //    {
 
-    var dbWine = new Wine
+    //        if (ModelState.IsValid)
 
+    //        {
 
-    {
-        ABV = wine.TheWine.ABV,
-        AVA = wine.TheWine.AVA,
-        btlVol = wine.TheWine.btlVol,
-        btlVolUOM = wine.TheWine.btlVolUOM,
-        fluidOz = wine.TheWine.fluidOz,
-        Id = wine.TheWine.Id,
-        Name = wine.TheWine.Name,
+    //               wine.VarietalsToChooseFrom = Repository.GetAllGrapeVarietals();
 
+    //            //*****************************************
+    //            //*** Establish Database Wines Table*******
+    //            //*****************************************
 
-        TheVarietal = varietalFromDb,
+    //            using (var context = new WineContext())
+    //            {
 
-        // Could not make WineType nullable in WineModel...
-        // TheWineType means like Table or Dessert...
+    //                var varietalFromDb = context.Varietals.FirstOrDefault(v => v.Id == wine.TheWine.Varietal.VarietalId)
+    //                ;
+    //                if (varietalFromDb == null)
 
-        TheWineType = wine.TheWine.WineType
+    //                {
 
-    };
+    //                    throw new Exception("Received an invalid varietal name.");
 
-    context.Wines.Remove(dbWine);
-                    context.SaveChanges();
-                }
+    //}
+    
+    ////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+    ////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-//*****************************************
-//*****************************************
-
-//var blankWine = new WineAddViewModel
-//{
-//    ShowSuccessMsg = true,
-//    ///SelectedVarietalId = null,
-//    TheWine = new WineModel(),
-//    VarietalsToChooseFrom = Repository.GetAllGrapeVarietals(),
-
-//};
+    //// this needs to not be a new wine but a wine selected from the user
+    //// passed in from the DeleteWine view.
 
 
+    ////        Wine wine = WinedB.Wines
+    ////      .Include(wn => wn.Name)
+    ////      .Where(i => i.Id == id)
+    ////      .Single();
 
-                return RedirectToAction("Index", "Wine", wine);
+    ////        WinedB.Wines.Remove(wine);
 
-            }
-            wine.VarietalsToChooseFrom = Repository.GetAllGrapeVarietals();
-
-            //Return Some Error View - to be added...
-
-            throw new NotImplementedException("Dealing With Errors");
-
-        }
-
-
-
-
-
-
-
-
-        // Possibly going to try to use some of this code....
+    
+    //var dbWine = new Wine
+    
+    //{
+    //    ABV = wine.TheWine.ABV,
+    //    AVA = wine.TheWine.AVA,
+    //    btlVol = wine.TheWine.btlVol,
+    //    btlVolUOM = wine.TheWine.btlVolUOM,
+    //    fluidOz = wine.TheWine.fluidOz,
+    //    Id = wine.TheWine.Id,
+    //    Name = wine.TheWine.Name,
 
 
-        // *************************************************************
-        // ******      REMOVE A WINE VIEW MODEL POST *******************
-        // *************************************************************
+    //    TheVarietal = varietalFromDb,
 
-        //    [HttpPost, ActionName("Delete")]
-        //    [ValidateAntiForgeryToken]
+    //    // Could not make WineType nullable in WineModel...
+    //    // TheWineType means like Table or Dessert...
 
-        //    public async Task<IActionResult> DeleteConfirmed(int id)
-        //    {
-        //        var student = await _context.Wines
-        //            .AsNoTracking()
-        //            .SingleOrDefaultAsync(m => m.ID == id);
-        //        if (student == null)
-        //        {
-        //            return RedirectToAction("Index");
-        //        }
+    //    TheWineType = wine.TheWine.WineType
 
-        //        try
-        //        {
-        //            context.Wines.Remove(Wine);
-        //            await context.SaveChangesAsync();
-        //            return RedirectToAction("Index");
-        //        }
-        //        catch (DbUpdateException /* ex */)
-        //        {
-        //            //Log the error (uncomment ex variable name and write a log.)
-        //            return RedirectToAction("Delete", new { id = id, saveChangesError = true });
-        //        }
-        //    }
+    //};
 
-        //    public interface IActionResult
-        //    {
-        //    }
-        //}
+    //context.Wines.Remove(dbWine);
+    //                context.SaveChanges();
+    //            }
 
 
+    //            return RedirectToAction("Index", "Wine", wine);
+
+    //        }
+    //        wine.VarietalsToChooseFrom = Repository.GetAllGrapeVarietals();
+
+    //        //Return Some Error View - to be added...
+
+    //        throw new NotImplementedException("Dealing With Errors");
+
+    //    }
+
+    //    // Possibly going to try to use some of this code....
+
+
+    //    // *************************************************************
+    //    // ******      REMOVE A WINE VIEW MODEL POST *******************
+    //    // *************************************************************
+
+    //    //    [HttpPost, ActionName("Delete")]
+    //    //    [ValidateAntiForgeryToken]
+
+    //    //    public async Task<IActionResult> DeleteConfirmed(int id)
+    //    //    {
+    //    //        var student = await _context.Wines
+    //    //            .AsNoTracking()
+    //    //            .SingleOrDefaultAsync(m => m.ID == id);
+    //    //        if (student == null)
+    //    //        {
+    //    //            return RedirectToAction("Index");
+    //    //        }
+
+    //    //        try
+    //    //        {
+    //    //            context.Wines.Remove(Wine);
+    //    //            await context.SaveChangesAsync();
+    //    //            return RedirectToAction("Index");
+    //    //        }
+    //    //        catch (DbUpdateException /* ex */)
+    //    //        {
+    //    //            //Log the error (uncomment ex variable name and write a log.)
+    //    //            return RedirectToAction("Delete", new { id = id, saveChangesError = true });
+    //    //        }
+    //    //    }
+
+    //    //    public interface IActionResult
+    //    //    {
+    //    //    }
+    //    //}
+        
     }
 }
