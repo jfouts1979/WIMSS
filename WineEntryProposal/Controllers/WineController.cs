@@ -186,40 +186,129 @@ namespace WineEntryProposal.Controllers
 
         //}
 
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
 
-        public ActionResult DeleteConfirmed(int id)
+        //public ActionResult DeleteConfirmed(int id)
 
 
+        //{
+
+        //    using (var WinedB = new WineContext())
+        //    {
+        //        Wine wine = WinedB.Wines
+        //      .Include(wn => wn.Name)
+        //      .Where(i => i.Id == id)
+        //      .Single();
+
+        //        WinedB.Wines.Remove(wine);
+
+        //        // Not sure what this bit of code was about in the 
+        //        // Contoso books example online.
+
+        //        //var varietal = WinedB.Varietals
+        //        //    .Where(v => v.Id == id)
+        //        //    .SingleOrDefault();
+        //        //if (varietal != null)
+        //        //{
+        //        //    varietal.Id = null;
+        //        //}
+
+        //        WinedB.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
+        //}
+
+
+
+        [HttpPost]
+        public ActionResult DeleteWine(Models.ViewModels.WineDeleteViewModel wine)
         {
 
-            using (var WinedB = new WineContext())
+            if (ModelState.IsValid)
+
             {
-                Wine wine = WinedB.Wines
-              .Include(wn => wn.Name)
-              .Where(i => i.Id == id)
-              .Single();
 
-                WinedB.Wines.Remove(wine);
 
-                // Not sure what this bit of code was about in the 
-                // Contoso books example online.
+                wine.VarietalsToChooseFrom = Repository.GetAllGrapeVarietals();
 
-                //var varietal = WinedB.Varietals
-                //    .Where(v => v.Id == id)
-                //    .SingleOrDefault();
-                //if (varietal != null)
-                //{
-                //    varietal.Id = null;
-                //}
+                //*****************************************
+                //*** Establish Database Wines Table*******
+                //*****************************************
 
-                WinedB.SaveChanges();
-                return RedirectToAction("Index");
+                using (var context = new WineContext())
+                {
+
+                    var varietalFromDb = context.Varietals.FirstOrDefault(v => v.Id == wine.TheWine.Varietal.VarietalId)
+                    ;
+                    if (varietalFromDb == null)
+
+                    {
+
+                        throw new Exception("Received an invalid varietal name.");
+
+    }
+
+
+    //******************************************
+    //*** map field names for the database *****
+    //******************************************
+
+    // this needs to not be a new wine but a wine selected from the user
+    // passed in from the DeleteWine view.
+
+    var dbWine = new Wine
+
+
+    {
+        ABV = wine.TheWine.ABV,
+        AVA = wine.TheWine.AVA,
+        btlVol = wine.TheWine.btlVol,
+        btlVolUOM = wine.TheWine.btlVolUOM,
+        fluidOz = wine.TheWine.fluidOz,
+        Id = wine.TheWine.Id,
+        Name = wine.TheWine.Name,
+
+
+        TheVarietal = varietalFromDb,
+
+        // Could not make WineType nullable in WineModel...
+        // TheWineType means like Table or Dessert...
+
+        TheWineType = wine.TheWine.WineType
+
+    };
+
+    context.Wines.Remove(dbWine);
+                    context.SaveChanges();
+                }
+
+//*****************************************
+//*****************************************
+
+//var blankWine = new WineAddViewModel
+//{
+//    ShowSuccessMsg = true,
+//    ///SelectedVarietalId = null,
+//    TheWine = new WineModel(),
+//    VarietalsToChooseFrom = Repository.GetAllGrapeVarietals(),
+
+//};
+
+
+
+                return RedirectToAction("Index", "Wine", wine);
+
+                //put this in the view somewhere but where?
+                //< p > @ViewBag.result < p />
             }
+            wine.VarietalsToChooseFrom = Repository.GetAllGrapeVarietals();
+
+            //Return Some Error View - to be added...
+
+            throw new NotImplementedException("Dealing With Errors");
+
         }
-
-
 
 
 

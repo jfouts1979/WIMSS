@@ -158,6 +158,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Models\View Models\VarietalModel.cs" />
     <Compile Include="Models\View Models\WineAddModel.cs" />
+    <Compile Include="Models\View Models\WineDeleteModel.cs" />
     <Compile Include="Models\View Models\WineEditModel.cs" />
     <Compile Include="Models\View Models\WineModel.cs" />
     <Compile Include="Context.cs" />
