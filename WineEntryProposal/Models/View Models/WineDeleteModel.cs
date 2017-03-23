@@ -10,7 +10,7 @@ namespace WineEntryProposal.Models.ViewModels
         public int id { get;  set;}
         public double ABV { get; set; }
         public string Name { get; set; }
-        public GrapeVarietal GrapeVarietal { get; set; }
+        public VarietalModel Varietal { get; set; }
         public string AVA { get; set; }
         public double? btlVol { get; set; }
         public string btlVolUOM { get; set; }

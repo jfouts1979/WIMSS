@@ -168,7 +168,7 @@ namespace WineEntryProposal.Controllers
             using (var WinedB = new WineContext())
             
             {
-                Wine wineToDelete = WinedB.Wines.Find(id);
+                Wine wineToDelete = WinedB.Wines.Include(w=>w.TheVarietal).Single(w=>w.Id==id);
                 WinedB.Wines.Remove(wineToDelete);
                 WinedB.SaveChanges();
                 return RedirectToAction("Index");               
@@ -184,7 +184,7 @@ namespace WineEntryProposal.Controllers
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 }
-                Wine wine = winedB.Wines.Find(id);
+                Wine wine = winedB.Wines.Include(w=>w.TheVarietal).Single(w=>w.Id==id);
                 if (wine == null)
                 {
                     return HttpNotFound();
@@ -194,7 +194,11 @@ namespace WineEntryProposal.Controllers
                 {
                     id = wine.Id,
                     Name = wine.Name,
-                    GrapeVarietal = wine.TheVarietal,
+                    Varietal = new VarietalModel 
+                    {  GrapeFam = wine.TheVarietal.grapeFam,
+                       VarietalName = wine.TheVarietal.Name,
+                       VarietalpictureUrl = wine.TheVarietal.pictureUrl
+                    },
                     AVA = wine.AVA,
                     ABV = wine.ABV,
                     btlVol = wine.btlVol,
