@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Web.Mvc;
 using WineEntryProposal.Models;
 using WineEntryProposal.Models.ViewModels;
@@ -250,12 +248,22 @@ namespace WineEntryProposal.Controllers
     }
 
 
-    //******************************************
-    //*** map field names for the database *****
-    //******************************************
+    //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+    //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
     // this needs to not be a new wine but a wine selected from the user
     // passed in from the DeleteWine view.
+
+
+    //        Wine wine = WinedB.Wines
+    //      .Include(wn => wn.Name)
+    //      .Where(i => i.Id == id)
+    //      .Single();
+
+    //        WinedB.Wines.Remove(wine);
+
+
+
 
     var dbWine = new Wine
 
@@ -299,8 +307,6 @@ namespace WineEntryProposal.Controllers
 
                 return RedirectToAction("Index", "Wine", wine);
 
-                //put this in the view somewhere but where?
-                //< p > @ViewBag.result < p />
             }
             wine.VarietalsToChooseFrom = Repository.GetAllGrapeVarietals();
 

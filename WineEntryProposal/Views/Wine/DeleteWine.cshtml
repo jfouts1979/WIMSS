@@ -1,4 +1,4 @@
-﻿@model WineEntryProposal.Models.Wine
+﻿@model WineEntryProposal.Models.ViewModels.WineDeleteViewModel
 
 @* ************************************************************************** *@
 @* ************************************************************************** *@
@@ -25,67 +25,67 @@
         <hr />
         <dl class="dl-horizontal">
             <dt>
-                @Html.DisplayNameFor(model => model.Name)
+                @Html.DisplayNameFor(model => model.TheWine.Name)
             </dt>
     
             <dd>
-                @Html.DisplayFor(model => model.Name)
+                @Html.DisplayFor(model => model.TheWine.Name)
             </dd>
     
             <dt>
-                @Html.DisplayNameFor(model => model.TheWineType)
+                @Html.DisplayNameFor(model => model.TheWine.WineType)
             </dt>
     
             <dd>
-                @Html.DisplayFor(model => model.TheWineType)
+                @Html.DisplayFor(model => model.TheWine.WineType)
             </dd>
     
             <dt>
-                @Html.DisplayNameFor(model => model.AVA)
+                @Html.DisplayNameFor(model => model.TheWine.AVA)
             </dt>
     
             <dd>
-                @Html.DisplayFor(model => model.AVA)
+                @Html.DisplayFor(model => model.TheWine.AVA)
             </dd>
     
             <dt>
-                @Html.DisplayNameFor(model => model.ABV)
+                @Html.DisplayNameFor(model => model.TheWine.ABV)
             </dt>
     
             <dd>
-                @Html.DisplayFor(model => model.ABV)
+                @Html.DisplayFor(model => model.TheWine.ABV)
             </dd>
     
             <dt>
-                @Html.DisplayNameFor(model => model.fluidOz)
+                @Html.DisplayNameFor(model => model.TheWine.fluidOz)
             </dt>
     
             <dd>
-                @Html.DisplayFor(model => model.fluidOz)
+                @Html.DisplayFor(model => model.TheWine.fluidOz)
             </dd>
     
             <dt>
-                @Html.DisplayNameFor(model => model.btlVol)
+                @Html.DisplayNameFor(model => model.TheWine.btlVol)
             </dt>
     
             <dd>
-                @Html.DisplayFor(model => model.btlVol)
+                @Html.DisplayFor(model => model.TheWine.btlVol)
             </dd>
     
             <dt>
-                @Html.DisplayNameFor(model => model.btlVolUOM)
+                @Html.DisplayNameFor(model => model.TheWine.btlVolUOM)
             </dt>
     
             <dd>
-                @Html.DisplayFor(model => model.btlVolUOM)
+                @Html.DisplayFor(model => model.TheWine.btlVolUOM)
             </dd>
     
             <dt>
-                @Html.DisplayNameFor(model => model.TheTTBWineClass)
+                @Html.DisplayNameFor(model => model.TheWineClass)
             </dt>
     
             <dd>
-                @Html.DisplayFor(model => model.TheTTBWineClass)
+                @Html.DisplayFor(model => model.TheWineClass)
             </dd>
     
         </dl>
