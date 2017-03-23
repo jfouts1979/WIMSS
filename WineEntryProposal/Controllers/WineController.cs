@@ -189,7 +189,22 @@ namespace WineEntryProposal.Controllers
                 {
                     return HttpNotFound();
                 }
-                return View("DeleteWine");
+
+                var wineDeleteVm = new WineDeleteViewModel
+                {
+                    id = wine.Id,
+                    Name = wine.Name,
+                    GrapeVarietal = wine.TheVarietal,
+                    AVA = wine.AVA,
+                    btlVol = wine.btlVol,
+                    btlVolUOM = wine.btlVolUOM,
+                    fluidOz = wine.fluidOz,
+                    Winetype = wine.TheWineType,
+                    TTBWineClass = wine.TheTTBWineClass
+
+                 };
+
+                return View("DeleteWine", wineDeleteVM);
             }
         }
 

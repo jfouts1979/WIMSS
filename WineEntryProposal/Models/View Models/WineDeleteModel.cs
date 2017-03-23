@@ -7,13 +7,15 @@ namespace WineEntryProposal.Models.ViewModels
 {
     public class WineDeleteViewModel
     {
-
-        public WineModel TheWine { get; set; }
-        public List<GrapeVarietal> VarietalsToChooseFrom { get; set; }
+        public int id { get;  set;}
+        public string Name { get; set; }
         public GrapeVarietal GrapeVarietal { get; set; }
-        public bool? ShowSuccessMsg { get; set; }
-        public TTBWineClass TheWineClass { get; set; }
-        public int SelectedVarietalId { get; set; }
+        public string AVA { get; set; }
+        public double? btlVol { get; set; }
+        public string btlVolUOM { get; set; }
+        public double? fluidOz { get; set; }
+        public WineType Winetype { get; set; }
+        public TTBWineClass TTBWineClass { get; set; }
 
     }
 
