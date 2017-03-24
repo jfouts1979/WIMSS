@@ -229,6 +229,7 @@
     <Content Include="Views\Shared\SliderPartial.cshtml" />
     <Content Include="Views\Home\Index2.cshtml" />
     <Content Include="Views\AddImage.cshtml" />
+    <Content Include="Views\DeleteImages.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
