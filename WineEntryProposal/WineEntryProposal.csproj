@@ -226,6 +226,7 @@
     <Content Include="Views\LogIn.cshtml" />
     <Content Include="Views\Wine\ListWine.cshtml" />
     <Content Include="Views\Wine\DeleteWine.cshtml" />
+    <Content Include="Views\Shared\SliderPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
