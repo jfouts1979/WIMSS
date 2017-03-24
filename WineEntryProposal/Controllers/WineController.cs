@@ -86,12 +86,12 @@ namespace WineEntryProposal.Controllers
                 using (var context = new WineContext())
                 {
 
-                    // Provides Varietal Information in TheVarietal Variable.
-
-                    // This might be something to cache for some time in the future to make sure that user does not try to send a varietal that is not
-                    // in the database to the app.
-
-
+                    // *************************************************
+                    // * Might Be Useful To Cache For Some Time In The *   
+                    // * Future To Make Sure That User Does Not Try    *
+                    // * To Pass A Varietal To DB That Does Not Exist  *
+                    // *************************************************
+                    
                     var varietalFromDb = context.Varietals.FirstOrDefault(v => v.Id == wine.TheWine.Varietal.VarietalId)
                     ;
                     if (varietalFromDb == null)
@@ -140,7 +140,7 @@ namespace WineEntryProposal.Controllers
                 var blankWine = new WineAddViewModel
                 {
                     ShowSuccessMsg = true,
-                    ///SelectedVarietalId = null,
+                    //SelectedVarietalId = null,
                     TheWine = new WineModel(),
                     VarietalsToChooseFrom = Repository.GetAllGrapeVarietals(),
 
@@ -153,9 +153,12 @@ namespace WineEntryProposal.Controllers
                 
                 return RedirectToAction("Index", "Wine", wine);
 
-                //put this in the view somewhere but where?
-                //< p > @ViewBag.result < p />
             }
+            
+            // *************************************************
+            // *** Repopulate Varietals To Choose From *********
+            // *************************************************
+            
             wine.VarietalsToChooseFrom = Repository.GetAllGrapeVarietals();
 
             //Return Some Error View - to be added...
@@ -164,11 +167,8 @@ namespace WineEntryProposal.Controllers
 
         }
 
-
-        // My first attempt....updated 3/23/2017 after several attempts.
-
         // ******************************************
-        // ***** REMOVE A WINE VIEW MODEL POST *******
+        // *** REMOVE A WINE VIEW MODEL (POST) ******
         // ******************************************
 
 
@@ -176,7 +176,17 @@ namespace WineEntryProposal.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            using (var WinedB = new WineContext())
+            
+        // ******************************************
+        // ******* Establish New Data Context *******
+        // ******* Wine To Delete Variable    *******
+        // ******* Utilize the Include Method *******
+        // ******* To Avoid LazyLoading Null  *******
+        // ******* Issue That Would Cause An  *******
+        // ******* Exception To Be Thrown     *******
+        // ******************************************
+        
+        using (var WinedB = new WineContext())
 
             {
                 Wine wineToDelete = WinedB.Wines.Include(w => w.TheVarietal).Single(w => w.Id == id);
@@ -186,7 +196,12 @@ namespace WineEntryProposal.Controllers
             };
         }
 
-        // GET: /Wine/Delete/
+        
+        // ************************************************
+        // **** Wine To Delete (Get) Method ***************
+        // **** GET: /Wine/Delete/      *******************
+        // ************************************************
+
         public ActionResult Delete(int? id)
         {
             using (var winedB = new WineContext())
@@ -201,6 +216,12 @@ namespace WineEntryProposal.Controllers
                     return HttpNotFound();
                 }
 
+                // ******************************************
+                // *** If Wine To Delete Is Not Null, Set ***
+                // *** A New WineDeleteViewModel Equal To ***
+                // *** To The Wine To Delete              ***
+                // ******************************************             
+                
                 var wineDeleteVm = new WineDeleteViewModel
                 {
                     id = wine.Id,
@@ -221,48 +242,16 @@ namespace WineEntryProposal.Controllers
 
                 };
 
+                // ********************************************
+                // *** Return the Delete Wine View with the ***
+                // *** Wine To Delete View Model Variable   ***
+                // ********************************************
+                
                 return View("DeleteWine", wineDeleteVm);
             }
         }
-
-
+        
     }
-
-
-    //    // *************************************************************
-    //    // ******      REMOVE A WINE VIEW MODEL POST *******************
-    //    // *************************************************************
-
-    //    //    [HttpPost, ActionName("Delete")]
-    //    //    [ValidateAntiForgeryToken]
-
-    //    //    public async Task<IActionResult> DeleteConfirmed(int id)
-    //    //    {
-    //    //        var student = await _context.Wines
-    //    //            .AsNoTracking()
-    //    //            .SingleOrDefaultAsync(m => m.ID == id);
-    //    //        if (student == null)
-    //    //        {
-    //    //            return RedirectToAction("Index");
-    //    //        }
-
-    //    //        try
-    //    //        {
-    //    //            context.Wines.Remove(Wine);
-    //    //            await context.SaveChangesAsync();
-    //    //            return RedirectToAction("Index");
-    //    //        }
-    //    //        catch (DbUpdateException /* ex */)
-    //    //        {
-    //    //            //Log the error (uncomment ex variable name and write a log.)
-    //    //            return RedirectToAction("Delete", new { id = id, saveChangesError = true });
-    //    //        }
-    //    //    }
-
-    //    //    public interface IActionResult
-    //    //    {
-    //    //    }
-    //    //}
 
 }
 
