@@ -1,7 +1,5 @@
 ﻿@model IEnumerable<WineEntryProposal.Models.Wine>
 
-
-
 @{
     ViewBag.Title = "ListWine";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -22,47 +20,48 @@
     <table class="table table-bordered table-condensed table-hover table-striped" align="center">
 
         <tr>
-            <th>
+            <th> @*Intentionally Not Centering This Line*@
+            @*<th style="text-align: center">*@
                 @*@Html.DisplayNameFor(model => model.Name)*@
                 Brand Name
             </th>
-            <th>
+            <th style="text-align: center">
                 @*@Html.DisplayNameFor(model => model.TheWineType)*@
                 Wine Type
             </th>
-            <th>
+            <th style="text-align: center">
                 @*@Html.DisplayNameFor(model => model.AVA)*@
                 Viticultural Area
             </th>
-            <th>
+            <th style="text-align: center">
                 @*@Html.DisplayNameFor(model => model.ABV)*@
                 ABV
             </th>
-            <th>
+            <th style="text-align: center">
                 @*@Html.DisplayNameFor(model => model.fluidOz)*@
                 Fluid Oz.
             </th>
-            <th>
+            <th style="text-align: center">
                 @*@Html.DisplayNameFor(model => model.btlVol)*@
                 Bottle Volume
             </th>
-            <th>
+            <th style="text-align: center">
                 @*@Html.DisplayNameFor(model => model.btlVolUOM)*@
                 Bottle UOM
             </th>
-            <th>
+            <th style="text-align: center">
                 @*@Html.DisplayNameFor(model => model.TheTTBWineClass)*@
                 TTB Class
             </th>
-            <th>
+            <th style="text-align: center">
                 @*@Html.DisplayNameFor(model => model.TheVarietal)*@
                 Varietal Name
             </th>
-            <th>
+            <th style="text-align: center">
                 @*@Html.DisplayNameFor(model => model.TheVarietal)*@
                 Varietal Img
             </th>
-            <th>
+            <th style="text-align: center">
                 @*@Html.DisplayNameFor(model => model.TheVarietal)*@
                 Make A Selection
             </th>
@@ -104,7 +103,7 @@
                  @**** List Varietal Url From Database In Table    ****@
                  @*****************************************************@
 
-                <img src="@item.TheVarietal.pictureUrl" alt="No Grape Image" height="150" class="img-rounded" />
+                <img src="@item.TheVarietal.pictureUrl" alt="No Grape Image" height="150" class="img-rounded" align="middle"/>
 
             </td>
             <td>
