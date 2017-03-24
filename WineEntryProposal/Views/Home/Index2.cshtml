@@ -1,0 +1,29 @@
+﻿@model IEnumerable<WineEntryProposal.Models.Gallery>    
+@{
+    Layout = null;
+}
+
+<h2>Index2</h2>
+
+<p>
+@Html.ActionLink("Add Image", "AddImage", "Slider", new { id = "linkAddimage" }, null) |
+@Html.ActionLink("Delete Image", "DeleteImages", "Slider", new { id = "linkDeleteimage" }, null)
+</p>
+@Html.Partial("~/Views/Shared/SliderPartial.cshtml", Model)
+
+
+@*<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index2</title>
+</head>
+<body>
+    <div> 
+    <p>
+        
+    </p>
+    </div>
+</body>
+</html>*@
