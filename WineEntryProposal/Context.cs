@@ -6,12 +6,29 @@ using System.Data.Entity.Validation;
 
 namespace WineEntryProposal
 {
+    // ********************************************
+    // *** Drop and Create the Database Only ******
+    // *** If the Model Changes *******************
+    // ********************************************
 
     public class MyDatabaseInitializer : DropCreateDatabaseIfModelChanges<WineContext>
     {
 
+        // **********************************************
+        // *** Seed the Database With the Data Below ****
+        // **********************************************
+    
         protected override void Seed(WineContext context)
         {
+            
+            // *******************************************
+            // *** List of Grape Varietals Eventually ****
+            // *** To Be Pulled from 27 e-CFR Ch. 1   ****
+            // *** Subchapter A Part 4 Subchapter J   ****
+            // *** 4.91 **********************************
+            // *** Most Likely Using A Streamreader ******
+            // *******************************************
+            
             var list = new List<GrapeVarietal>() {
             new GrapeVarietal() { Id = 1, Name = "Vidal Blanc" },
                 new GrapeVarietal() { Id = 2, Name = "Concord", pictureUrl= "http://res.cloudinary.com/dqhopogso/image/upload/v1489462544/ConcordGrapes2.png" },
@@ -43,7 +60,12 @@ namespace WineEntryProposal
             context.SaveChanges();
             base.Seed(context);
 
-
+            // ***************************************************
+            // *** Establish Listing Of Non Grape Fruit Sources **
+            // *** Including Average Brix Levels - Brix Is A *****
+            // *** Measure of Sugar Solids.  Numbers Below From  *
+            // *** Cornell University                          ***
+            // ***************************************************
 
             var fruitlist = new List<NGFruitSourceType>()
         {
@@ -102,18 +124,15 @@ namespace WineEntryProposal
             base.Seed(context);
 
         }
-       
-
-            
-            
-
-    }
-
-
+ 
+ }
 
     public class WineContext : DbContext
     {
-
+    
+        // ************************************************
+        // ************ Initialize Database ***************
+        // ************************************************
 
         public WineContext() : base("WineDb")
         {
@@ -123,7 +142,11 @@ namespace WineEntryProposal
         public DbSet<Wine> Wines { get; set; }
         public DbSet<GrapeVarietal> Varietals { get; set; }
         public DbSet<NGFruitSourceType> NGFruit {get; set; }
-    //public DbSet<TTBWineClass> TTBWineClasses { get; set; }
+    
+        //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+        //\\\\\\\ CODE FROM STACK OVERFLOW TO TRACE DATA VALIDATION \\
+        //\\\\\\\ ERRORS \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+        //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
     public override int SaveChanges()
     {
@@ -150,4 +173,4 @@ namespace WineEntryProposal
     }
 }
 }
-    
+    //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
