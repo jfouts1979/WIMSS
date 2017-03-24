@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<WineEntryProposal.Models.Gallery>
+
+@{
     ViewBag.Title = "Home Page";
 }
 
@@ -35,6 +37,12 @@
             <span>View Inventory</span>
         </a>
 
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        @Html.Partial("~/Views/Shared/SliderPartial.cshtml", Model)
+    </div>
 </div>
 
 <div class="row">
