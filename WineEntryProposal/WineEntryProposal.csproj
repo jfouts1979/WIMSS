@@ -156,6 +156,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\SliderController.cs" />
     <Compile Include="Models\Gallery.cs" />
     <Compile Include="Models\View Models\VarietalModel.cs" />
     <Compile Include="Models\View Models\WineAddModel.cs" />
@@ -171,6 +172,7 @@
     </Compile>
     <Compile Include="Models\EnumUtils.cs" />
     <Compile Include="Models\Wine.cs" />
+    <Compile Include="Models\OurDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -228,6 +230,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\Data Models\" />
+    <Folder Include="Views\Slider\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
