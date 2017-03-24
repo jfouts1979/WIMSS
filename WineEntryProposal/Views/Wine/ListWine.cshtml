@@ -21,9 +21,7 @@
     </p>
     <table class="table table-bordered table-condensed table-hover table-striped" align="center">
         
-    @* This did not pick up TheVarietal....Need to Fix*@
-        
-        <tr>
+       <tr>
             <th>
                 @*@Html.DisplayNameFor(model => model.Name)*@
                 Brand Name
@@ -102,6 +100,11 @@
                 @Html.DisplayFor(modelItem => item.TheVarietal.Name)
             </td>
             <td>
+
+               // ***************************************************
+               // *** List Varietal Url From Database In Table    ***
+               // ***************************************************
+
                <img src="@item.TheVarietal.pictureUrl" class="img-rounded"/>
 
             </td>
