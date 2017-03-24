@@ -6,7 +6,7 @@
     ViewBag.Title = "ListWine";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
- 
+
 
 <!DOCTYPE html>
 
@@ -20,8 +20,8 @@
         @Html.ActionLink("Add A New Wine", "AddWine")
     </p>
     <table class="table table-bordered table-condensed table-hover table-striped" align="center">
-        
-       <tr>
+
+        <tr>
             <th>
                 @*@Html.DisplayNameFor(model => model.Name)*@
                 Brand Name
@@ -30,7 +30,7 @@
                 @*@Html.DisplayNameFor(model => model.TheWineType)*@
                 Wine Type
             </th>
-            <th >
+            <th>
                 @*@Html.DisplayNameFor(model => model.AVA)*@
                 Viticultural Area
             </th>
@@ -68,7 +68,6 @@
             </th>
         </tr>
 
-
         @foreach (var item in Model)
         {
         <tr>
@@ -101,11 +100,11 @@
             </td>
             <td>
 
-               // ***************************************************
-               // *** List Varietal Url From Database In Table    ***
-               // ***************************************************
+                 @*****************************************************@
+                 @**** List Varietal Url From Database In Table    ****@
+                 @*****************************************************@
 
-               <img src="@item.TheVarietal.pictureUrl" class="img-rounded"/>
+                <img src="@item.TheVarietal.pictureUrl" alt="No Grape Image" height="150" class="img-rounded" />
 
             </td>
             <td>
@@ -115,9 +114,7 @@
 
             </td>
         </tr>
-        <tr>
-            
-        </tr>
+        <tr></tr>
 
         }
 

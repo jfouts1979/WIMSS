@@ -25,7 +25,8 @@
         <hr />
         <dl class="dl-horizontal">
             <dt>
-                @Html.DisplayNameFor(model => model.Name)
+                Brand Name
+                @*@Html.DisplayNameFor(model => model.Name)*@
             </dt>
     
             <dd>
@@ -33,7 +34,8 @@
             </dd>
     
             <dt>
-                @Html.DisplayNameFor(model => model.Winetype)
+                Wine Type
+                @*@Html.DisplayNameFor(model => model.Winetype)*@
             </dt>
     
             <dd>
@@ -41,7 +43,8 @@
             </dd>
     
             <dt>
-                @Html.DisplayNameFor(model => model.AVA)
+                AVA
+                @*@Html.DisplayNameFor(model => model.AVA)*@
             </dt>
     
             <dd>
@@ -49,7 +52,8 @@
             </dd>
     
             <dt>
-                @Html.DisplayNameFor(model => model.ABV)
+                ABV
+                @*@Html.DisplayNameFor(model => model.ABV)*@
             </dt>
     
             <dd>
@@ -57,7 +61,8 @@
             </dd>
     
             <dt>
-                @Html.DisplayNameFor(model => model.fluidOz)
+                Fluid Oz.
+                @*@Html.DisplayNameFor(model => model.fluidOz)*@
             </dt>
     
             <dd>
@@ -65,7 +70,8 @@
             </dd>
     
             <dt>
-                @Html.DisplayNameFor(model => model.btlVol)
+                Bottle Volume
+                @*@Html.DisplayNameFor(model => model.btlVol)*@
             </dt>
     
             <dd>
@@ -73,7 +79,8 @@
             </dd>
     
             <dt>
-                @Html.DisplayNameFor(model => model.btlVolUOM)
+                UOM
+                @*@Html.DisplayNameFor(model => model.btlVolUOM)*@
             </dt>
     
             <dd>
@@ -81,13 +88,24 @@
             </dd>
     
             <dt>
-                @Html.DisplayNameFor(model => model.TTBWineClass)
+                TTB Class:
+                @*@Html.DisplayNameFor(model => model.TTBWineClass)*@
             
             </dt>
     
             <dd>
                 @Html.DisplayFor(model => model.TTBWineClass)
             
+            </dd>
+            
+            <dt>
+                Varietal Image:
+                @*@Html.DisplayFor(model => model.Varietal.VarietalPictureUrl)*@
+            </dt>
+
+            <dd>
+                @*@Html.DisplayFor(model => model.Varietal.VarietalpictureUrl)*@
+                <img src="@Model.Varietal.VarietalpictureUrl" alt="No Grape Image" height="150" class="img-rounded"  />       
             </dd>
     
         </dl>
