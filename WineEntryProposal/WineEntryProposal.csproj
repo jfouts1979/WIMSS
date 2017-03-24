@@ -227,15 +227,14 @@
     <Content Include="Views\Wine\ListWine.cshtml" />
     <Content Include="Views\Wine\DeleteWine.cshtml" />
     <Content Include="Views\Shared\SliderPartial.cshtml" />
-    <Content Include="Views\Home\Index2.cshtml" />
-    <Content Include="Views\AddImage.cshtml" />
-    <Content Include="Views\DeleteImages.cshtml" />
+    <Content Include="Views\Slider\Index.cshtml" />
+    <Content Include="Views\Slider\AddImage.cshtml" />
+    <Content Include="Views\Slider\DeleteImages.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Gallery.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\Data Models\" />
-    <Folder Include="Views\Slider\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
