@@ -230,6 +230,7 @@
     <Content Include="Views\Home\Index2.cshtml" />
     <Content Include="Views\AddImage.cshtml" />
     <Content Include="Views\DeleteImages.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Gallery.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
