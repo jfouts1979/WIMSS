@@ -10,12 +10,17 @@ namespace WineEntryProposal.Controllers
 {
     public class WineController : Controller
     {
-        // GET: Wine
+        // *********************************************************    
+        // ********* GET: ListWine View ****************************
+        // *********************************************************
 
         public ActionResult Index()
         {
 
-            // Return the list of wine
+            // *************************************************
+            // *** Establish New WineContext (Plate of Data) ***
+            // *** And Return the list of wine *****************
+            // *************************************************
 
             using (var context = new WineContext())
             {
@@ -26,63 +31,66 @@ namespace WineEntryProposal.Controllers
         }
 
         // *************************************************************
-        // **************   ADD A WINE VIEW MODEL GET *****************
+        // *************** ADD A WINE VIEW MODEL (GET) *****************
         // *************************************************************
 
         [HttpGet]
         public ActionResult AddWine()
         {
+            // ****************************************************
+            // *** Establish New Wine Add View Model For Add ******
+            // *** May Also Utilize This Area of Code 4 Edit ******
+            // ****************************************************
+
             var vm = new WineAddViewModel()
             {
-                // Default value of nullable boolean is always null
-                // so un-necessary to nullify it but want to make it null
-                // so I understand completely.
+                // ****************************************************
+                // * Default Value Of Nullable Boolean Is Always Null *
+                // * Unnecessary To Nullify But Set To Insure Value   *
+                // ****************************************************
 
                 ShowSuccessMsg = null,
 
                 VarietalsToChooseFrom = Repository.GetAllGrapeVarietals().OrderBy(gv => gv.Name).ToList(),
 
-
                 TheWine = new WineModel(),
-                //TheWineClass = new TTBWineClass()
+                TheWineClass = new TTBWineClass()
             };
 
-            //******************************************
-            //*** Returns the form for adding a wine ***
-            //******************************************
+            //*****************************************************
+            //*** Returns AddWine View (Form) For Adding A Wine ***
+            //*****************************************************
 
             return View("AddWine", vm);
         }
 
 
         // *************************************************************
-        // ************      ADD A WINE VIEW MODEL POST ****************
+        // ***************** ADD A WINE VIEW MODEL POST ****************
         // *************************************************************
 
         [HttpPost]
         public ActionResult AddWine2(Models.ViewModels.WineAddViewModel wine)
         {
 
+            // ****************************************************
+            // ********* Check To Make Sure Model Is Valid ********
+            // ****************************************************
+
             if (ModelState.IsValid)
 
             {
 
-                // Provides Varietal Information in TheVarietal Variable.
-
-                // This might be something to cache for some time in the future to make sure that user does not try to send a varietal that is not
-                // in the database to the app.
-
-
-                // Provides the list of VarietalsToChooseFrom to post to server.
-
                 wine.VarietalsToChooseFrom = Repository.GetAllGrapeVarietals();
-
-                //*****************************************
-                //*** Establish Database Wines Table*******
-                //*****************************************
 
                 using (var context = new WineContext())
                 {
+
+                    // Provides Varietal Information in TheVarietal Variable.
+
+                    // This might be something to cache for some time in the future to make sure that user does not try to send a varietal that is not
+                    // in the database to the app.
+
 
                     var varietalFromDb = context.Varietals.FirstOrDefault(v => v.Id == wine.TheWine.Varietal.VarietalId)
                     ;
@@ -96,12 +104,12 @@ namespace WineEntryProposal.Controllers
 
 
                     //******************************************
-                    //*** map field names for the database *****
+                    //*** Map Field Names For The Database *****
+                    //*** In New dbWine Variable ***************
                     //******************************************
 
                     var dbWine = new Wine
-
-
+                    
                     {
                         ABV = wine.TheWine.ABV,
                         AVA = wine.TheWine.AVA,
@@ -110,23 +118,24 @@ namespace WineEntryProposal.Controllers
                         fluidOz = wine.TheWine.fluidOz,
                         Id = wine.TheWine.Id,
                         Name = wine.TheWine.Name,
-
-
                         TheVarietal = varietalFromDb,
-
-                        // Could not make WineType nullable in WineModel...
-                        // TheWineType means like Table or Dessert...
-
-                        TheWineType = wine.TheWine.WineType
+                        TheWineType = wine.TheWine.WineType,
+                        TheTTBWineClass = wine.TheWineClass
 
                     };
+
+                    // *****************************************
+                    // *** Add The New Wine To The Database ****
+                    // *** And Save The Changes ****************
+                    // *****************************************
 
                     context.Wines.Add(dbWine);
                     context.SaveChanges();
                 }
 
-                //*****************************************
-                //*****************************************
+                //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+                //      CODE NOTE USED CODE NOT USED 
+                //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
                 var blankWine = new WineAddViewModel
                 {
@@ -137,8 +146,11 @@ namespace WineEntryProposal.Controllers
 
                 };
 
+                //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+                //      CODE NOTE USED CODE NOT USED 
+                //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-
+                
                 return RedirectToAction("Index", "Wine", wine);
 
                 //put this in the view somewhere but where?
@@ -162,15 +174,15 @@ namespace WineEntryProposal.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed (int id) 
-        {                                              
+        public ActionResult DeleteConfirmed(int id)
+        {
             using (var WinedB = new WineContext())
-            
+
             {
-                Wine wineToDelete = WinedB.Wines.Include(w=>w.TheVarietal).Single(w=>w.Id==id);
+                Wine wineToDelete = WinedB.Wines.Include(w => w.TheVarietal).Single(w => w.Id == id);
                 WinedB.Wines.Remove(wineToDelete);
                 WinedB.SaveChanges();
-                return RedirectToAction("Index");               
+                return RedirectToAction("Index");
             };
         }
 
@@ -183,7 +195,7 @@ namespace WineEntryProposal.Controllers
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 }
-                Wine wine = winedB.Wines.Include(w=>w.TheVarietal).Single(w=>w.Id==id);
+                Wine wine = winedB.Wines.Include(w => w.TheVarietal).Single(w => w.Id == id);
                 if (wine == null)
                 {
                     return HttpNotFound();
@@ -193,10 +205,11 @@ namespace WineEntryProposal.Controllers
                 {
                     id = wine.Id,
                     Name = wine.Name,
-                    Varietal = new VarietalModel 
-                    {  GrapeFam = wine.TheVarietal.grapeFam,
-                       VarietalName = wine.TheVarietal.Name,
-                       VarietalpictureUrl = wine.TheVarietal.pictureUrl
+                    Varietal = new VarietalModel
+                    {
+                        GrapeFam = wine.TheVarietal.grapeFam,
+                        VarietalName = wine.TheVarietal.Name,
+                        VarietalpictureUrl = wine.TheVarietal.pictureUrl
                     },
                     AVA = wine.AVA,
                     ABV = wine.ABV,
@@ -206,7 +219,7 @@ namespace WineEntryProposal.Controllers
                     Winetype = wine.TheWineType,
                     TTBWineClass = wine.TheTTBWineClass
 
-                 };
+                };
 
                 return View("DeleteWine", wineDeleteVm);
             }
@@ -215,41 +228,41 @@ namespace WineEntryProposal.Controllers
 
     }
 
-  
-        //    // *************************************************************
-        //    // ******      REMOVE A WINE VIEW MODEL POST *******************
-        //    // *************************************************************
 
-        //    //    [HttpPost, ActionName("Delete")]
-        //    //    [ValidateAntiForgeryToken]
+    //    // *************************************************************
+    //    // ******      REMOVE A WINE VIEW MODEL POST *******************
+    //    // *************************************************************
 
-        //    //    public async Task<IActionResult> DeleteConfirmed(int id)
-        //    //    {
-        //    //        var student = await _context.Wines
-        //    //            .AsNoTracking()
-        //    //            .SingleOrDefaultAsync(m => m.ID == id);
-        //    //        if (student == null)
-        //    //        {
-        //    //            return RedirectToAction("Index");
-        //    //        }
+    //    //    [HttpPost, ActionName("Delete")]
+    //    //    [ValidateAntiForgeryToken]
 
-        //    //        try
-        //    //        {
-        //    //            context.Wines.Remove(Wine);
-        //    //            await context.SaveChangesAsync();
-        //    //            return RedirectToAction("Index");
-        //    //        }
-        //    //        catch (DbUpdateException /* ex */)
-        //    //        {
-        //    //            //Log the error (uncomment ex variable name and write a log.)
-        //    //            return RedirectToAction("Delete", new { id = id, saveChangesError = true });
-        //    //        }
-        //    //    }
+    //    //    public async Task<IActionResult> DeleteConfirmed(int id)
+    //    //    {
+    //    //        var student = await _context.Wines
+    //    //            .AsNoTracking()
+    //    //            .SingleOrDefaultAsync(m => m.ID == id);
+    //    //        if (student == null)
+    //    //        {
+    //    //            return RedirectToAction("Index");
+    //    //        }
 
-        //    //    public interface IActionResult
-        //    //    {
-        //    //    }
-        //    //}
+    //    //        try
+    //    //        {
+    //    //            context.Wines.Remove(Wine);
+    //    //            await context.SaveChangesAsync();
+    //    //            return RedirectToAction("Index");
+    //    //        }
+    //    //        catch (DbUpdateException /* ex */)
+    //    //        {
+    //    //            //Log the error (uncomment ex variable name and write a log.)
+    //    //            return RedirectToAction("Delete", new { id = id, saveChangesError = true });
+    //    //        }
+    //    //    }
 
-    }
+    //    //    public interface IActionResult
+    //    //    {
+    //    //    }
+    //    //}
+
+}
 

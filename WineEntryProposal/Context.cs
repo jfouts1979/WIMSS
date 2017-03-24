@@ -1,15 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Data.Entity;
 using WineEntryProposal.Models;
 using System.Data.Entity.Validation;
 
 namespace WineEntryProposal
 {
-
 
     public class MyDatabaseInitializer : DropCreateDatabaseIfModelChanges<WineContext>
     {
