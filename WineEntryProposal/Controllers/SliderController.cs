@@ -13,7 +13,7 @@ namespace WineEntryProposal.Controllers
         public ActionResult Index()
         {
 
-            using (OurDbContext db = new OurDbContext())
+            using (MediaContext db = new MediaContext())
             {
 
                 return View(db.gallery.ToList());
@@ -39,6 +39,7 @@ namespace WineEntryProposal.Controllers
                 // This forces user to upload images of 
                 // specified resolution.
                 System.Drawing.Image img = System.Drawing.Image.FromStream(ImagePath.InputStream);
+                                
                 if ((img.Width != 800 || img.Height != 356))
                 {
                     ModelState.AddModelError("", "Image resolution must be 800 x 356 pixels.");
@@ -48,7 +49,7 @@ namespace WineEntryProposal.Controllers
                 string pic = System.IO.Path.GetFileName(ImagePath.FileName);
                 string path = System.IO.Path.Combine(Server.MapPath("~/Content/Images/"), pic);
                 ImagePath.SaveAs(path);
-                using (OurDbContext db = new OurDbContext())
+                using (MediaContext db = new MediaContext())
                 {
                     Gallery gallery = new Gallery { ImagePath = "~/Content/Images/" + pic };
                     db.gallery.Add(gallery);
@@ -62,7 +63,7 @@ namespace WineEntryProposal.Controllers
 
         public ActionResult DeleteImages()
         {
-            using (OurDbContext db = new OurDbContext())
+            using (MediaContext db = new MediaContext())
             {
                 return View(db.gallery.ToList());
             }
@@ -72,7 +73,7 @@ namespace WineEntryProposal.Controllers
         [HttpPost]
         public ActionResult DeleteImages(IEnumerable<int> ImagesIDs)
         {
-            using (OurDbContext db = new OurDbContext())
+            using (MediaContext db = new MediaContext())
             {
                 foreach (var id in ImagesIDs)
                 {

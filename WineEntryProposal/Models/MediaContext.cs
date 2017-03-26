@@ -6,7 +6,7 @@ using System.Web;
 
 namespace WineEntryProposal.Models
 {
-    public class OurDbContext : DbContext
+    public class MediaContext : DbContext
     {
     public DbSet<Gallery> gallery { get; set; }
     }

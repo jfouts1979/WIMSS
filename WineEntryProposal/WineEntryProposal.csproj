@@ -172,7 +172,7 @@
     </Compile>
     <Compile Include="Models\EnumUtils.cs" />
     <Compile Include="Models\Wine.cs" />
-    <Compile Include="Models\OurDbContext.cs" />
+    <Compile Include="Models\MediaContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
