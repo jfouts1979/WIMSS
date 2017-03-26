@@ -40,7 +40,7 @@ namespace WineEntryProposal.Controllers
                 // specified resolution.
                 System.Drawing.Image img = System.Drawing.Image.FromStream(ImagePath.InputStream);
                                 
-                if ((img.Width != 800 || img.Height != 356))
+                if ((img.Width != 800 && img.Height != 356))
                 {
                     ModelState.AddModelError("", "Image resolution must be 800 x 356 pixels.");
                     return View();
