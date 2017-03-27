@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using System.Web.Mvc;
+using WineEntryProposal.Models;
+
 
 namespace WineEntryProposal.Controllers
 {
@@ -10,7 +9,12 @@ namespace WineEntryProposal.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+
+            using (MediaContext db = new MediaContext())
+            {
+                return View(db.gallery.ToList());
+            }
+            //return View();           
         }
 
         public ActionResult Customers()

@@ -5,10 +5,24 @@
     <li><img src="@Url.Content(image.ImagePath)" /></li>
 }
 </ul>
+
+    <div class="outside">
+        <h3>Current Wine List</h3>
+        <p><span id="slider-prev"></span> | <span id="slider-next"></span></p>
+    </div>
 </div>
 <script>
     $(document).ready(function () {
-        $('#slider').bxSlider();
+        $('#slider').bxSlider(
+        //Added this code (object) to get navigation buttons and div to appear
+        //outside of slider.
+        {
+            nextSelector: '#slider-next',
+            prevSelector: '#slider-prev',
+            nextText: 'Next Wine Wine →',
+            prevText: '← Last Wine'
+        });
+        //Before, the code ended with bxSlider();
         $('.bx-wrapper').width('70%');
     });
 </script>
