@@ -61,14 +61,16 @@
                     </div>
 
                     <div>
-                        TTBClassType:
-                        @Html.EnumDropDownListFor(x => x.TheWineClass, "Enter Wine Type",
-                        new { @class = "form-control" })
+                        
+                        TTBClassType:<br />                        
+                        EnumExtensions.EnumDropDownListFor2(Html,x => x.TheWineClass)
+
                     </div>
 
                     <div>           
 
                         Varietal:
+ 
                         @Html.DropDownListFor(m => m.TheWine.Varietal.VarietalId,
                         Model.VarietalsToChooseFrom.Select(x => new SelectListItem()
                         {
@@ -78,19 +80,10 @@
 
                      </div>   
 
-                        @*     new SelectList(Model.VehicleModels.OrderBy(x => x.Name), "Id", "Name"),
-                            "-- Select a model --" *@
-
-                        @*   @Html.DropDownListFor(m => m.SelectedVarietalId,
-                            Model.VarietalsToChooseFrom.Select(x => new SelectListItem()
-                        *@
-
                         <br />
 
                         <div>
                             <input type="submit" value="AddWine" class="btn-primary" />
-                        
-                            @*<input type="submit" value="View Inventory" class="btn-primary" />*@                        
                         </div>
 
 

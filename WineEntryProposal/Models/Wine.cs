@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
@@ -185,6 +186,8 @@ namespace WineEntryProposal.Models
 
 
         //[Description(&quot; Grape Wine & quot;)]GrapeWine,                  // The lay person's idea of still wine - Merlot
+
+        [Description("Grape Wine")]
         GrapeWine,
         SparklingGrapeWine,         //  
         CarbonatedGrapeWine,
