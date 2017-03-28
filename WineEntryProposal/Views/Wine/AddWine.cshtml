@@ -17,7 +17,7 @@
 
 <div class="container">
     <div class="panel panel-primary">
-        <div class="panel-heading">W.I.M.S. - Add A New Wine To Inventory:</div>
+        <div class="panel-heading" >W.I.M.S. - Add A New Wine To Inventory:</div>
         <div class="panel-body">
 
             @using (Html.BeginForm("AddWine2", "wine"))
@@ -28,6 +28,7 @@
                     <h4>Wine Inventory Management System</h4>
 
                     <div>
+                        
                         Name:
                         @Html.EditorFor(m => m.TheWine.Name,
                         new { htmlAttributes = new { @class = "form-control" } })
@@ -37,38 +38,42 @@
                     </div>
 
                     <div>
+                        <br />  
                         Bottle Volume (Range:  0.0 to 1000.0):
                         @Html.EditorFor(v => v.TheWine.btlVol,
                         new { htmlAttributes = new { @class = "form-control" } })
 
                         @*As of MVC 5.1, HTML attributes can be passed to the
-            EditorTemplate using the above syntax*@
+                        EditorTemplate using the above syntax*@
                     </div>
 
                     <div>
+                        <br />  
                         Bottle Volume Unit Of Measure (e.g. ml):
                         @Html.EditorFor(uom => uom.TheWine.btlVolUOM,
                         new { htmlAttributes = new { @class = "form-control" } })
 
                         @*As of MVC 5.1, HTML attributes can be passed to the
-            EditorTemplate using the above syntax*@
+                        EditorTemplate using the above syntax*@
                     </div>
 
                     <div>
+                        <br />  
                         WineType:
                         @Html.EnumDropDownListFor(x => x.TheWine.WineType, "Enter Wine Type",
                         new { @class = "form-control" })
                     </div>
 
                     <div>
-                        
+                        <br />   
                         TTBClassType:<br />                        
-                        EnumExtensions.EnumDropDownListFor2(Html,x => x.TheWineClass)
+                        @*@Html.EditorFor(@EnumExtensions.EnumDropDownListFor2(Html,x => x.TheWineClass), new { @class = "form-control"})*@                       
+                        @EnumExtensions.EnumDropDownListFor2(Html,x => x.TheWineClass)
 
                     </div>
 
                     <div>           
-
+                        <br />
                         Varietal:
  
                         @Html.DropDownListFor(m => m.TheWine.Varietal.VarietalId,
@@ -78,15 +83,12 @@
                            Value = x.Id.ToString()
                            }), "Select Varietal", new { @class = "form-control" })
 
-                     </div>   
-
-                        <br />
-
-                        <div>
-                            <input type="submit" value="AddWine" class="btn-primary" />
-                        </div>
-
-
+                     </div> 
+                     <br />
+                     <div>
+                          <input type="submit" value="AddWine" class="btn-primary" />
+                     </div>
+    
                     </div>
                     }
 

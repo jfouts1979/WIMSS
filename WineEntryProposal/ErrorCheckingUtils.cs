@@ -1,16 +1,15 @@
-﻿//using System;
-//using System.Collections.Generic;
-//using System.Data.Entity.Validation;
-//using System.Linq;
-//using System.Web;
+﻿using System;
+using System.ComponentModel;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Reflection;
+using System.Web.Mvc;
+using System.Web.Mvc.Html;
 
 //namespace WineEntryProposal
 //{
 //    public class ErrorCheckingUtils
-
 //    {
-
-
 //    }
 
 // After doing a search on DbEntityValidationException - How can I easily tell what caused the error?
@@ -48,13 +47,9 @@
 
 
 //}
-using System;
-using System.ComponentModel;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Reflection;
-using System.Web.Mvc;
-using System.Web.Mvc.Html;
+//*******************************************************
+//******* Utility for adding description to Enums *******
+//*******************************************************
 
 public static class EnumExtensions 
 { 

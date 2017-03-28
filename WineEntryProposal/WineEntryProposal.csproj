@@ -156,7 +156,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\SliderController.cs" />
+    <Compile Include="Controllers\VendorController.cs" />
     <Compile Include="Models\Gallery.cs" />
     <Compile Include="Models\View Models\VarietalModel.cs" />
     <Compile Include="Models\View Models\WineAddModel.cs" />
@@ -231,10 +233,13 @@
     <Content Include="Views\Slider\AddImage.cshtml" />
     <Content Include="Views\Slider\DeleteImages.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Gallery.cshtml" />
+    <Content Include="Views\Customers\Customers.cshtml" />
+    <Content Include="Views\Vendors\Vendors.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\Data Models\" />
+    <Folder Include="Views\Vendor\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
