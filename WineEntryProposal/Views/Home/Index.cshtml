@@ -4,14 +4,20 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
+@* *************************************************************** *@
+@* Inline CSS gets preference over classes defined in a .css file  *@
+@* and the classes declared inside <style>                         *@
+@* *****************************************************************@
+
+<div style="background:transparent !important" class="jumbotron">
+    
     <h2>Wine Inventory Management System</h2>
     <p class="lead">A Solution For Ever Changing Needs In the Industries Administered By Local, State, and Federal ATC, ABC, Liquor Control Boards, and the Federal Tax and Trade Bureau (TTB). </p>
     <p>@*<a href="http://www.in.gov/atc" class="btn btn-primary btn-lg">Indiana ATC &raquo;</a>
        <a href="https://www.ttb.gov/wine/wine-faq.shtml" class="btn btn-primary btn-lg">TTB Wine FAQ &raquo;</a>
-       <a href="https://www.indianawines.org/" class="btn btn-primary btn-lg">Indiana Wines</a>  
+       <a href="https://www.indianawines.org/" class="btn btn-primary btn-lg">Indiana Wines</a>
        <a href="https://www.fda.gov/Food/GuidanceRegulation/FoodFacilityRegistration/ucm2006832.htm" class="btn btn-primary btn-lg">FDA Food Registration</a>
-       <a href="http://www.in.gov/dor/5162.htm" class="btn btn-primary btn-lg">Pay Indiana Excise</a>*@ 
+       <a href="http://www.in.gov/dor/5162.htm" class="btn btn-primary btn-lg">Pay Indiana Excise</a>*@
      @*<a href="http://~Index" class="btn btn-primary btn-lg">Add A Wine</a> </p>
       routes.MapRoute(
       "Default", // Route name
