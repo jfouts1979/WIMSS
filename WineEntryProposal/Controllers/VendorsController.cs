@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace WineEntryProposal.Controllers
 {
-    public class VendorController : Controller
+    public class VendorsController : Controller
     {
         // GET: Vendor
         public ActionResult Index()

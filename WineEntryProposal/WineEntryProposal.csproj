@@ -156,9 +156,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\SliderController.cs" />
-    <Compile Include="Controllers\VendorController.cs" />
+    <Compile Include="Controllers\VendorsController.cs" />
     <Compile Include="Models\Gallery.cs" />
     <Compile Include="Models\View Models\VarietalModel.cs" />
     <Compile Include="Models\View Models\WineAddModel.cs" />
@@ -178,6 +178,34 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\assets\css\style.css" />
+    <Content Include="Content\assets\ico\apple-touch-icon-114-precomposed.png" />
+    <Content Include="Content\assets\ico\apple-touch-icon-144-precomposed.png" />
+    <Content Include="Content\assets\ico\apple-touch-icon-57-precomposed.png" />
+    <Content Include="Content\assets\ico\apple-touch-icon-72-precomposed.png" />
+    <Content Include="Content\assets\ico\bootstrap\css\bootstrap.css" />
+    <Content Include="Content\assets\ico\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Content\assets\ico\bootstrap\img\glyphicons-halflings-white.png" />
+    <Content Include="Content\assets\ico\bootstrap\img\glyphicons-halflings.png" />
+    <Content Include="Content\assets\ico\bootstrap\js\bootstrap.js" />
+    <Content Include="Content\assets\ico\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Content\assets\ico\favicon.ico" />
+    <Content Include="Content\assets\img\backgrounds\1.jpg" />
+    <Content Include="Content\assets\img\backgrounds\2.jpg" />
+    <Content Include="Content\assets\img\backgrounds\3.jpg" />
+    <Content Include="Content\assets\img\pattern-2.png" />
+    <Content Include="Content\assets\img\pattern-3.png" />
+    <Content Include="Content\assets\img\pattern.jpg" />
+    <Content Include="Content\assets\img\social-icons\dribbble.png" />
+    <Content Include="Content\assets\img\social-icons\facebook.png" />
+    <Content Include="Content\assets\img\social-icons\flickr.png" />
+    <Content Include="Content\assets\img\social-icons\googleplus.png" />
+    <Content Include="Content\assets\img\social-icons\pinterest.png" />
+    <Content Include="Content\assets\img\social-icons\twitter.png" />
+    <Content Include="Content\assets\js\jquery-1.8.2.min.js" />
+    <Content Include="Content\assets\js\jquery.backstretch.min.js" />
+    <Content Include="Content\assets\js\jquery.countdown.js" />
+    <Content Include="Content\assets\js\scripts.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\bx_loader.gif" />
@@ -195,6 +223,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\assets\sendmail.php" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -233,13 +262,13 @@
     <Content Include="Views\Slider\AddImage.cshtml" />
     <Content Include="Views\Slider\DeleteImages.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Gallery.cshtml" />
-    <Content Include="Views\Customers\Customers.cshtml" />
-    <Content Include="Views\Vendors\Vendors.cshtml" />
+    <Content Include="Views\Customers\Index.cshtml" />
+    <Content Include="Views\Vendors\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\assets\bootstrap\" />
     <Folder Include="Models\Data Models\" />
-    <Folder Include="Views\Vendor\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
