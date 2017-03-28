@@ -1,3 +1,4 @@
+/// <reference path="scripts.js" />
 
 jQuery(document).ready(function() {
 
