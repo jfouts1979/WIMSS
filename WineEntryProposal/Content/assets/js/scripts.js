@@ -6,9 +6,9 @@ jQuery(document).ready(function() {
         Background slideshow
     */
     $('.coming-soon').backstretch([
-      "assets/img/backgrounds/1.jpg"
-    , "assets/img/backgrounds/2.jpg"
-    , "assets/img/backgrounds/3.jpg"
+      "~Content/assets/img/backgrounds/1.jpg"
+    , "~Content/assets/img/backgrounds/2.jpg"
+    , "~Content/assets/img/backgrounds/3.jpg"
     ], {duration: 3000, fade: 750});
 
     /*
