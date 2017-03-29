@@ -1,4 +1,13 @@
 ﻿<div>
+
+    <a href="@Url.Action("AddWine", null, new { area = string.Empty, controller = "Wine" }, Request.Url.Scheme)" class="btn btn-primary btn-lg">
+        <span>Add A New Wine</span>
+    </a>
+
+    <a href="@Url.Action("Index", null, new { area = string.Empty, controller = "Wine" }, Request.Url.Scheme)" class="btn btn-primary btn-lg">
+        <span>View Inventory</span>
+    </a>
+
 <ul id="slider">
 @foreach (var image in Model)
 {
@@ -6,10 +15,10 @@
 }
 </ul>
 
-    <div class="outside">
+    @*<div class="outside">*@
         <h3>Current Wine List</h3>
         <p><span id="slider-prev"></span> | <span id="slider-next"></span></p>
-    </div>
+    @*</div>*@
 </div>
 <script>
     $(document).ready(function () {
