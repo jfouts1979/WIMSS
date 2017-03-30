@@ -142,9 +142,11 @@ namespace WineEntryProposal.Models
     public enum GrapeFamType  // Data Model
     {
         //To Describe Different Families of Grapes
-        
+        [Description("Vitis Vinifera")]
         VitisVinifera, //European Family of Grapes [Chardonnay, Merlot, Cab. Sav. etc...]
+        [Description("Vitis Riparia")]
         VitisRiparia,  //Rootstock common varieties
+        [Description("Vitis Labrusca")]
         VitisLabrusca  //Concord, Niagara, Catawba, Notably 'foxy' flavored grapes
     };
 
@@ -189,13 +191,21 @@ namespace WineEntryProposal.Models
 
         [Description("Grape Wine")]
         GrapeWine,
+        [Description("Sparkling Grape Wine")]
         SparklingGrapeWine,         //  
+        [Description("Carbonated Grape Wine")]
         CarbonatedGrapeWine,
+        [Description("Citrus Wine")]
         CitrusWine,                 // Citrus fruit wine (Grapefruits, oranges, etc.)
+        [Description("Fruit Wine")]
         FruitWine,                  // Non-citrus Non-fruit Non-grape wine.
+        [Description("Wine From Ag Products")]
         WineFromAgProducts,
+        [Description("Aperitif Wine")]
         AperitifWine,
+        [Description("Imitation Sustandard Wine")]
         ImitationSubstandardWine,
+        [Description("Retsina Wine")]
         RetsinaWine                 // Wine made from resin
 
         // For purpose of project and until further investigation concludes it shall be assumed that no other classes of wines will be approved by the Tax and Trade Bureau to appear in the Code of Federal Regulations (CFR) - United States Code.
