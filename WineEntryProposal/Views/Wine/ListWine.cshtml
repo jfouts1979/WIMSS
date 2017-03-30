@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width" />
     <title>ListWine</title>
 </head>
-<body>
+<body bgcolor="d5bde4">
     <p>
         @Html.ActionLink("Add A New Wine", "AddWine")
     </p>
@@ -73,31 +73,31 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
-            <td>
+            <td align="center">
                 @Html.DisplayFor(modelItem => item.TheWineType)
             </td>
-            <td>
+            <td align="center">
                 @Html.DisplayFor(modelItem => item.AVA)
             </td>
-            <td>
+            <td align="center">
                 @Html.DisplayFor(modelItem => item.ABV)
             </td>
-            <td>
+            <td align="center">
                 @Html.DisplayFor(modelItem => item.fluidOz)
             </td>
-            <td>
+            <td align="center">
                 @Html.DisplayFor(modelItem => item.btlVol)
             </td>
-            <td>
+            <td align="center">
                 @Html.DisplayFor(modelItem => item.btlVolUOM)
             </td>
-            <td>
+            <td align="center">
                 @Html.DisplayFor(modelItem => item.TheTTBWineClass)
             </td>
-            <td>
+            <td align="center">
                 @Html.DisplayFor(modelItem => item.TheVarietal.Name)
             </td>
-            <td>
+            <td align="center" valign="middle">
 
                  @*****************************************************@
                  @**** List Varietal Url From Database In Table    ****@
@@ -106,10 +106,10 @@
                 <img src="@item.TheVarietal.pictureUrl" alt="No Grape Image" height="150" class="img-rounded" align="middle"/>
 
             </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            <td align="center">
+                @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |*@
+                @*@Html.ActionLink("Details", "Details", new { id = item.Id })*@ 
+                @Html.ActionLink("<<Delete>>", "Delete", new { id = item.Id })
 
             </td>
         </tr>

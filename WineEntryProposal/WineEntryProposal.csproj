@@ -218,6 +218,7 @@
     <Content Include="Content\Images\Tester5.jpg" />
     <Content Include="Content\Images\wine.ico" />
     <Content Include="Content\jquery.bxslider.css" />
+    <Content Include="Content\LayoutImages\MySteubenGrapesForLayout.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

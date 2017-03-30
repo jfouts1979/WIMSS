@@ -7,6 +7,9 @@
     <a href="@Url.Action("Index", null, new { area = string.Empty, controller = "Wine" }, Request.Url.Scheme)" class="btn btn-primary btn-lg">
         <span>View Inventory</span>
     </a>
+    <br />
+    <br />
+
 
 <ul id="slider">
 @foreach (var image in Model)
@@ -32,6 +35,6 @@
             prevText: '← Last Wine'
         });
         //Before, the code ended with bxSlider();
-        $('.bx-wrapper').width('70%');
+        $('.bx-wrapper').width('60%');
     });
 </script>
