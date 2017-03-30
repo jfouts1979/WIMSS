@@ -210,6 +210,12 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\bx_loader.gif" />
     <Content Include="Content\Images\controls.png" />
+    <Content Include="Content\Images\Tester-MySteubenGrapes_800x365.jpg" />
+    <Content Include="Content\Images\Tester1-SeaBiscuit_800x365.jpg" />
+    <Content Include="Content\Images\Tester2-JohnsGrapes12_-_Copy_800x365.jpg" />
+    <Content Include="Content\Images\Tester3-JohnsGrapes8_-_Copy_800x365.jpg" />
+    <Content Include="Content\Images\Tester4-Miguels_Pizza_800x365.jpg" />
+    <Content Include="Content\Images\Tester5.jpg" />
     <Content Include="Content\Images\wine.ico" />
     <Content Include="Content\jquery.bxslider.css" />
     <Content Include="favicon.ico" />
