@@ -10,4 +10,10 @@ namespace WineEntryProposal.Models
         public int ID { get; set; }
         public string ImagePath { get; set; }
     }
+
+    public class GallerySeed
+    {
+        public int ID { get; set; }
+        public string ImagePathSeed { get; set; }
+    }
 }

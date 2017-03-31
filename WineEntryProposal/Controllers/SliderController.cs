@@ -48,6 +48,7 @@ namespace WineEntryProposal.Controllers
                     ModelState.AddModelError("", "Image resolution must be 800 x 356 pixels.");
                     return View();
                 }
+
                 // Upload pic
                 string pic = System.IO.Path.GetFileName(ImagePath.FileName);
                 string path = System.IO.Path.Combine(Server.MapPath("~/Content/Images/"), pic);

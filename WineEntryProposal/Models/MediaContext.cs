@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
 using System.Web;
+
 
 namespace WineEntryProposal.Models
 {
@@ -26,20 +25,73 @@ namespace WineEntryProposal.Models
             // *******************************************
 
             Gallery gallery = new Gallery
+
+
             {
-               //need to add code here to populate slider...
+                //need to add code here to populate slider...
+
+
+
             };
 
 
+
+            context.gallery.Add(gallery);
+            context.SaveChanges();
+            base.Seed(context);
+
         }
-        
-        //*** this code is not correct ***
-        //*** need to correct this code possibly to seed database with images
-        //*** may not be necessary *** - should not be.
-        //context.gallery.Add(gallery);
-        //    context.SaveChanges();
-        //    base.Seed(context);
+
+        //*** This Portion of Code Needs To Be Modified  *************
+        //*** Will Be Used To Seed The Database With Slider Images ***
+        //*** On a Pre-populated basis. ******************************
+
+        //*** The GetImage Method Will Be Used to Load Images Into ****
+        //*** A Byte Array File.  The Code Is Not Yet Complete ********
+
+        // public byte[] GetImage (string filePath) 
+
+        // {
+        // var path = Path.Combine(Server.MapPath("~/Content/Files/"), file.FileName);
+        // Image = File.ReadAllBytes("Tester1 - SeaBiscuit_800x365.jpg");
+        // fileName = "Tester1 - SeaBiscuit_800x365.jpg";
+        //          return null;
+        // }
+
+        //*************************************************************
+        //*************************************************************
+
+
+
+
+        // public ActionResult Index()
+        // {
+        //     var path = Server.MapPath("~/Content/Files/");
+        //
+        //     var dir = new DirectoryInfo(path);
+        //
+        //     var files = dir.EnumerateFiles().Select(f => f.Name);
+        //
+        //     return View(files);
+        // }
+
+        //[HttpPost]
+        //public ActionResult Index(HttpPostedFileBase file)
+        //{
+        //    var path = Path.Combine(Server.MapPath("~/Content/Files/"), file.FileName);
+
+        //    var data = new byte[file.ContentLength];
+        //    file.InputStream.Read(data, 0, file.ContentLength);
+
+        //    using (var sw = new FileStream(path, FileMode.Create))
+        //    {
+        //        sw.Write(data, 0, data.Length);
+        //    }
+
+        //    return RedirectToAction("Index");
     }
+
+
 
     public class MediaContext : DbContext
     {

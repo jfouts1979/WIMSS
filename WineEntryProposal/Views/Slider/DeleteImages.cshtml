@@ -2,7 +2,7 @@
     ViewBag.Title = "DeleteImages";
 }
 
-<h2>AddImage</h2>
+<h2>Select Image(s) To Delete:</h2>
 
 @using (Html.BeginForm("DeleteImages", "Slider", FormMethod.Post))
 
@@ -23,8 +23,10 @@
 
 
 </table>
+<br />
 <input type="submit" value="Delete Selected Images" />
 }
+<br />  
 <p>@Html.ActionLink("Slider Home", "Index", "Slider")</p>
 
 
