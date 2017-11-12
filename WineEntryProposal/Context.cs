@@ -3,9 +3,49 @@ using System.Linq;
 using System.Data.Entity;
 using WineEntryProposal.Models;
 using System.Data.Entity.Validation;
+using Microsoft.AspNet.Identity;
+using Microsoft.Owin.Security;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.Owin;
+using Microsoft.Owin.Security.Cookies;
+using Owin;
 
 namespace WineEntryProposal
 {
+
+    public class AppUser : IdentityUser
+    {
+        //add your custom properties which have not included in IdentityUser before
+        public string MyExtraProperty { get; set; }
+    }
+    public class AppRole : IdentityRole
+    {
+        public AppRole() : base() { }
+        public AppRole(string name) : base(name) { }
+        // extra properties here 
+    }
+    public class AppUserManager : UserManager<AppUser>
+    {
+        public AppUserManager(IUserStore<AppUser> store)
+            : base(store)
+        {
+        }
+
+        // this method is called by Owin therefore best place to configure your User Manager
+        public static AppUserManager Create(
+            IdentityFactoryOptions<AppUserManager> options, IOwinContext context)
+        {
+            var manager = new AppUserManager(
+                new UserStore<AppUser>(context.Get<WineContext>()));
+
+            // optionally configure your manager
+            // ...
+
+            return manager;
+        }
+    }
+
     // ********************************************
     // *** Drop and Create the Database Only ******
     // *** If the Model Changes *******************
@@ -127,7 +167,7 @@ namespace WineEntryProposal
  
  }
 
-    public class WineContext : DbContext
+    public class WineContext : IdentityDbContext<AppUser>
     {
     
         // ************************************************

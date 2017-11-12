@@ -1,6 +1,13 @@
 ﻿using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using Microsoft.AspNet.Identity;
+using Microsoft.Owin.Security;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.Owin;
+using Microsoft.Owin.Security.Cookies;
+using Owin;
 
 
 namespace WineEntryProposal.Models
@@ -93,7 +100,7 @@ namespace WineEntryProposal.Models
 
 
 
-    public class MediaContext : DbContext
+    public class MediaContext : IdentityDbContext<AppUser>
     {
         public DbSet<Gallery> gallery { get; set; }
     }

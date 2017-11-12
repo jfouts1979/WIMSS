@@ -182,13 +182,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\SliderController.cs" />
     <Compile Include="Controllers\VendorsController.cs" />
     <Compile Include="AppUser.cs" />
     <Compile Include="Models\Gallery.cs" />
+    <Compile Include="Models\View Models\LoginViewModel.cs" />
     <Compile Include="Models\View Models\VarietalModel.cs" />
     <Compile Include="Models\View Models\WineAddModel.cs" />
     <Compile Include="Models\View Models\WineDeleteModel.cs" />
@@ -310,6 +313,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Content\assets\bootstrap\" />
     <Folder Include="Models\Data Models\" />
+    <Folder Include="Views\Login\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
