@@ -187,6 +187,7 @@
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\SliderController.cs" />
     <Compile Include="Controllers\VendorsController.cs" />
+    <Compile Include="AppUser.cs" />
     <Compile Include="Models\Gallery.cs" />
     <Compile Include="Models\View Models\VarietalModel.cs" />
     <Compile Include="Models\View Models\WineAddModel.cs" />
