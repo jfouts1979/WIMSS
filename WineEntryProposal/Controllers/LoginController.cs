@@ -29,7 +29,7 @@ namespace WineEntryProposal.Controllers
             if (ModelState.IsValid)
             {
                 var userManager = HttpContext.GetOwinContext().GetUserManager<AppUserManager>();
-                var authManager = HttpContext.GetOwinContext().Authentication;
+                var AuthManager = HttpContext.GetOwinContext().Authentication;
 
                 AppUser user = userManager.Find(login.UserName, login.Password);
                 if (user != null)
@@ -44,18 +44,20 @@ namespace WineEntryProposal.Controllers
             ModelState.AddModelError("", "Invalid username or password");
             return View(login);
         }
+
+        public ActionResult CreateRole(string roleName)
+        {
+            var roleManager = HttpContext.GetOwinContext().GetUserManager<RoleManager<AppRole>>();
+
+            if (!roleManager.RoleExists(roleName))
+                roleManager.Create(new AppRole(roleName));
+            // rest of code
+        }
     }
 
-    public ActionResult CreateRole(string roleName)
-    {
-        var roleManager = HttpContext.GetOwinContext().GetUserManager<RoleManager<AppRole>>();
 
-        if (!roleManager.RoleExists(roleName))
-            roleManager.Create(new AppRole(roleName));
-        // rest of code
-    }
 
-    // UserManager.AddToRole(UserManager.FindByName("username").Id, "roleName");
+    //UserManager.AddToRole(UserManager.FindByName("username").Id, "roleName");
     //By using Authorize you could guard your actions or controllers:
     //[Authorize]
     //public ActionResult MySecretAction() { }
