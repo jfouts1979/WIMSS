@@ -5,6 +5,7 @@ using WineEntryProposal.Models;
 
 namespace WineEntryProposal.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         public ActionResult Index()
