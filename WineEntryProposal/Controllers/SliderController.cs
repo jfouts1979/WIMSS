@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using WineEntryProposal.Models;
 
 namespace WineEntryProposal.Controllers
-{
+{   [Authorize]
     public class SliderController : Controller
     {
         // GET: Slider

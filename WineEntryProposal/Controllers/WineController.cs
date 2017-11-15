@@ -7,7 +7,7 @@ using WineEntryProposal.Models;
 using WineEntryProposal.Models.ViewModels;
 
 namespace WineEntryProposal.Controllers
-{
+{   [Authorize]
     public class WineController : Controller
     {
         // *********************************************************    

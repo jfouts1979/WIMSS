@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace WineEntryProposal.Controllers
 {
+    [Authorize]
     public class VendorsController : Controller
     {
         // GET: Vendor
