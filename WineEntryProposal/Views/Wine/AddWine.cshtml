@@ -36,6 +36,12 @@
                         @*As of MVC 5.1, HTML attributes can be passed to the
                             EditorTemplate using the above syntax*@
                     </div>
+                    
+                    <div>
+                        Wine Description:
+                        @Html.EditorFor(m => m.TheWine.Description,
+                            new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
 
                     <div>
                         <br />  
@@ -43,8 +49,6 @@
                         @Html.EditorFor(v => v.TheWine.btlVol,
                         new { htmlAttributes = new { @class = "form-control" } })
 
-                        @*As of MVC 5.1, HTML attributes can be passed to the
-                        EditorTemplate using the above syntax*@
                     </div>
 
                     <div>
@@ -53,8 +57,6 @@
                         @Html.EditorFor(uom => uom.TheWine.btlVolUOM,
                         new { htmlAttributes = new { @class = "form-control" } })
 
-                        @*As of MVC 5.1, HTML attributes can be passed to the
-                        EditorTemplate using the above syntax*@
                     </div>
 
                     <div>
@@ -66,10 +68,9 @@
 
                     <div>
                         <br />   
-                        TTBClassType:<br />                        
-                        @*@Html.EditorFor(@EnumExtensions.EnumDropDownListFor2(Html,x => x.TheWineClass), new { @class = "form-control"})*@                       
+                        TTBClassType:
+                        <br />                        
                         @EnumExtensions.EnumDropDownListFor2(Html,x => x.TheWineClass, new { @class = "form-control" })
-
                     </div>
 
                     <div>           
@@ -83,8 +84,15 @@
                            Value = x.Id.ToString()
                            }), "Select Varietal", new { @class = "form-control" })
 
-                     </div> 
-                     <br />
+                    </div> 
+                    <div>           
+                        <br />
+                        Winery URL:
+                        <br />
+                        @Html.EditorFor(m => m.TheWine.WineryURL, "Enter Winery URL", 
+                        new {@class = "form-control"})
+                    </div> 
+                    <br />
                      <div>
                           <input type="submit" value="AddWine" class="btn-primary" />
                      </div>

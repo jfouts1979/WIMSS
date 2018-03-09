@@ -91,6 +91,12 @@ namespace WineEntryProposal.Models
         [Required]
         public TTBWineClass TheTTBWineClass { get; set; }
 
+        [StringLength(256)]
+        public string WineryURL { get; set; }
+
+        [StringLength(256)]
+        public string Description { get; set; }
+
 
     }
 
@@ -211,7 +217,7 @@ namespace WineEntryProposal.Models
         // For purpose of project and until further investigation concludes it shall be assumed that no other classes of wines will be approved by the Tax and Trade Bureau to appear in the Code of Federal Regulations (CFR) - United States Code.
     }
 
-    public static class Repository
+        public static class Repository
     { 
     
         public static List<GrapeVarietal> GetAllGrapeVarietals()

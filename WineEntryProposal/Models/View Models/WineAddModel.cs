@@ -14,6 +14,7 @@ namespace WineEntryProposal.Models.ViewModels
         public bool? ShowSuccessMsg { get; set; }
         public TTBWineClass TheWineClass { get; set; }
         public int SelectedVarietalId {get ; set; }
+       
 
     }
 

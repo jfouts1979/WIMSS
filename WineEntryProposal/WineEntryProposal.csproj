@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -178,6 +179,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\assets\bootstrap\css\bootstrap.css" />
     <Content Include="Content\assets\css\style.css" />
     <Content Include="Content\assets\ico\apple-touch-icon-114-precomposed.png" />
     <Content Include="Content\assets\ico\apple-touch-icon-144-precomposed.png" />
@@ -185,8 +187,6 @@
     <Content Include="Content\assets\ico\apple-touch-icon-72-precomposed.png" />
     <Content Include="Content\assets\ico\bootstrap\css\bootstrap.css" />
     <Content Include="Content\assets\ico\bootstrap\css\bootstrap.min.css" />
-    <Content Include="Content\assets\ico\bootstrap\img\glyphicons-halflings-white.png" />
-    <Content Include="Content\assets\ico\bootstrap\img\glyphicons-halflings.png" />
     <Content Include="Content\assets\ico\bootstrap\js\bootstrap.js" />
     <Content Include="Content\assets\ico\bootstrap\js\bootstrap.min.js" />
     <Content Include="Content\assets\ico\favicon.ico" />
@@ -212,7 +212,6 @@
     <Content Include="Content\Images\controls.png" />
     <Content Include="Content\Images\Tester-MySteubenGrapes_800x365.jpg" />
     <Content Include="Content\Images\Tester1-SeaBiscuit_800x365.jpg" />
-    <Content Include="Content\Images\Tester2-JohnsGrapes12_-_Copy_800x365.jpg" />
     <Content Include="Content\Images\Tester3-JohnsGrapes8_-_Copy_800x365.jpg" />
     <Content Include="Content\Images\Tester4-Miguels_Pizza_800x365.jpg" />
     <Content Include="Content\Images\Tester5.jpg" />
@@ -224,6 +223,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Readme.md" />
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
@@ -232,7 +232,6 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\assets\sendmail.xml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -279,7 +278,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\assets\bootstrap\" />
+    <Folder Include="Content\assets\ico\bootstrap\img\" />
     <Folder Include="Models\Data Models\" />
   </ItemGroup>
   <ItemGroup>

@@ -15,6 +15,8 @@ namespace WineEntryProposal.Models.ViewModels
         [Required]
         public WineType WineType { get; set; }
 
+        public string Description { get; set; }
+
         public string AVA { get; set; }
 
         public double ABV { get; set; }
@@ -27,6 +29,11 @@ namespace WineEntryProposal.Models.ViewModels
 
         [Required]
         public VarietalModel Varietal { get; set; }
+
+        [Required]
+        public string WineryURL { get; set; }
+
+
 
     }
 }

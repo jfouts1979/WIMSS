@@ -20,49 +20,43 @@
     <table class="table table-bordered table-condensed table-hover table-striped" align="center">
 
         <tr>
-            <th> @*Intentionally Not Centering This Line*@
-            @*<th style="text-align: center">*@
-                @*@Html.DisplayNameFor(model => model.Name)*@
+            <th> 
                 Brand Name
             </th>
             <th style="text-align: center">
-                @*@Html.DisplayNameFor(model => model.TheWineType)*@
                 Wine Type
             </th>
             <th style="text-align: center">
-                @*@Html.DisplayNameFor(model => model.AVA)*@
+                Wine Description
+            </th>
+            <th style="text-align: center">
                 Viticultural Area
             </th>
             <th style="text-align: center">
-                @*@Html.DisplayNameFor(model => model.ABV)*@
                 ABV
             </th>
             <th style="text-align: center">
-                @*@Html.DisplayNameFor(model => model.fluidOz)*@
                 Fluid Oz.
             </th>
             <th style="text-align: center">
-                @*@Html.DisplayNameFor(model => model.btlVol)*@
                 Bottle Volume
             </th>
             <th style="text-align: center">
-                @*@Html.DisplayNameFor(model => model.btlVolUOM)*@
                 Bottle UOM
             </th>
             <th style="text-align: center">
-                @*@Html.DisplayNameFor(model => model.TheTTBWineClass)*@
                 TTB Class
             </th>
             <th style="text-align: center">
-                @*@Html.DisplayNameFor(model => model.TheVarietal)*@
                 Varietal Name
             </th>
             <th style="text-align: center">
-                @*@Html.DisplayNameFor(model => model.TheVarietal)*@
                 Varietal Img
             </th>
             <th style="text-align: center">
-                @*@Html.DisplayNameFor(model => model.TheVarietal)*@
+                WineryURL
+            </th>
+            <th style="text-align: center">
                 Make A Selection
             </th>
         </tr>
@@ -75,6 +69,9 @@
             </td>
             <td align="center">
                 @Html.DisplayFor(modelItem => item.TheWineType)
+            </td>
+            <td align="center">
+                @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td align="center">
                 @Html.DisplayFor(modelItem => item.AVA)
@@ -99,12 +96,15 @@
             </td>
             <td align="center" valign="middle">
 
-                 @*****************************************************@
-                 @**** List Varietal Url From Database In Table    ****@
-                 @*****************************************************@
+                @*****************************************************@
+                @**** List Varietal Url From Database In Table    ****@
+                @*****************************************************@
 
                 <img src="@item.TheVarietal.pictureUrl" alt="No Grape Image" height="150" class="img-rounded" align="middle"/>
 
+            </td>
+            <td align="center">
+                @Html.DisplayFor(modelItem => item.WineryURL)
             </td>
             <td align="center">
                 @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |*@

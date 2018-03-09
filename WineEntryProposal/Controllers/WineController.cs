@@ -120,7 +120,9 @@ namespace WineEntryProposal.Controllers
                         Name = wine.TheWine.Name,
                         TheVarietal = varietalFromDb,
                         TheWineType = wine.TheWine.WineType,
-                        TheTTBWineClass = wine.TheWineClass
+                        TheTTBWineClass = wine.TheWineClass,
+                        Description =  wine.TheWine.Description,
+                        WineryURL = wine.TheWine.WineryURL
 
                     };
 
