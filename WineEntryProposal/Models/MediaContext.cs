@@ -29,9 +29,6 @@ namespace WineEntryProposal.Models
 
             {
                 //need to add code here to populate slider...
-
-
-
             };
 
 

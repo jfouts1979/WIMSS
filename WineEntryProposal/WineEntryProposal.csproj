@@ -223,6 +223,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <None Include="Properties\PublishProfiles\WIMSS - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\WIMSS - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\WineEntryProposal20180316101807 - Web Deploy.pubxml" />
     <None Include="Readme.md" />
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
@@ -248,12 +251,6 @@
     <Content Include="Content\Images\wine.png" />
     <Content Include="Views\Vendors\Index.cshtml" />
     <Content Include="Web.config" />
-    <Content Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
-    <Content Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
     <Content Include="Views\Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -279,7 +276,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Content\assets\ico\bootstrap\img\" />
     <Folder Include="Models\Data Models\" />
-    <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

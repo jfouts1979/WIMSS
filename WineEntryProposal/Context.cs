@@ -133,6 +133,7 @@ namespace WineEntryProposal
         // ************************************************
         // ************ Initialize Database ***************
         // ************************************************
+        //const connectionString = "Server=tcp:wineentryproposaldbserver.database.windows.net,1433;Initial Catalog=WineEntryProposal_db;Persist Security Info=False;User ID=wineadmin;Password=2018ElevatedSpirits;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
 
         public WineContext() : base("WineDb")
         {

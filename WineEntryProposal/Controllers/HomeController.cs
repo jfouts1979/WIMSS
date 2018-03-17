@@ -13,7 +13,7 @@ namespace WineEntryProposal.Controllers
             using (MediaContext db = new MediaContext())
             {
                 return View(db.gallery.ToList());
-            }
+            };
             //return View();           
         }
 
