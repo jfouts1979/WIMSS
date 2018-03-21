@@ -7,14 +7,22 @@ namespace WineEntryProposal.Controllers
 {
     public class HomeController : Controller
     {
+        //public ActionResult Index()
+        //{
+
+        //using (MediaContext db = new MediaContext())
+        //{
+        //    return View(db.gallery.ToList());
+        //};
+        //return View();           
+        //}
+
         public ActionResult Index()
         {
 
-            using (MediaContext db = new MediaContext())
-            {
-                return View(db.gallery.ToList());
-            };
-            //return View();           
+            ViewBag.Message = "You made it home.";
+
+            return View();
         }
 
         public ActionResult About()

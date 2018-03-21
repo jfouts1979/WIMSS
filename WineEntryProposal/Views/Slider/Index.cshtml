@@ -1,4 +1,4 @@
-﻿@model IEnumerable<WineEntryProposal.Models.Gallery>    
+﻿@*@model IEnumerable<WineEntryProposal.Models.Gallery>    
 
 @{
     ViewBag.Title="Index";
@@ -13,6 +13,6 @@
 @Html.ActionLink("Add Image", "AddImage", "Slider", new { id = "linkAddimage" }, null) |
 @Html.ActionLink("Delete Image", "DeleteImages", "Slider", new { id = "linkDeleteimage" }, null)
 </p>
-@Html.Partial("~/Views/Shared/SliderPartial.cshtml", Model)
+@Html.Partial("~/Views/Shared/SliderPartial.cshtml", Model)*@
 
 

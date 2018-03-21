@@ -1,43 +1,43 @@
-﻿using System.Data.Entity;
-using System.Linq;
-using System.Web;
+﻿//using System.Data.Entity;
+//using System.Linq;
+//using System.Web;
 
 
-namespace WineEntryProposal.Models
-{
+//namespace WineEntryProposal.Models
+//{
     // ********************************************
     // *** Drop and Create the Database Only ******
     // *** If the Model Changes *******************
     // ********************************************
 
-    public class MediaDatabaseInitializer : DropCreateDatabaseIfModelChanges<MediaContext>
-    {
+    //public class MediaDatabaseInitializer : DropCreateDatabaseIfModelChanges<MediaContext>
+    //{
 
         // **********************************************
         // *** Seed the Database With the Data Below ****
         // **********************************************
 
-        protected override void Seed(MediaContext context)
-        {
+        //protected override void Seed(MediaContext context)
+        //{
 
-            // *******************************************
-            // *** Images To Populate Slider *************
-            // *******************************************
+        //    // *******************************************
+        //    // *** Images To Populate Slider *************
+        //    // *******************************************
 
-            Gallery gallery = new Gallery
-
-
-            {
-                //need to add code here to populate slider...
-            };
+        //    Gallery gallery = new Gallery
 
 
+        //    {
+        //        //need to add code here to populate slider...
+        //    };
 
-            context.gallery.Add(gallery);
-            context.SaveChanges();
-            base.Seed(context);
 
-        }
+
+        //    context.gallery.Add(gallery);
+        //    context.SaveChanges();
+        //    base.Seed(context);
+
+        //}
 
         //*** This Portion of Code Needs To Be Modified  *************
         //*** Will Be Used To Seed The Database With Slider Images ***
@@ -86,12 +86,12 @@ namespace WineEntryProposal.Models
         //    }
 
         //    return RedirectToAction("Index");
-    }
+    //}
 
 
 
-    public class MediaContext : DbContext
-    {
-        public DbSet<Gallery> gallery { get; set; }
-    }
-}
+    //public class MediaContext : DbContext
+    //{
+    //    public DbSet<Gallery> gallery { get; set; }
+    //}
+//}

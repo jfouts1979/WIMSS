@@ -1,4 +1,4 @@
-﻿<div>
+﻿@*@*<div>
 
     <a href="@Url.Action("AddWine", null, new { area = string.Empty, controller = "Wine" }, Request.Url.Scheme)" class="btn btn-primary btn-lg">
         <span>Add A New Wine</span>
@@ -11,17 +11,17 @@
     <br />
 
 
-<ul id="slider">
+@*<ul id="slider">
 @foreach (var image in Model)
 {
     <li><img src="@Url.Content(image.ImagePath)" /></li>
 }
-</ul>
+</ul>*@
 
     @*<div class="outside">*@
-        <h3>Current Wine List</h3>
-        <p><span id="slider-prev"></span> | <span id="slider-next"></span></p>
-    @*</div>*@
+        @*<h3>Current Wine List</h3>
+        <p><span id="slider-prev"></span> | <span id="slider-next"></span></p>*@
+    @*</div>
 </div>
 <script>
     $(document).ready(function () {
@@ -37,4 +37,4 @@
         //Before, the code ended with bxSlider();
         $('.bx-wrapper').width('60%');
     });
-</script>
+</script>*@
