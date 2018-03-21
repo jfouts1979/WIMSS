@@ -235,10 +235,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <None Include="Properties\PublishProfiles\OnAWim - FTP.pubxml" />
-    <None Include="Properties\PublishProfiles\OnAWim - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\WIMSS - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\WIMSS - Web Deploy.pubxml" />
-    <None Include="Properties\PublishProfiles\WineEntryProposal20180316101807 - Web Deploy.pubxml" />
     <None Include="Readme.md" />
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
