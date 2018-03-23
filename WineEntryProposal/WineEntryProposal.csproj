@@ -191,6 +191,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\WineDb.mdf" />
+    <Content Include="App_Data\WineDb_log.ldf">
+      <DependentUpon>WineDb.mdf</DependentUpon>
+    </Content>
+    <Content Include="App_Data\MediaContext.mdf" />
+    <Content Include="App_Data\MediaContext_log.ldf">
+      <DependentUpon>MediaContext.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\assets\bootstrap\css\bootstrap.css" />
     <Content Include="Content\assets\css\style.css" />
     <Content Include="Content\assets\ico\apple-touch-icon-114-precomposed.png" />
@@ -237,6 +245,7 @@
     <Content Include="Content\Site.css" />
     <None Include="Properties\PublishProfiles\WIMSS - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\WIMSS - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\WineEntryProposal20180322093307 - Web Deploy.pubxml" />
     <None Include="Readme.md" />
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
@@ -284,7 +293,6 @@
     <Content Include="Views\Shared\_UConstPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Content\assets\ico\bootstrap\img\" />
     <Folder Include="Models\Data Models\" />
   </ItemGroup>

@@ -17,10 +17,10 @@ namespace WineEntryProposal
         // **********************************************
         // *** Seed the Database With the Data Below ****
         // **********************************************
-    
+
         protected override void Seed(WineContext context)
         {
-            
+
             // *******************************************
             // *** List of Grape Varietals Eventually ****
             // *** To Be Pulled from 27 e-CFR Ch. 1   ****
@@ -28,7 +28,7 @@ namespace WineEntryProposal
             // *** 4.91 **********************************
             // *** Most Likely Using A Streamreader ******
             // *******************************************
-            
+
             var list = new List<GrapeVarietal>() {
             new GrapeVarietal() { Id = 1, Name = "Vidal Blanc" },
                 new GrapeVarietal() { Id = 2, Name = "Concord", pictureUrl= "http://res.cloudinary.com/dqhopogso/image/upload/v1489462544/ConcordGrapes2.png" },
@@ -124,16 +124,15 @@ namespace WineEntryProposal
             base.Seed(context);
 
         }
- 
- }
+
+    }
 
     public class WineContext : DbContext
     {
-    
+
         // ************************************************
         // ************ Initialize Database ***************
         // ************************************************
-        //const connectionString = "Server=tcp:wineentryproposaldbserver.database.windows.net,1433;Initial Catalog=WineEntryProposal_db;Persist Security Info=False;User ID=wineadmin;Password=2018ElevatedSpirits;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
 
         public WineContext() : base("WineDb")
         {
@@ -142,36 +141,36 @@ namespace WineEntryProposal
         }
         public DbSet<Wine> Wines { get; set; }
         public DbSet<GrapeVarietal> Varietals { get; set; }
-        public DbSet<NGFruitSourceType> NGFruit {get; set; }
-    
+        public DbSet<NGFruitSourceType> NGFruit { get; set; }
+
         //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
         //\\\\\\\ CODE FROM STACK OVERFLOW TO TRACE DATA VALIDATION \\
         //\\\\\\\ ERRORS \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
         //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-    public override int SaveChanges()
-    {
-        try
+        public override int SaveChanges()
         {
-            return base.SaveChanges();
-        }
-        catch (DbEntityValidationException ex)
-        {
-            // Retrieve the error messages as a list of strings.
-            var errorMessages = ex.EntityValidationErrors
-                 .SelectMany(x => x.ValidationErrors)
-                 .Select(x => x.ErrorMessage);
+            try
+            {
+                return base.SaveChanges();
+            }
+            catch (DbEntityValidationException ex)
+            {
+                // Retrieve the error messages as a list of strings.
+                var errorMessages = ex.EntityValidationErrors
+                     .SelectMany(x => x.ValidationErrors)
+                     .Select(x => x.ErrorMessage);
 
-            // Join the list to a single string.
-            var fullErrorMessage = string.Join("; ", errorMessages);
+                // Join the list to a single string.
+                var fullErrorMessage = string.Join("; ", errorMessages);
 
-            // Combine the original exception message with the new one.
-            var exceptionMessage = string.Concat(ex.Message, " The validation errors are: ", fullErrorMessage);
+                // Combine the original exception message with the new one.
+                var exceptionMessage = string.Concat(ex.Message, " The validation errors are: ", fullErrorMessage);
 
-            // Throw a new DbEntityValidationException with the improved exception message.
-            throw new DbEntityValidationException(exceptionMessage, ex.EntityValidationErrors);
+                // Throw a new DbEntityValidationException with the improved exception message.
+                throw new DbEntityValidationException(exceptionMessage, ex.EntityValidationErrors);
+            }
         }
     }
 }
-}
-    //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+//\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
