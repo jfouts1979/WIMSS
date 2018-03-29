@@ -1,5 +1,3 @@
-/// <reference path="scripts.js" />
-
 jQuery(document).ready(function() {
 
     /*
@@ -56,7 +54,7 @@ jQuery(document).ready(function() {
             data: postdata,
             dataType: 'json',
             success: function(json) {
-                if(json.valid == 0) {
+                if(json.valid === 0) {
                     $('.success-message').hide();
                     $('.error-message').hide();
                     $('.error-message').html(json.message);

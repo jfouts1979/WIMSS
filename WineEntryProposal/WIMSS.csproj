@@ -172,12 +172,16 @@
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\SliderController.cs" />
     <Compile Include="Controllers\VendorsController.cs" />
-    <Compile Include="Models\Gallery.cs" />
-    <Compile Include="Models\View Models\VarietalModel.cs" />
-    <Compile Include="Models\View Models\WineAddModel.cs" />
-    <Compile Include="Models\View Models\WineDeleteModel.cs" />
-    <Compile Include="Models\View Models\WineEditModel.cs" />
-    <Compile Include="Models\View Models\WineModel.cs" />
+    <Compile Include="Models\CountryModel.cs" />
+    <Compile Include="Models\Data Models\SliderPicModel.cs" />
+    <Compile Include="Models\Data Models\NGFruitSourceTypeModel.cs" />
+    <Compile Include="Models\View Models\sliderPicViewModel.cs" />
+    <Compile Include="Models\Venue.cs" />
+    <Compile Include="Models\View Models\VarietalViewModel.cs" />
+    <Compile Include="Models\View Models\WineAddViewModel.cs" />
+    <Compile Include="Models\View Models\WineDeleteViewModel.cs" />
+    <Compile Include="Models\View Models\WineEditViewModel.cs" />
+    <Compile Include="Models\View Models\WineViewModel.cs" />
     <Compile Include="Context.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\WineController.cs" />
@@ -191,14 +195,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\WineDb.mdf" />
-    <Content Include="App_Data\WineDb_log.ldf">
-      <DependentUpon>WineDb.mdf</DependentUpon>
-    </Content>
-    <Content Include="App_Data\MediaContext.mdf" />
-    <Content Include="App_Data\MediaContext_log.ldf">
-      <DependentUpon>MediaContext.mdf</DependentUpon>
-    </Content>
     <Content Include="Content\assets\bootstrap\css\bootstrap.css" />
     <Content Include="Content\assets\css\style.css" />
     <Content Include="Content\assets\ico\apple-touch-icon-114-precomposed.png" />
@@ -270,7 +266,9 @@
     <Content Include="Scripts\_references.js" />
     <Content Include="Content\Images\wine.png" />
     <Content Include="Views\Vendors\Index.cshtml" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -293,8 +291,8 @@
     <Content Include="Views\Shared\_UConstPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\" />
     <Folder Include="Content\assets\ico\bootstrap\img\" />
-    <Folder Include="Models\Data Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

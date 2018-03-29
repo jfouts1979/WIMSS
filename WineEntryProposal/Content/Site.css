@@ -22,3 +22,13 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.selectBox {
+    width: 295px;
+    height: 38px;
+    padding: 0 0 0 9px;
+}
+
+select option {
+    width: 255px;
+} 

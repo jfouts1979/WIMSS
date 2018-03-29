@@ -123,6 +123,17 @@ namespace WineEntryProposal
             context.SaveChanges();
             base.Seed(context);
 
+            //***********************************************
+            var sliderList = new List<SliderPic>() 
+            {
+            new SliderPic() { Id = 1, Name = "Concord", ImageURL= "http://res.cloudinary.com/dqhopogso/image/upload/v1489462544/ConcordGrapes2.png" },
+            new SliderPic() { Id = 2, Name = "Traminette", ImageURL="http://res.cloudinary.com/dqhopogso/image/upload/v1489462782/Traminette.jpg" },
+            };
+
+            context.SliderPics.AddRange(sliderList);
+            context.SaveChanges();
+            base.Seed(context);
+
         }
 
     }
@@ -142,6 +153,9 @@ namespace WineEntryProposal
         public DbSet<Wine> Wines { get; set; }
         public DbSet<GrapeVarietal> Varietals { get; set; }
         public DbSet<NGFruitSourceType> NGFruit { get; set; }
+        public DbSet<SliderPic> SliderPics { get; set; }
+        //public DbSet<Gallery> Galleries { get; set; }
+   
 
         //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
         //\\\\\\\ CODE FROM STACK OVERFLOW TO TRACE DATA VALIDATION \\

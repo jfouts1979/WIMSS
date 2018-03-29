@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WineEntryProposal", "WineEntryProposal\WineEntryProposal.csproj", "{312F633A-B84A-4FE1-B4A1-FCFF42C7D71D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WIMSS", "WineEntryProposal\WIMSS.csproj", "{312F633A-B84A-4FE1-B4A1-FCFF42C7D71D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

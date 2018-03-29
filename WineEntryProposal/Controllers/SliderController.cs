@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -13,10 +12,10 @@ namespace WineEntryProposal.Controllers
         public ActionResult Index()
         {
 
-            using (MediaDatabaseInitializer.MediaContext db = new MediaDatabaseInitializer.MediaContext())
+            using (WineContext db = new WineContext())
             {
 
-                return View(db.gallery.ToList());
+                return View(db.SliderPics.ToList());
 
             }
             //return View();
@@ -27,9 +26,9 @@ namespace WineEntryProposal.Controllers
         public ActionResult AddImage()
         {
 
-            using (MediaDatabaseInitializer.MediaContext db = new MediaDatabaseInitializer.MediaContext())
+            using (WineContext db = new WineContext())
             {
-                return View(db.gallery.ToList());
+                return View(db.SliderPics.ToList());
             }
             //return View();
         }
@@ -53,10 +52,14 @@ namespace WineEntryProposal.Controllers
                 string pic = System.IO.Path.GetFileName(ImagePath.FileName);
                 string path = System.IO.Path.Combine(Server.MapPath("~/Content/Images/"), pic);
                 ImagePath.SaveAs(path);
-                using (MediaDatabaseInitializer.MediaContext db = new MediaDatabaseInitializer.MediaContext())
+                using (WineContext db = new WineContext())
                 {
-                    Gallery gallery = new Gallery { ImagePath = "~/Content/Images/" + pic };
-                    db.gallery.Add(gallery);
+                    SliderPic sliderPic = new SliderPic
+                    {
+                        ImageURL = "~/Content/Images/" + pic,
+                        Name = pic
+                    };
+                    db.SliderPics.Add(sliderPic);
                     db.SaveChanges();
                 }
             }
@@ -67,23 +70,23 @@ namespace WineEntryProposal.Controllers
 
         public ActionResult DeleteImages()
         {
-            using (MediaDatabaseInitializer.MediaContext db = new MediaDatabaseInitializer.MediaContext())
+            using (WineContext db = new WineContext())
             {
-                return View(db.gallery.ToList());
+                return View(db.SliderPics.ToList());
             }
 
         }
 
         [HttpPost]
-        public ActionResult DeleteImages(IEnumerable<int> ImagesIDs)
+        public ActionResult DeleteImages(IEnumerable<int> ImageIDs)
         {
-            using (MediaDatabaseInitializer.MediaContext db = new MediaDatabaseInitializer.MediaContext())
+            using (WineContext db = new WineContext())
             {
                 foreach (var id in ImagesIDs)
                 {
-                    var image = db.gallery.Single(s => s.ID == id);
-                    string imgPath = Server.MapPath(image.ImagePath);
-                    db.gallery.Remove(image);
+                    var image = db.SliderPics.Single(s => s.Id == id);
+                    string imgPath = Server.MapPath(image.ImageURL);
+                    db.SliderPics.Remove(image);
                     if (System.IO.File.Exists(imgPath))
                         System.IO.File.Delete(imgPath);
                 }
