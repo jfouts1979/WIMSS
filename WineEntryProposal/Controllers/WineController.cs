@@ -5,6 +5,7 @@ using System.Net;
 using System.Web.Mvc;
 using WineEntryProposal.Models;
 using WineEntryProposal.Models.ViewModels;
+using WineEntryProposal.Views;
 
 namespace WineEntryProposal.Controllers
 {
@@ -44,8 +45,13 @@ namespace WineEntryProposal.Controllers
 
             using (var WineContext = new WineContext())
             {
-                var TTBAllPermits = Repository.GetAllPermits().ToList();
-                return View("TTBActiveWinePermits", TTBAllPermits);
+                //var TTBAllPermits = Repository.GetAllPermits().ToList();
+                // Query for all permits
+                var allpermits = WineContext.TTBActiveWinePermits;
+
+                //var blogs = WineContext.TTBActiveWinePermits.SqlQuery("SELECT * FROM dbo.TTBActiveWinePermits").ToList();
+
+                return View("TTBActiveWinePermits", allpermits);
             }
 
         }

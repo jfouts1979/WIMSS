@@ -125,22 +125,6 @@ namespace WineEntryProposal.Models
         public string pictureUrl { get; set; }
     }
 
-
-
-
-  
-    //public class Gallery
-    //{
-    //    public class SliderPic
-    //    {
-    //        public int Id { get; set; }
-    //        public string Name { get; set; }
-    //        public string ImageURL { get; set; }
-    //    }
-    //}
-
-
-
     //**************************************************************
     //*********Establish List of Non-Grape Fruit Source Types*******
     //**************************************************************
@@ -158,8 +142,6 @@ namespace WineEntryProposal.Models
         [Range(0.0, 100.0)]
         public double Brix { get; set; }
     }
-
-
 
     //*********************************************************
     //**************Set Up ENUM for Grape Family Type**********
@@ -237,32 +219,6 @@ namespace WineEntryProposal.Models
         // For purpose of project and until further investigation concludes it shall be assumed that no other classes of wines will be approved by the Tax and Trade Bureau to appear in the Code of Federal Regulations (CFR) - United States Code.
     }
 
-    //***********************************************
-    //*** Repository ***
-    //***********************************************
 
-    public static class Repository
-    {
-
-        public static List<GrapeVarietal> GetAllGrapeVarietals()
-        {
-
-            using (var context = new WineContext())
-            {
-                return context.Varietals.ToList();
-            }
-        }
-
-        public static List<TTBActiveWinePermit> GetAllPermits()
-        {
-
-            using (var context = new WineContext())
-            {
-                return context.TTBActiveWinePermits.ToList();
-            }
-        }
-
-
-    }
 }
 

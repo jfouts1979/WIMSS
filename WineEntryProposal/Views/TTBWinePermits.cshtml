@@ -1,0 +1,75 @@
+﻿@model IEnumerable<WineEntryProposal.Models.TTBActiveWinePermitModel>
+
+@{
+    ViewBag.Title = "View";
+}
+
+<h2>View</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.OWNER_NAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OPERATING_NAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.STREET)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CITY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.STATE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ZIP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ZIP4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.COUNTY)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.OWNER_NAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OPERATING_NAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.STREET)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CITY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.STATE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ZIP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ZIP4)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.COUNTY)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.PERMIT_NUMBER }) |
+            @Html.ActionLink("Details", "Details", new { id=item.PERMIT_NUMBER }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.PERMIT_NUMBER })
+        </td>
+    </tr>
+}
+
+</table>
