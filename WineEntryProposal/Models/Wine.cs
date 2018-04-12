@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Dynamic;
 using System.Linq;
+using WineEntryProposal.Views.Wine;
 
 // Some of the coding in this portion of the project refers to data from Title 27 of the Code of Federal Regulations (Alcohol, Tobacco, and Firearms), Part 4 - Labeling and Advertising of Wine - Subpart C - Standards of Identity for Wine - Section 4.21 - referring to nine distinct separate classes of wine.  These include:
 
@@ -236,6 +237,10 @@ namespace WineEntryProposal.Models
         // For purpose of project and until further investigation concludes it shall be assumed that no other classes of wines will be approved by the Tax and Trade Bureau to appear in the Code of Federal Regulations (CFR) - United States Code.
     }
 
+    //***********************************************
+    //*** Repository ***
+    //***********************************************
+
     public static class Repository
     {
 
@@ -245,6 +250,15 @@ namespace WineEntryProposal.Models
             using (var context = new WineContext())
             {
                 return context.Varietals.ToList();
+            }
+        }
+
+        public static List<TTBActiveWinePermit> GetAllPermits()
+        {
+
+            using (var context = new WineContext())
+            {
+                return context.TTBActiveWinePermits.ToList();
             }
         }
 

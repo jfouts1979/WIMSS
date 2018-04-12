@@ -82,7 +82,7 @@ namespace WineEntryProposal.Controllers
         {
             using (WineContext db = new WineContext())
             {
-                foreach (var id in ImagesIDs)
+                foreach (var id in ImageIDs)
                 {
                     var image = db.SliderPics.Single(s => s.Id == id);
                     string imgPath = Server.MapPath(image.ImageURL);

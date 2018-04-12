@@ -3,6 +3,7 @@ using System.Linq;
 using System.Data.Entity;
 using WineEntryProposal.Models;
 using System.Data.Entity.Validation;
+using WineEntryProposal.Views.Wine;
 
 namespace WineEntryProposal
 {
@@ -154,7 +155,7 @@ namespace WineEntryProposal
         public DbSet<GrapeVarietal> Varietals { get; set; }
         public DbSet<NGFruitSourceType> NGFruit { get; set; }
         public DbSet<SliderPic> SliderPics { get; set; }
-        //public DbSet<Gallery> Galleries { get; set; }
+        public DbSet<TTBActiveWinePermit> TTBActiveWinePermits { get; set; }
    
 
         //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -185,6 +186,8 @@ namespace WineEntryProposal
                 throw new DbEntityValidationException(exceptionMessage, ex.EntityValidationErrors);
             }
         }
+
+        //public System.Data.Entity.DbSet<WineEntryProposal.Views.Wine.TTBActiveWinePermit> TTBActiveWinePermits { get; set; }
     }
 }
 //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\

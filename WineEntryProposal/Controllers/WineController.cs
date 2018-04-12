@@ -30,6 +30,26 @@ namespace WineEntryProposal.Controllers
 
         }
 
+        // *********************************************************    
+        // ********* GET: ListPermitsByState View ****************************
+        // *********************************************************
+
+        public ActionResult GetPermitsActionResult()
+        {
+
+            // *************************************************
+            // *** Establish New WineContext (Plate of Data) ***
+            // *** And Return the list of wine *****************
+            // *************************************************
+
+            using (var WineContext = new WineContext())
+            {
+                var TTBAllPermits = Repository.GetAllPermits().ToList();
+                return View("TTBActiveWinePermits", TTBAllPermits);
+            }
+
+        }
+
         // *************************************************************
         // *************** ADD A WINE VIEW MODEL (GET) *****************
         // *************************************************************
